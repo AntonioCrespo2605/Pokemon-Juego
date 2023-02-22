@@ -28,7 +28,6 @@ public class Portada extends AppCompatActivity {
                 Intent intent = new Intent(Portada.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
             }
         }, 5000);
 

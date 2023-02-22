@@ -29,19 +29,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.cardview_item_book, parent, false);
+        view = mInflater.inflate(R.layout.cardview_item_pokemon, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
-        holder.tv_book_title.setText(mData.get(position).getTitle());
-        holder.img_book_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        holder.pokemon_name.setText(mData.get(position).getName());
+        holder.img_pokemon.setImageResource(mData.get(position).getImg());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //CODIGO FUTURO
 
             }
         });
@@ -56,15 +56,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_book_title;
-        ImageView img_book_thumbnail;
+        TextView pokemon_name;
+        ImageView img_pokemon;
         CardView cardView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            tv_book_title = (TextView) itemView.findViewById(R.id.pokemon_name);
-            img_book_thumbnail = (ImageView) itemView.findViewById(R.id.pokemon_img);
+            pokemon_name = (TextView) itemView.findViewById(R.id.pokemon_name);
+            img_pokemon = (ImageView) itemView.findViewById(R.id.pokemon_img);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
 

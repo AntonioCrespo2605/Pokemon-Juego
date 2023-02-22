@@ -8,13 +8,47 @@
 
     <ImageView
         android:id="@+id/portada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:backgroundTint="#FDFBE6"
-        android:contentDescription=""
+        android:contentDescription="@string/portada"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/portada_vacia" />
+
+    <ImageView
+        android:id="@+id/pokeball"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="88dp"
+        android:contentDescription="@string/pokeball"
+        android:rotation="61"
+        app:layout_constraintEnd_toEndOf="@+id/portada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_logo"
+        app:srcCompat="@drawable/pokeball" />
+
+    <ImageView
+        android:id="@+id/showdown_logo"
+        android:layout_width="393dp"
+        android:layout_height="98dp"
+        android:contentDescription="@string/showdown_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/portada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokeball"
+        app:layout_constraintVertical_bias="0.432"
+        app:srcCompat="@drawable/showdown_text" />
+
+    <ImageView
+        android:id="@+id/pokemon_logo"
+        android:layout_width="341dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="96dp"
+        android:contentDescription="@string/logo_de_pokemon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/portada"
+        app:srcCompat="@drawable/pokemon_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
