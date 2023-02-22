@@ -35,6 +35,12 @@ public class Pokemon {
         this.name = name;
     }
 
+    //CONSTRUCTOR POCHO PARA PROBAR LAS CARDVIEWS
+    public Pokemon(String name, int img){
+        this.name = name;
+        this.img = img;
+    }
+
     //GETTERS && SETTERS
     public int getNumDex() {
         return numDex;
