@@ -41,6 +41,20 @@ public class Pokemon {
         this.img = img;
     }
 
+    public void addMovesById(int[]msid, ArrayList<Move>ms){
+        ArrayList<Move>add=new ArrayList<>();
+
+        for(Move m:ms){
+            for(int i=0;i<msid.length;i++){
+                if(m.getId()==msid[i]){
+                    add.add(m);
+                    break;
+                }
+            }
+        }
+        setMoves(add);
+    }
+
     //GETTERS && SETTERS
     public int getNumDex() {
         return numDex;

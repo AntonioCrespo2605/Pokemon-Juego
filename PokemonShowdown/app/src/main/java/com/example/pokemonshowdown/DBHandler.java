@@ -86,8 +86,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         //Pokemon_move table
         String queryTablePokemonMove="CREATE TABLE "+POKEMON_MOVE_TABLE+" ("
-                +ID_M_COL+" INTEGER NOT NULL, "
-                +NUM_PK_COL+" INTEGER NOT NULL, "
+                +ID_M_COL+" INTEGER NOT NULL REFERENCES "+MOVE_TABLE+", "
+                +NUM_PK_COL+" INTEGER NOT NULL REFERENCES "+POKEMON_TABLE+", "
                 +"PRIMARY KEY("+ID_M_COL+", "+NUM_PK_COL+"));";
 
         db.execSQL(queryTablePokemonMove);
@@ -231,5 +231,19 @@ public class DBHandler extends SQLiteOpenHelper {
         db2.close();
     }
 
+    public ArrayList<Move> getMoves() {
+        return moves;
+    }
 
+    public void setMoves(ArrayList<Move> moves) {
+        this.moves = moves;
+    }
+
+    public ArrayList<Pokemon> getPokemons() {
+        return pokemons;
+    }
+
+    public void setPokemons(ArrayList<Pokemon> pokemons) {
+        this.pokemons = pokemons;
+    }
 }
