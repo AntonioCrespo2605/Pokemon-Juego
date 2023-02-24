@@ -76,7 +76,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
         void bindData(final Move item) {
             String dmg, accuracy;
             dmg = String.valueOf(item.getDmg());
-            accuracy = String.valueOf(item.getHitProb());
+            accuracy = String.valueOf(item.getAccuracy());
             name.setText(item.getName());
             mov_dmg.setText(dmg);
             mov_accuracy.setText(accuracy);

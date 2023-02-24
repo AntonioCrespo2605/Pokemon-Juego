@@ -2,7 +2,7 @@ package com.example.pokemonshowdown;
 
 public class Move {
 
-    private int id, dmg, hitProb, status, statusProb, type, restoreHPPorc;
+    private int id, dmg, accuracy, status, statusProb, type, restoreHPPorc;
     private boolean atkSt, priority;
     private String name;
 
@@ -10,7 +10,7 @@ public class Move {
     public Move(int id, String name, int dmg, int hitProb, int status, int statusProb, int type, int restoreHPPorc, boolean atkSt, boolean priority) {
         this.id = id;
         this.dmg = dmg;
-        this.hitProb = hitProb;
+        this.accuracy = hitProb;
         this.status = status;
         this.statusProb = statusProb;
         this.type = type;
@@ -25,7 +25,7 @@ public class Move {
     public  Move(String name, int dmg, int hitProb){
         this.name = name;
         this.dmg = dmg;
-        this.hitProb = hitProb;
+        this.accuracy = hitProb;
 
     }
 
@@ -38,12 +38,12 @@ public class Move {
         this.id = id;
     }
 
-    public int getHitProb() {
-        return hitProb;
+    public int getAccuracy() {
+        return accuracy;
     }
 
-    public void setHitProb(int hitProb) {
-        this.hitProb = hitProb;
+    public void setAccuracy(int accuracy) {
+        this.accuracy = accuracy;
     }
 
     public int getStatus() {

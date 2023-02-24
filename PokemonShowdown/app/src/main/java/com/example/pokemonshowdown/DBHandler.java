@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String ID_COL="id";
     private static final String NAME_M_COL="name";
     private static final String DMG_M_COL="dmg";
-    private static final String HIT_PROB_COL="hit";
+    private static final String ACCURACY_COL ="accuracy";
     private static final String STATUS_COL="status";
     private static final String STATUS_PROB_COL="statusProb";
     private static final String TYPE_M_COL="type";
@@ -74,7 +74,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 +ID_COL+" INTEGER PRIMARY KEY, "
                 +NAME_M_COL+" TEXT NOT NULL, "
                 +DMG_M_COL+" INTEGER NOT NULL, "
-                +HIT_PROB_COL+" INTEGER NOT NULL, "
+                + ACCURACY_COL +" INTEGER NOT NULL, "
                 +STATUS_COL+" INTEGER, "
                 +STATUS_PROB_COL+" INTEGER NOT NULL, "
                 +TYPE_M_COL+" INTEGER NOT NULL, "
@@ -186,7 +186,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(ID_COL, move.getId());
         values.put(NAME_M_COL, move.getName());
         values.put(DMG_COL, move.getDmg());
-        values.put(HIT_PROB_COL, move.getHitProb());
+        values.put(ACCURACY_COL, move.getAccuracy());
         values.put(STATUS_COL, move.getStatus());
         values.put(STATUS_PROB_COL, move.getStatusProb());
         values.put(TYPE_M_COL, move.getType());

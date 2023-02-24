@@ -25,11 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout ll;
     private FloatingActionButton next;
     private ImageView pantJ;
+    private ImageView pk1;
+    private ImageView pk2;
+    private ImageView pk3;
+
 
     private boolean changeActivity = false;
 
-    private ArrayList<Pokemon>pPlyr1;
-    private ArrayList<Pokemon>pPlyr2;
+    private ArrayList<Pokemon> pPlyr1;
+    private ArrayList<Pokemon> pPlyr2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,12 +86,22 @@ public class MainActivity extends AppCompatActivity {
         handler = new DBHandler(this);
         pokemonList = handler.getPokemons();
         RecyclerView rv = findViewById(R.id.recyclerview_id);
-        ViewHolder p = new ViewHolder(next);
+        ViewHolder p = new ViewHolder(next, pk1, pk2, pk3);
         myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
 
     }
+
+    private void fillPokemons() {
+        if (changeActivity) {
+            pPlyr1 = myAdapter.getSelected();
+        } else {
+            pPlyr2 = myAdapter.getSelected();
+        }
+    }
+
+    //INITS
 
     private void initMoves() {
         handler = new DBHandler(this);
@@ -560,14 +574,6 @@ public class MainActivity extends AppCompatActivity {
         p = new Pokemon(151, "Mew", 15, 0, 100, 100, 100, 100, R.drawable.p151, R.drawable.p151b);
         p.addMovesById(new int[]{}, handler.getMoves());
         handler.addNewPokemon(p);
-    }
-
-    private void fillPokemons(){
-        if(changeActivity){
-            pPlyr1=myAdapter.getSelected();
-        }else{
-            pPlyr2=myAdapter.getSelected();
-        }
     }
 
 

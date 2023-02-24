@@ -6,12 +6,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ViewHolder {
     private FloatingActionButton fab;
-    ImageView p1;
-    ImageView p2;
-    ImageView p3;
+    ImageView pk1;
+    ImageView pk2;
+    ImageView pk3;
 
-    public ViewHolder(FloatingActionButton fab) {
+    public ViewHolder(FloatingActionButton fab, ImageView pk1, ImageView pk2, ImageView pk3) {
         this.fab = fab;
+        this.pk1 = pk1;
+        this.pk2 = pk2;
+        this.pk3 = pk3;
 
     }
 
