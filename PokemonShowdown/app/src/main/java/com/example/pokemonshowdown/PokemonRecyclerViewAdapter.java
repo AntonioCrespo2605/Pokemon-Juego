@@ -25,13 +25,15 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     private List<Pokemon> mData;
     private List<Boolean> selected;
     private DBHandler handler;
+    private ViewHolder p;
     private FloatingActionButton f;
 
     // Constructor
-    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, FloatingActionButton f) {
+    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ViewHolder p) {
         this.mContext = mContext;
         this.mData = mData;
-        this.f = f;
+        this.p = p;
+        this.f = p.getFab();
 
         this.handler = new DBHandler(mContext);
         this.selected = new ArrayList<Boolean>();
@@ -46,9 +48,9 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        LayoutInflater mInflater = LayoutInflater.from(mContext); // Se crea una instancia del objeto LayoutInflater
-        view = mInflater.inflate(R.layout.cardview_item_pokemon, parent, false); // Se infla el diseño de la vista del elemento
-        return new MyViewHolder(view); // Se devuelve una instancia de MyViewHolder para esa vista
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.cardview_item_pokemon, parent, false);
+        return new MyViewHolder(view);
     }
 
     // Asigna valores a los elementos de la vista del elemento en base a los datos del objeto Pokemon en esa posición
@@ -118,11 +120,11 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         return toret;
     }
 
-    public ArrayList<Pokemon> getSelected(){
-        ArrayList<Pokemon>toret=new ArrayList<Pokemon>();
+    public ArrayList<Pokemon> getSelected() {
+        ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
 
-        for(int i=0;i<selected.size();i++){
-            if(selected.get(i))toret.add(handler.getPokemons().get(i));
+        for (int i = 0; i < selected.size(); i++) {
+            if (selected.get(i)) toret.add(handler.getPokemons().get(i));
         }
 
         return toret;
