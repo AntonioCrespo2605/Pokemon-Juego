@@ -252,11 +252,11 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(6, "Charizard", 7, 8, 78, 109, 85, 100, R.drawable.p006, R.drawable.p006b);
-        p.addMovesById(new int[]{34, 19, 57, 50, 21, 20, 65, 64, 104, 59, 51, 54, 63, 32, }, handler.getMoves());
+        p.addMovesById(new int[]{34, 19, 57, 50, 21, 20, 65, 64, 104, 59, 51, 54, 63, 32 }, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(9, "Blastoise", 18, 0, 79, 85, 105, 78, R.drawable.p009, R.drawable.p009b);
-        p.addMovesById(new int[]{}, handler.getMoves());
+        p.addMovesById(new int[]{34}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(12, "Butterfree", 1, 8, 60, 90, 80, 70, R.drawable.p012, R.drawable.p012b);

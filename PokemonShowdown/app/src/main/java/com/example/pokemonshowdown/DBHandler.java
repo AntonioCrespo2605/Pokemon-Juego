@@ -156,7 +156,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //it returns an arrayList with the pokemon´s moveset reading from database
-    private ArrayList<Move> getMovesFromPokemon(int numDex){
+    public ArrayList<Move> getMovesFromPokemon(int numDex){
         ArrayList<Move>toret=new ArrayList<Move>();
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("SELECT "+ID_M_COL+ " FROM "+POKEMON_MOVE_TABLE+" WHERE "+NUM_PK_COL+"="+numDex,null);

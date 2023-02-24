@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -40,13 +41,16 @@ public class MovementsPicker extends AppCompatActivity {
 
         next=findViewById(R.id.nextB);
 
+
         Bundle b=getIntent().getExtras();
-        movesPk1py1=handler.getPokemonById(b.getInt("pk1py1")).getMoves();
-        movesPk2py1=handler.getPokemonById(b.getInt("pk2py1")).getMoves();
-        movesPk3py1=handler.getPokemonById(b.getInt("pk3py1")).getMoves();
-        movesPk1py2=handler.getPokemonById(b.getInt("pk1py2")).getMoves();
-        movesPk2py2=handler.getPokemonById(b.getInt("pk2py2")).getMoves();
-        movesPk3py2=handler.getPokemonById(b.getInt("pk3py2")).getMoves();
+        handler=new DBHandler(this);
+
+        movesPk1py1=handler.getMovesFromPokemon(b.getInt("pk1py1"));
+        movesPk2py1=handler.getMovesFromPokemon(b.getInt("pk2py1"));
+        movesPk3py1=handler.getMovesFromPokemon(b.getInt("pk3py1"));
+        movesPk1py2=handler.getMovesFromPokemon(b.getInt("pk1py2"));
+        movesPk2py2=handler.getMovesFromPokemon(b.getInt("pk2py2"));
+        movesPk3py2=handler.getMovesFromPokemon(b.getInt("pk3py2"));
 
         moves = new ArrayList<>();
         moves.add(new Move("Guillotina", 90000, 30));
