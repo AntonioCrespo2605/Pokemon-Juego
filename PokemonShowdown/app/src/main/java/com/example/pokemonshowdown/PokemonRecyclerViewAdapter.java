@@ -110,7 +110,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     }
 
     // Método auxiliar que cuenta el número de elementos seleccionados
-    public int getCountSelected() {
+    private int getCountSelected() {
         int toret = 0;
         for (Boolean b : selected) {
             if (b) toret++;
@@ -118,5 +118,14 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         return toret;
     }
 
+    public ArrayList<Pokemon> getSelected(){
+        ArrayList<Pokemon>toret=new ArrayList<Pokemon>();
+
+        for(int i=0;i<selected.size();i++){
+            if(selected.get(i))toret.add(handler.getPokemons().get(i));
+        }
+
+        return toret;
+    }
 }
 

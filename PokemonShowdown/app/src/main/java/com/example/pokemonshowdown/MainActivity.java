@@ -13,22 +13,24 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<Pokemon> pokemonList;
     private DBHandler handler;
-    PokemonRecyclerViewAdapter myAdapter;
+    private PokemonRecyclerViewAdapter myAdapter;
 
     //VIEWS
     private LinearLayout ll;
     private FloatingActionButton next;
     private ImageView pantJ;
 
-    //se ac
     private boolean changeActivity = false;
 
+    private ArrayList<Pokemon>pp1;
+    private ArrayList<Pokemon>pp2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
+
                 } else {
                     //CAMBIO DE TURNO
                     changeActivity = true;
@@ -560,6 +562,6 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
     }
 
-
+    
 
 }
