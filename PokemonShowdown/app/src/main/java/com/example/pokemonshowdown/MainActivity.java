@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Pokemon> pokemonList;
     private DBHandler handler;
+    PokemonRecyclerViewAdapter myAdapter;
 
     //VIEWS
     private LinearLayout ll;
@@ -58,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (changeActivity) {
-
+                    Intent intent = new Intent(MainActivity.this, MovementsPicker.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
                 } else {
+                    //CAMBIO DE TURNO
                     changeActivity = true;
+                    //pantJ.setImageResource();
                     ll.setVisibility(View.INVISIBLE);
                     next.setVisibility(View.INVISIBLE);
                     pantJ.setVisibility(View.VISIBLE);
@@ -74,9 +80,10 @@ public class MainActivity extends AppCompatActivity {
         handler = new DBHandler(this);
         pokemonList = handler.getPokemons();
         RecyclerView rv = findViewById(R.id.recyclerview_id);
-        PokemonRecyclerViewAdapter myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList);
+        myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, next);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
+
 
     }
 
@@ -553,11 +560,6 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
     }
 
-    public void showButton(){
-        next.setVisibility(View.VISIBLE);
-    }
-    public void hideButton(){
-        next.setVisibility(View.INVISIBLE);
-    }
+
 
 }
