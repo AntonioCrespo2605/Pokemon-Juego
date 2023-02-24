@@ -14,7 +14,7 @@
         android:id="@+id/llP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blackp"
+        android:background="@color/whitep"
         android:orientation="vertical">
 
         <ImageView
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Mew"
-            android:textColor="#ECEAE0"
+            android:textColor="#CB2A2F35"
             android:textSize="13sp" />
 
     </LinearLayout>

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     //VIEWS
     private LinearLayout ll;
     private FloatingActionButton next;
-    private ImageView pantJ;
+    private ImageView pantJ, player;
     private ImageView pk1;
     private ImageView pk2;
     private ImageView pk3;
@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         ll = findViewById(R.id.linearLayoutP);
         next = findViewById(R.id.nextB);
         pantJ = findViewById(R.id.pantalla_jugador);
+        player = findViewById(R.id.player);
+        pk1 = findViewById(R.id.pk1);
+        pk2 = findViewById(R.id.pk2);
+        pk3 = findViewById(R.id.pk3);
         //INVISIBLE
         ll.setVisibility(View.INVISIBLE);
         next.setVisibility(View.INVISIBLE);
@@ -80,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     ll.setVisibility(View.INVISIBLE);
                     next.setVisibility(View.INVISIBLE);
                     pantJ.setVisibility(View.VISIBLE);
+                    player.setImageResource(R.drawable.j2);
                 }
             }
         });

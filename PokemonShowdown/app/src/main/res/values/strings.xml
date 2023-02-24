@@ -5,4 +5,9 @@
     <string name="portada">Pantalla dividida en blanco y rojo</string>
     <string name="showdown_logo">logo con texto Showdown</string>
     <string name="fabPokemon">Botón para terminar la selección de pokémons</string>
+    <string name="pantallaJ">Pantalla que muestra el turno de cada jugador</string>
+    <string name="turno">turno del jugador</string>
+    <string name="pokemon_3">pokemon 3</string>
+    <string name="pokemon_2">pokemon 2</string>
+    <string name="pokemon_1">pokemon 1</string>
 </resources>
