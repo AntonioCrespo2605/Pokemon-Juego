@@ -1,10 +1,13 @@
 package com.example.pokemonshowdown;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -41,7 +44,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                holder.ll.setBackgroundColor(Color.BLUE);
             }
         });
 
@@ -58,6 +61,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         TextView pokemon_name;
         ImageView img_pokemon;
         CardView cardView;
+        LinearLayout ll;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +69,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             pokemon_name = (TextView) itemView.findViewById(R.id.pokemon_name);
             img_pokemon = (ImageView) itemView.findViewById(R.id.pokemon_img);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
+            ll = itemView.findViewById(R.id.llP);
 
         }
     }
