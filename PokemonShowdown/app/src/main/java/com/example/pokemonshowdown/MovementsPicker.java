@@ -48,7 +48,6 @@ public class MovementsPicker extends AppCompatActivity {
         movesPk2py2=handler.getPokemonById(b.getInt("pk2py2")).getMoves();
         movesPk3py2=handler.getPokemonById(b.getInt("pk3py2")).getMoves();
 
-        //readMovesFromPokemons();
         moves = new ArrayList<>();
         moves.add(new Move("Guillotina", 90000, 30));
         moves.add(new Move("Salpicadura", 0, 100));
