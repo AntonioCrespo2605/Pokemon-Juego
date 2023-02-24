@@ -25,11 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton next;
     private ImageView pantJ;
 
-    //SE ACTIVA EN EL SEGUNDO TURNO
+    //se ac
     private boolean changeActivity = false;
 
-    //CONTADOR DE POKEMONS SELECCIONADOS
-    private static int contSelect = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -555,37 +553,11 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
     }
 
-    public static void incrementCont() {
-        contSelect++;
-
+    public void showButton(){
+        next.setVisibility(View.VISIBLE);
     }
-
-    public static int getCont() {
-        return contSelect;
+    public void hideButton(){
+        next.setVisibility(View.INVISIBLE);
     }
 
 }
-/*
-        pokemonList = new ArrayList<>();
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        pokemonList.add(new Pokemon("Venusaur", R.drawable.p003));
-        pokemonList.add(new Pokemon("Charizard", R.drawable.p006));
-        pokemonList.add(new Pokemon("Blastoise", R.drawable.p009));
-        */
