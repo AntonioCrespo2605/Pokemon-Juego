@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -60,18 +61,19 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.img_pokemon.setImageResource(mData.get(position).getImg());
 
         // Si el elemento está seleccionado, se establece el color de fondo en azul, de lo contrario se establece en gris oscuro
-        if (selected.get(position)) holder.ll.setBackgroundColor(Color.parseColor("#FF7FBCFA"));
-        else holder.ll.setBackgroundColor(Color.parseColor("#2d2d2d"));
+        // Mantiene la carta seleccionada cuando actualizas la vista
+        if (selected.get(position)) holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
+        else holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blackp));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selected.get(position)) {
                     selected.set(position, false);
-                    holder.ll.setBackgroundColor(Color.parseColor("#2d2d2d"));
+                   holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blackp));
                 } else {
                     selected.set(position, true);
-                    holder.ll.setBackgroundColor(Color.parseColor("#FF7FBCFA"));
+                    holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
                 }
 
                 // Se muestra o se oculta el botón flotante dependiendo del número de elementos seleccionados
