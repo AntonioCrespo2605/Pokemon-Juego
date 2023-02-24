@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean changeActivity = false;
 
-    private ArrayList<Pokemon>pp1;
-    private ArrayList<Pokemon>pp2;
+    private ArrayList<Pokemon>pPlyr1;
+    private ArrayList<Pokemon>pPlyr2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fillPokemons();
                 if (changeActivity) {
                     Intent intent = new Intent(MainActivity.this, MovementsPicker.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, next);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
-
 
     }
 
@@ -562,6 +562,13 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
     }
 
-    
+    private void fillPokemons(){
+        if(changeActivity){
+            pPlyr1=myAdapter.getSelected();
+        }else{
+            pPlyr2=myAdapter.getSelected();
+        }
+    }
+
 
 }
