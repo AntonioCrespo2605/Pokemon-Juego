@@ -112,7 +112,7 @@
         android:contentDescription="@string/pantallaJ"
         android:scaleType="fitXY"
         android:visibility="invisible"
-        app:srcCompat="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/t1p"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="108dp" />
 

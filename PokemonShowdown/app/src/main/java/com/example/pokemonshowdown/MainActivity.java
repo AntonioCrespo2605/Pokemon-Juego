@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     //CAMBIO DE TURNO
                     changeActivity = true;
-                    //pantJ.setImageResource();
+                    pantJ.setImageResource(R.drawable.t2p);
                     ll.setVisibility(View.INVISIBLE);
                     next.setVisibility(View.INVISIBLE);
                     pantJ.setVisibility(View.VISIBLE);
