@@ -9,15 +9,15 @@ public class Move {
     //CONSTRUCTOR
     public Move(int id, String name, int dmg, int hitProb, int status, int statusProb, int type, int restoreHPPorc, boolean atkSt, boolean priority) {
         this.id = id;
-        this.dmg=dmg;
+        this.dmg = dmg;
         this.hitProb = hitProb;
         this.status = status;
         this.statusProb = statusProb;
         this.type = type;
         this.atkSt = atkSt;
         this.name = name;
-        this.restoreHPPorc=restoreHPPorc;
-        this.priority=priority;
+        this.restoreHPPorc = restoreHPPorc;
+        this.priority = priority;
     }
 
     //GETTERS && SETTERS

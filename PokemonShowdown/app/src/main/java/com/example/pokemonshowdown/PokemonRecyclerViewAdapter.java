@@ -67,7 +67,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             img_pokemon = (ImageView) itemView.findViewById(R.id.pokemon_img);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
-
         }
     }
 }
