@@ -63,14 +63,14 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         // Si el elemento está seleccionado, se establece el color de fondo en azul, de lo contrario se establece en gris oscuro
         // Mantiene la carta seleccionada cuando actualizas la vista
         if (selected.get(position)) holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
-        else holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blackp));
+        else holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selected.get(position)) {
                     selected.set(position, false);
-                   holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blackp));
+                   holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
                 } else {
                     selected.set(position, true);
                     holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));

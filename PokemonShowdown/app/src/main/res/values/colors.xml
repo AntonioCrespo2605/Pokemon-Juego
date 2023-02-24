@@ -9,8 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="whitep">#EFEFED</color>
     <color name="redp">#ED2E49</color>
-    <color name="blackp">#28292A</color>
-    <color name="blue_selected">#977FBCFA</color>
+    <color name="blackp">#28292a</color>
+    <color name="greyp">#ED28292A</color>
+    <color name="blue_selected">#9777B9FB</color>
+    <color name="white_shadow">#32CFCFCB</color>
+    <color name="bluep">#44ccf0</color>
 
 
 </resources>
