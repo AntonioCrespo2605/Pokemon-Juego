@@ -248,11 +248,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPokemons() {
         Pokemon p = new Pokemon(3, "Venusaur", 10, 14, 80, 100, 100, 80, R.drawable.p003, R.drawable.p003b);
-        p.addMovesById(new int[]{}, handler.getMoves());
+        p.addMovesById(new int[]{70, 81, 80, 85, 84, 104, 59, 51, 54, 63, 57, 82, 49}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(6, "Charizard", 7, 8, 78, 109, 85, 100, R.drawable.p006, R.drawable.p006b);
-        p.addMovesById(new int[]{}, handler.getMoves());
+        p.addMovesById(new int[]{34, 19, 57, 50, 21, 20, 65, 64, 104, 59, 51, 54, 63, 32, }, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(9, "Blastoise", 18, 0, 79, 85, 105, 78, R.drawable.p009, R.drawable.p009b);

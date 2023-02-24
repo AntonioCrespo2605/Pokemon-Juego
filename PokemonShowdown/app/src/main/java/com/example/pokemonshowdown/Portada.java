@@ -25,7 +25,6 @@ public class Portada extends AppCompatActivity {
                 .5f, RotateAnimation.RELATIVE_TO_SELF
                 ,.5f);
 
-
         rotateAnimation.setDuration(5000);
         pokeball.startAnimation(rotateAnimation);
 
