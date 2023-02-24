@@ -13,9 +13,18 @@
         android:theme="@style/Theme.PokemonShowdown"
         tools:targetApi="31">
         <activity
+            android:name=".MovementsPicker"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar">>
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

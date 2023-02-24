@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecyclerViewAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Pokemon> mData;
 
 
-    public RecyclerViewAdapter(Context mContext, List<Pokemon> mData) {
+    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

@@ -4,4 +4,5 @@
     <string name="pokeball">Pokeball</string>
     <string name="portada">Pantalla dividida en blanco y rojo</string>
     <string name="showdown_logo">logo con texto Showdown</string>
+    <string name="fabPokemon">Botón para terminar la selección de pokémons</string>
 </resources>
