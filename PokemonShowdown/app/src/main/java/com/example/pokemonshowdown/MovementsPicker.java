@@ -12,7 +12,16 @@ import java.util.List;
 
 public class MovementsPicker extends AppCompatActivity {
 
-    List<Move> moves;
+    private List<Move> moves;
+
+    private DBHandler handler;
+
+    private List<Move> movesPk1py1;
+    private List<Move> movesPk2py1;
+    private List<Move> movesPk3py1;
+    private List<Move> movesPk1py2;
+    private List<Move> movesPk2py2;
+    private List<Move> movesPk3py2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +45,6 @@ public class MovementsPicker extends AppCompatActivity {
         moves.add(new Move("Rapidez", 50, 100));
         moves.add(new Move("Golpe alto", 80, 50));
 
-
         RecyclerView recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,4 +52,6 @@ public class MovementsPicker extends AppCompatActivity {
         recyclerView.setAdapter(listAdapter);
 
     }
+
+    private void readMovesFromPokemons(){}
 }

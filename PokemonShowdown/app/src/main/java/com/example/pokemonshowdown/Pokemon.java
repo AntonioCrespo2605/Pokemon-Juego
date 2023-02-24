@@ -35,12 +35,6 @@ public class Pokemon {
         this.name = name;
     }
 
-    //CONSTRUCTOR POCHO PARA PROBAR LAS CARDVIEWS
-    public Pokemon(String name, int img){
-        this.name = name;
-        this.img = img;
-    }
-
     public void addMovesById(int[]msid, ArrayList<Move>ms){
         ArrayList<Move>add=new ArrayList<>();
 

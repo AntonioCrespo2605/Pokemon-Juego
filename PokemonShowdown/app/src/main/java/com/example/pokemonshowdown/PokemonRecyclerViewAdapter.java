@@ -39,9 +39,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         this.selected = new ArrayList<Boolean>();
 
         // Se llena la lista de selecciones con valores "false" para cada elemento en la lista de la base de datos de Pokemon
-        for (int i = 0; i < handler.getPokemons().size(); i++) {
-            selected.add(false);
-        }
+        deselect();
     }
 
     // Crea una nueva vista para cada elemento de la lista
@@ -61,7 +59,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.img_pokemon.setImageResource(mData.get(position).getImg());
 
         // Si el elemento está seleccionado, se establece el color de fondo en azul, de lo contrario se establece en gris oscuro
-        if (selected.get(position)) holder.ll.setBackgroundColor(Color.BLUE);
+        if (selected.get(position)) holder.ll.setBackgroundColor(Color.parseColor("#FF7FBCFA"));
         else holder.ll.setBackgroundColor(Color.parseColor("#2d2d2d"));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +70,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                     holder.ll.setBackgroundColor(Color.parseColor("#2d2d2d"));
                 } else {
                     selected.set(position, true);
-                    holder.ll.setBackgroundColor(Color.BLUE);
+                    holder.ll.setBackgroundColor(Color.parseColor("#FF7FBCFA"));
                 }
 
                 // Se muestra o se oculta el botón flotante dependiendo del número de elementos seleccionados
@@ -128,6 +126,12 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         }
 
         return toret;
+    }
+
+    public void deselect(){
+        for (int i = 0; i < handler.getPokemons().size(); i++) {
+            selected.add(false);
+        }
     }
 }
 

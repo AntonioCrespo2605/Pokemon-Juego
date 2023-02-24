@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView pk2;
     private ImageView pk3;
 
-
     private boolean changeActivity = false;
 
     private ArrayList<Pokemon> pPlyr1;
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         next.setVisibility(View.INVISIBLE);
         pantJ.setVisibility(View.VISIBLE);
 
-
         //pantalla para indicar el turno del jugador
         pantJ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //boton para continuar a la siguiente activity o cambiar el turno
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,9 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 if (changeActivity) {
                     Intent intent = new Intent(MainActivity.this, MovementsPicker.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("pk1py1", pPlyr1.get(0).getNumDex());
+                    intent.putExtra("pk2py1", pPlyr1.get(1).getNumDex());
+                    intent.putExtra("pk3py1", pPlyr1.get(2).getNumDex());
+                    intent.putExtra("pk1py2", pPlyr2.get(0).getNumDex());
+                    intent.putExtra("pk2py2", pPlyr2.get(1).getNumDex());
+                    intent.putExtra("pk3py2", pPlyr2.get(2).getNumDex());
                     startActivity(intent);
                     finish();
-
                 } else {
                     //CAMBIO DE TURNO
                     changeActivity = true;
@@ -90,19 +94,22 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
-
     }
 
     private void fillPokemons() {
         if (changeActivity) {
-            pPlyr1 = myAdapter.getSelected();
-        } else {
             pPlyr2 = myAdapter.getSelected();
+        } else {
+            pPlyr1 = myAdapter.getSelected();
+            RecyclerView rv = findViewById(R.id.recyclerview_id);
+            ViewHolder p = new ViewHolder(next, pk1, pk2, pk3);
+            myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
+            rv.setLayoutManager(new GridLayoutManager(this, 3));
+            rv.setAdapter(myAdapter);
         }
     }
 
     //INITS
-
     private void initMoves() {
         handler = new DBHandler(this);
 
