@@ -66,6 +66,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
         ViewHolder(View itemView) {
             super(itemView);
             iconImage = itemView.findViewById(R.id.cd);
+            type = itemView.findViewById(R.id.mov_type);
             name = itemView.findViewById(R.id.mov_name);
             mov_dmg = itemView.findViewById(R.id.mov_dmg);
             mov_accuracy = itemView.findViewById(R.id.mov_accuracy);
@@ -73,10 +74,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
         }
 
         void bindData(final Move item) {
+            String dmg, accuracy;
+            dmg = String.valueOf(item.getDmg());
+            accuracy = String.valueOf(item.getHitProb());
             name.setText(item.getName());
-            mov_dmg.setText(item.getDmg());
-            mov_accuracy.setText(item.getHitProb());
-            type.setImageResource(item.getType());
+            mov_dmg.setText(dmg);
+            mov_accuracy.setText(accuracy);
+            //type.setImageResource(item.getType());
 
         }
 

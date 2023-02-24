@@ -20,6 +20,15 @@ public class Move {
         this.priority = priority;
     }
 
+    //constructor pocho
+
+    public  Move(String name, int dmg, int hitProb){
+        this.name = name;
+        this.dmg = dmg;
+        this.hitProb = hitProb;
+
+    }
+
     //GETTERS && SETTERS
     public int getId() {
         return id;
