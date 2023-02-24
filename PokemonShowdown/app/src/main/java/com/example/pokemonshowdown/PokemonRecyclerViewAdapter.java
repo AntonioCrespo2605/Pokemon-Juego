@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,6 +84,13 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             }
         });
 
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(mContext, "patata frita", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 

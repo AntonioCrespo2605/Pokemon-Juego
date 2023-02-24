@@ -246,4 +246,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public void setPokemons(ArrayList<Pokemon> pokemons) {
         this.pokemons = pokemons;
     }
+
+    public Pokemon getPokemonById(int id){
+        for(Pokemon p:pokemons){
+            if(p.getNumDex()==id)return p;
+        }
+        return null;
+    }
 }
