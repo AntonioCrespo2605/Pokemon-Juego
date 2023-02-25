@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -77,32 +78,15 @@ public class Combat extends AppCompatActivity {
         initPokemons();
 
         //INICIO
-        firstScreen();
-
-
-
-
-
-
-    }
-
-    private void firstScreen(){
-        //las barras de vida del principio empiezan al 100% y ningún pokemon parte con estado
-        pk_hpBar.setProgress(100);
-        pkb_hpBar.setProgress(100);
-        pkbstatus.setVisibility(View.INVISIBLE);
-        pkstatus.setVisibility(View.INVISIBLE);
-
-        //los pokemon mostrados al principio serán los pk1 de cada player
+        turnManager=1;
         pokemonBack=new PokemonBattler(pk1py1);
         pokemonFront=new PokemonBattler(pk1py2);
+        changeTurn();
 
-        //el primero en elegir será el jugador 1
-        turnManager=1;
-        playerturn.setImageResource(R.drawable.j1);
 
-        //ocultamos datos que no se deberían ver de primeras
-        textConstraint.setVisibility(View.INVISIBLE);
+
+
+
 
     }
 
@@ -120,6 +104,7 @@ public class Combat extends AppCompatActivity {
 
         //ArrayList auxiliar para rellenar los 4 movimientos
         ArrayList<Move> movesAdd;
+        int aux;
 
         ArrayList<PokemonBattler>battlers=new ArrayList<PokemonBattler>();
         battlers.add(pk1py1);
@@ -134,7 +119,8 @@ public class Combat extends AppCompatActivity {
             for(int pok=1; pok<=3;pok++){
                 movesAdd=new ArrayList<Move>();
                 for(int mv=1;mv<=4;mv++){
-                    movesAdd.add(handler.getMoveById(b.getInt("mv"+mv+"pk"+pok+"py"+player)));
+                    aux=b.getInt("mv"+mv+"pk"+pok+"py"+player);
+                    if(aux>0)movesAdd.add(handler.getMoveById(aux));
                 }
                 int pos=-1;
                 if(player==2)pos=2;
@@ -158,23 +144,25 @@ public class Combat extends AppCompatActivity {
     public void changeTurn(){
         playerturnscreen.setVisibility(View.VISIBLE);
         playerturn.setVisibility(View.VISIBLE);
-        figth.setVisibility(View.INVISIBLE);
         textConstraint.setVisibility(View.INVISIBLE);
-        pokemonChange.setVisibility(View.INVISIBLE);
         pkbHealth.setVisibility(View.VISIBLE);
-        atk1.setVisibility(View.INVISIBLE);
-        atk2.setVisibility(View.INVISIBLE);
-        atk3.setVisibility(View.INVISIBLE);
-        atk4.setVisibility(View.INVISIBLE);
+        hideMoves();
         if(turnManager == 1){
-            //ESTO ES PROVISIONAL XQ AUN NO EXISTE LA IMAGEN CORRESPONDIENTE
-            playerturnscreen.setImageResource(R.drawable.t1p);
-            playerturn.setImageResource(R.drawable.j1);
-            //pkb.setImageResource(); jugador actual
-            //pk.setImageResource();
-            //CAMBIA EL ESTADO DEL POKEMON SI ES NECESARIO
-            //Cambia las progres bar y las vida maxima y actual
+            //calculo de barras de vida
+            pk_hpBar.setProgress(pokemonFront.hpPorcentage());
+            pkb_hpBar.setProgress(pokemonFront.hpPorcentage());
+            pkbstatus.setVisibility(View.INVISIBLE);
+            pkstatus.setVisibility(View.INVISIBLE);
 
+            //los pokemon mostrados al principio serán los pk1 de cada player
+
+
+            //el primero en elegir será el jugador 1
+            turnManager=1;
+            playerturn.setImageResource(R.drawable.j1);
+
+            //ocultamos datos que no se deberían ver de primeras
+            textConstraint.setVisibility(View.INVISIBLE);
 
 
         }else if (turnManager == 2){
@@ -208,12 +196,65 @@ public class Combat extends AppCompatActivity {
     public void selectMove(){
         figth.setVisibility(View.INVISIBLE);
         pokemonChange.setVisibility(View.INVISIBLE);
+        hideMoves();
         atk1.setVisibility(View.VISIBLE);
-        atk2.setVisibility(View.VISIBLE);
-        atk3.setVisibility(View.VISIBLE);
-        atk3.setVisibility(View.VISIBLE);
+        switch (pokemonBack.getMoves().size()){
+            case 2:
+                atk2.setVisibility(View.VISIBLE);
+            case 3:
+                atk3.setVisibility(View.VISIBLE);
+            case 4:
+                atk4.setVisibility(View.VISIBLE);
+                break;
+        }
 
-        //tendras q poner el codigo para cambiar los ataques
+
+    }
+
+    private void updateMove(int pos){
+        String colorBug="#1a4c27";
+        String colorDark="#030708";
+        String colorDragon="#458894";
+        String colorElectric="#e2e22f";
+        String colorFairy="#971848";
+        String colorFight="#9c4020";
+        String colorFire="#ab1e20";
+        String colorFlying="#4a677d";
+        String colorGhost="#32336b";
+        String colorGrass="#117838";
+        String colorGround="#a6712a";
+        String colorIce="#84d4eb";
+        String colorNormal="#7a515d";
+        String colorPoison="#5d2b8c";
+        String colorPsychic="#a52a6b";
+        String colorRock="#48180a";
+        String colorSteel="#5f756e";
+        String colorWater="#1552e1";
+
+        /*
+        int imgBug=R.drawable.bug;
+        int imgDark=R.drawable.dark;
+        int imgDragon=R.drawable.dragon;
+        int imgElectric=R.drawable.electric;
+        int imgFairy=R.drawable.fairy;
+        int imgFight=R.drawable.fight;
+        int imgFire=R.drawable.fire;
+        int imgFlying=R.drawable.flying;
+        int imgGhost=R.drawable.ghost;
+        int imgGrass=R.drawable.grass;
+        int imgGround=R.drawable.ground;
+        int imgIce=R.drawable.ice;
+        int imgNormal=R.drawable.normal;
+        int imgPoison=R.drawable.poison;
+        int imgPsychic=R.drawable.psychic;
+        int imgRock=R.drawable.rock;
+        int imgSteel=R.drawable.steel;
+        int imgWater=R.drawable.water;*/
+
+        int typeMove=pokemonBack.getMoves().get(pos).getType();
+
+
+
     }
 
     private void hideMoves(){
