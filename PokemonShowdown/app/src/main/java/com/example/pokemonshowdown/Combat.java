@@ -3,14 +3,13 @@ package com.example.pokemonshowdown;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class Combat extends AppCompatActivity {
     private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus;
     private TextView screentext, pk_name, pkb_name, pkb_hp, pkb_maxhp;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
-    private FloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4;
+    private FloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
     private ConstraintLayout constraintPk, constraintPkb, textConstraint;
     private ProgressBar pk_hpBar, pkb_hpBar;
     private LinearLayout pkbHealth;
@@ -154,9 +153,6 @@ public class Combat extends AppCompatActivity {
             pkbstatus.setVisibility(View.INVISIBLE);
             pkstatus.setVisibility(View.INVISIBLE);
 
-            //los pokemon mostrados al principio serán los pk1 de cada player
-
-
             //el primero en elegir será el jugador 1
             turnManager=1;
             playerturn.setImageResource(R.drawable.j1);
@@ -198,12 +194,16 @@ public class Combat extends AppCompatActivity {
         pokemonChange.setVisibility(View.INVISIBLE);
         hideMoves();
         atk1.setVisibility(View.VISIBLE);
+        updateMove(0);
         switch (pokemonBack.getMoves().size()){
             case 2:
+                updateMove(1);
                 atk2.setVisibility(View.VISIBLE);
             case 3:
+                updateMove(2);
                 atk3.setVisibility(View.VISIBLE);
             case 4:
+                updateMove(3);
                 atk4.setVisibility(View.VISIBLE);
                 break;
         }
@@ -212,6 +212,19 @@ public class Combat extends AppCompatActivity {
     }
 
     private void updateMove(int pos){
+        switch (pos){
+            case 0:aux=atk1;
+                break;
+            case 1:aux=atk2;
+                break;
+            case 2:aux=atk3;
+                break;
+            case 3:aux=atk4;
+                break;
+        }
+
+        int type=pokemonBack.getMoves().get(pos).getType();
+
         String colorBug="#1a4c27";
         String colorDark="#030708";
         String colorDragon="#458894";
@@ -231,7 +244,6 @@ public class Combat extends AppCompatActivity {
         String colorSteel="#5f756e";
         String colorWater="#1552e1";
 
-        /*
         int imgBug=R.drawable.bug;
         int imgDark=R.drawable.dark;
         int imgDragon=R.drawable.dragon;
@@ -249,11 +261,82 @@ public class Combat extends AppCompatActivity {
         int imgPsychic=R.drawable.psychic;
         int imgRock=R.drawable.rock;
         int imgSteel=R.drawable.steel;
-        int imgWater=R.drawable.water;*/
+        int imgWater=R.drawable.water;
 
-        int typeMove=pokemonBack.getMoves().get(pos).getType();
-
-
+        switch (type){
+            case 1:
+                aux.setImageResource(imgBug);
+                aux.setBackgroundColor(Color.parseColor(colorBug));
+                break;
+            case 2:
+                aux.setImageResource(imgDark);
+                aux.setBackgroundColor(Color.parseColor(colorDark));
+                break;
+            case 3:
+                aux.setImageResource(imgDragon);
+                aux.setBackgroundColor(Color.parseColor(colorDragon));
+                break;
+            case 4:
+                aux.setImageResource(imgElectric);
+                aux.setBackgroundColor(Color.parseColor(colorElectric));
+                break;
+            case 5:
+                aux.setImageResource(imgFairy);
+                aux.setBackgroundColor(Color.parseColor(colorFairy));
+                break;
+            case 6:
+                aux.setImageResource(imgFight);
+                aux.setBackgroundColor(Color.parseColor(colorFight));
+                break;
+            case 7:
+                aux.setImageResource(imgFire);
+                aux.setBackgroundColor(Color.parseColor(colorFire));
+                break;
+            case 8:
+                aux.setImageResource(imgFlying);
+                aux.setBackgroundColor(Color.parseColor(colorFlying));
+                break;
+            case 9:
+                aux.setImageResource(imgGhost);
+                aux.setBackgroundColor(Color.parseColor(colorGhost));
+                break;
+            case 10:
+                aux.setImageResource(imgGrass);
+                aux.setBackgroundColor(Color.parseColor(colorGrass));
+                break;
+            case 11:
+                aux.setImageResource(imgGround);
+                aux.setBackgroundColor(Color.parseColor(colorGround));
+                break;
+            case 12:
+                aux.setImageResource(imgIce);
+                aux.setBackgroundColor(Color.parseColor(colorIce));
+                break;
+            case 13:
+                aux.setImageResource(imgNormal);
+                aux.setBackgroundColor(Color.parseColor(colorNormal));
+                break;
+            case 14:
+                aux.setImageResource(imgPoison);
+                aux.setBackgroundColor(Color.parseColor(colorPoison));
+                break;
+            case 15:
+                aux.setImageResource(imgPsychic);
+                aux.setBackgroundColor(Color.parseColor(colorPsychic));
+                break;
+            case 16:
+                aux.setImageResource(imgRock);
+                aux.setBackgroundColor(Color.parseColor(colorRock));
+                break;
+            case 17:
+                aux.setImageResource(imgSteel);
+                aux.setBackgroundColor(Color.parseColor(colorSteel));
+                break;
+            case 18:
+                aux.setImageResource(imgWater);
+                aux.setBackgroundColor(Color.parseColor(colorWater));
+                break;
+        }
 
     }
 
