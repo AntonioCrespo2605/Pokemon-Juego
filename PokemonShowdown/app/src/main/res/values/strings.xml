@@ -10,4 +10,6 @@
     <string name="pokemon_3">pokemon 3</string>
     <string name="pokemon_2">pokemon 2</string>
     <string name="pokemon_1">pokemon 1</string>
+    <string name="slashbar">/</string>
+    <string name="level">Nv. 50</string>
 </resources>

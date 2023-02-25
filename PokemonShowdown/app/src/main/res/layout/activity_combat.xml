@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Combat">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/atk1"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="5dp"
+        android:text="Garra Umbria"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:cornerRadius="25dp"
+        app:icon="@android:drawable/btn_star_big_on"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/atk2"
+        app:layout_constraintEnd_toEndOf="@+id/atk2"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/atk2"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="5dp"
+        android:text="Pulso Umbrío"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:cornerRadius="25dp"
+        app:icon="@android:drawable/btn_star"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/atk3"
+        app:layout_constraintEnd_toEndOf="@+id/atk3"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/atk3"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="5dp"
+        android:text="Rayo confuso"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:cornerRadius="25dp"
+        app:icon="@android:drawable/btn_star_big_on"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/atk4"
+        app:layout_constraintEnd_toEndOf="@+id/atk4"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/atk4"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:text="Maldición"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:backgroundTint="@color/purple_200"
+        app:cornerRadius="25dp"
+        app:icon="@android:drawable/btn_star_big_on"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fight"
+        android:layout_width="130dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="15dp"
+        android:text="Luchar"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/changepk"
+        app:layout_constraintEnd_toEndOf="@+id/changepk" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/changepk"
+        android:layout_width="130dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="Pokemon"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/pkB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintPkBData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/p094b" />
+
+    <ImageView
+        android:id="@+id/pk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/constraintPkData"
+        app:layout_constraintTop_toBottomOf="@+id/constraintPkData"
+        app:srcCompat="@drawable/p094" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintTexto"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="@color/blackp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="gone">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintPkBData"
+        android:layout_width="259dp"
+        android:layout_height="87dp"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/pkb_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Gengar"
+            android:textColor="@color/greyp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pkb_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:text="Nv. 50"
+            android:textColor="@color/greyp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pkb_hpBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="227dp"
+            android:layout_height="20dp"
+            android:progress="100"
+            android:progressTint="#4EEC63"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pkb_name" />
+
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pkb_hpBar">
+
+            <TextView
+                android:id="@+id/pkb_actual_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="90"
+                android:textColor="@color/greyp" />
+
+            <TextView
+                android:id="@+id/separator1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/slashbar"
+                android:textColor="@color/greyp" />
+
+            <TextView
+                android:id="@+id/pkb_maxhp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="90"
+                android:textColor="@color/greyp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintPkData"
+        android:layout_width="259dp"
+        android:layout_height="87dp"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pk_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Gengar"
+            android:textColor="@color/greyp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pk_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/level"
+            android:textColor="@color/greyp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pk_hpBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="227dp"
+            android:layout_height="20dp"
+            android:progress="100"
+            android:progressTint="#4EEC63"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pk_name" />
+
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pk_hpBar">
+
+            <TextView
+                android:id="@+id/pk_actual_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="90"
+                android:textColor="@color/greyp" />
+
+            <TextView
+                android:id="@+id/separator2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/slashbar"
+                android:textColor="@color/greyp" />
+
+            <TextView
+                android:id="@+id/pk_maxhp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="90"
+                android:textColor="@color/greyp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/playerturnscreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
