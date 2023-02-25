@@ -253,4 +253,12 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    public Move getMoveById(int id){
+        for(Move m:moves){
+            if(m.getId()==id)return m;
+        }
+        return moves.get(0);
+    }
+
 }
