@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -75,7 +76,7 @@ public class MovementsPicker extends AppCompatActivity {
         ListAdapter listAdapter = new ListAdapter(moves, this);
         //ListAdapter listAdapter = new ListAdapter(movesPk1py1, this);
         recyclerView.setAdapter(listAdapter);
-
+        /*
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +95,17 @@ public class MovementsPicker extends AppCompatActivity {
                     break;
                 }
                 contConfirm++;
+            }
+        });*/
+
+        //borrar mas tarde(pruebas)
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MovementsPicker.this, Combat.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 
