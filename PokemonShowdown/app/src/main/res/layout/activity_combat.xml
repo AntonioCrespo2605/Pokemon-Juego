@@ -22,9 +22,9 @@
         android:layout_width="160dp"
         android:layout_height="35dp"
         android:layout_marginBottom="5dp"
-        android:text="Garra Umbria"
+        android:text="@string/atk1"
         android:textSize="10sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
         app:iconTint="@null"
@@ -37,9 +37,9 @@
         android:layout_width="160dp"
         android:layout_height="35dp"
         android:layout_marginBottom="5dp"
-        android:text="Pulso Umbrío"
+        android:text="@string/atk2"
         android:textSize="10sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star"
         app:iconTint="@null"
@@ -52,9 +52,9 @@
         android:layout_width="160dp"
         android:layout_height="35dp"
         android:layout_marginBottom="5dp"
-        android:text="Rayo confuso"
+        android:text="@string/atk3"
         android:textSize="10sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
         app:iconTint="@null"
@@ -68,9 +68,9 @@
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
-        android:text="Maldición"
+        android:text="@string/atk4"
         android:textSize="10sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:backgroundTint="@color/purple_200"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
@@ -85,7 +85,7 @@
         android:layout_height="57dp"
         android:layout_marginBottom="15dp"
         android:text="Luchar"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/changepk"
         app:layout_constraintEnd_toEndOf="@+id/changepk" />
 
@@ -96,7 +96,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
         android:text="Pokemon"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/screentext"
@@ -149,9 +149,22 @@
         android:layout_width="259dp"
         android:layout_height="87dp"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/pkbstatus"
+            android:layout_width="34dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.855"
+            app:layout_constraintStart_toEndOf="@+id/pkbhealth"
+            app:layout_constraintTop_toBottomOf="@+id/pkb_hpBar"
+            app:layout_constraintVertical_bias="0.833"
+            app:srcCompat="@android:drawable/ic_input_delete" />
 
         <TextView
             android:id="@+id/pkb_name"
@@ -189,6 +202,7 @@
             app:layout_constraintTop_toBottomOf="@+id/pkb_name" />
 
         <LinearLayout
+            android:id="@+id/pkbhealth"
             android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
@@ -228,9 +242,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintPkData"
         android:layout_width="259dp"
-        android:layout_height="87dp"
+        android:layout_height="60dp"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -258,67 +272,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/pkstatus"
+            android:layout_width="34dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pk_name"
+            app:srcCompat="@android:drawable/ic_input_delete" />
+
         <ProgressBar
             android:id="@+id/pk_hpBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="227dp"
+            android:layout_width="200dp"
             android:layout_height="20dp"
+            android:layout_marginStart="1dp"
             android:progress="100"
             android:progressTint="#4EEC63"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pkstatus"
             app:layout_constraintTop_toBottomOf="@+id/pk_name" />
 
-        <LinearLayout
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="24dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pk_hpBar">
-
-            <TextView
-                android:id="@+id/pk_actual_hp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="90"
-                android:textColor="@color/greyp" />
-
-            <TextView
-                android:id="@+id/separator2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/slashbar"
-                android:textColor="@color/greyp" />
-
-            <TextView
-                android:id="@+id/pk_maxhp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="90"
-                android:textColor="@color/greyp" />
-        </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/playerturnscreen"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:visibility="gone" />
 
     <ImageView
         android:id="@+id/playerturn"
@@ -329,5 +304,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/j1" />
+
+    <ImageView
+        android:id="@+id/playerturnscreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
