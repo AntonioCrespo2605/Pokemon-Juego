@@ -128,8 +128,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
+        <TextView
+            android:id="@+id/screentext"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Tu Gengar ha usado Garra Umbria"
+            android:textColor="@color/whitep"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -307,5 +319,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background"
         tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/playerturn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/j1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
