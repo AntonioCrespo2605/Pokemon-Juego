@@ -1,9 +1,10 @@
 package com.example.pokemonshowdown;
 
+import static com.example.pokemonshowdown.R.drawable.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.graphics.Color;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -365,116 +366,78 @@ public class Combat extends AppCompatActivity {
 
         int type=pokemonBack.getMoves().get(pos).getType();
 
-        String colorBug="#1a4c27";
-        String colorDark="#030708";
-        String colorDragon="#458894";
-        String colorElectric="#e2e22f";
-        String colorFairy="#971848";
-        String colorFight="#9c4020";
-        String colorFire="#ab1e20";
-        String colorFlying="#4a677d";
-        String colorGhost="#32336b";
-        String colorGrass="#117838";
-        String colorGround="#a6712a";
-        String colorIce="#84d4eb";
-        String colorNormal="#7a515d";
-        String colorPoison="#5d2b8c";
-        String colorPsychic="#a52a6b";
-        String colorRock="#48180a";
-        String colorSteel="#5f756e";
-        String colorWater="#1552e1";
-
-        int imgBug=R.drawable.bug;
-        int imgDark=R.drawable.dark;
-        int imgDragon=R.drawable.dragon;
-        int imgElectric=R.drawable.electric;
-        int imgFairy=R.drawable.fairy;
-        int imgFight=R.drawable.fight;
-        int imgFire=R.drawable.fire;
-        int imgFlying=R.drawable.flying;
-        int imgGhost=R.drawable.ghost;
-        int imgGrass=R.drawable.grass;
-        int imgGround=R.drawable.ground;
-        int imgIce=R.drawable.ice;
-        int imgNormal=R.drawable.normal;
-        int imgPoison=R.drawable.poison;
-        int imgPsychic=R.drawable.psychic;
-        int imgRock=R.drawable.rock;
-        int imgSteel=R.drawable.steel;
-        int imgWater=R.drawable.water;
-
         switch (type){
             case 1:
-                aux.setIcon(getResources().getDrawable(imgBug));
-                aux.setBackgroundColor(Color.parseColor(colorBug));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), bug, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.bug));
                 break;
             case 2:
-                aux.setIcon(getResources().getDrawable(imgDark));
-                aux.setBackgroundColor(Color.parseColor(colorDark));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), dark, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.dark));
                 break;
             case 3:
-                aux.setIcon(getResources().getDrawable(imgDragon));
-                aux.setBackgroundColor(Color.parseColor(colorDragon));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), dragon, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.dragon));
                 break;
             case 4:
-                aux.setIcon(getResources().getDrawable(imgElectric));
-                aux.setBackgroundColor(Color.parseColor(colorElectric));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), electric, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.electric));
                 break;
             case 5:
-                aux.setIcon(getResources().getDrawable(imgFairy));
-                aux.setBackgroundColor(Color.parseColor(colorFairy));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), fairy, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.fairy));
                 break;
             case 6:
-                aux.setIcon(getResources().getDrawable(imgFight));
-                aux.setBackgroundColor(Color.parseColor(colorFight));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), fight, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.fight));
                 break;
             case 7:
-                aux.setIcon(getResources().getDrawable(imgFire));
-                aux.setBackgroundColor(Color.parseColor(colorFire));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), fire, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.fire));
                 break;
             case 8:
-                aux.setIcon(getResources().getDrawable(imgFlying));
-                aux.setBackgroundColor(Color.parseColor(colorFlying));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), flying, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.flying));
                 break;
             case 9:
-                aux.setIcon(getResources().getDrawable(imgGhost));
-                aux.setBackgroundColor(Color.parseColor(colorGhost));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), ghost, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.ghost));
                 break;
             case 10:
-                aux.setIcon(getResources().getDrawable(imgGrass));
-                aux.setBackgroundColor(Color.parseColor(colorGrass));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), grass, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.grass));
                 break;
             case 11:
-                aux.setIcon(getResources().getDrawable(imgGround));
-                aux.setBackgroundColor(Color.parseColor(colorGround));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), ground, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.ground));
                 break;
             case 12:
-                aux.setIcon(getResources().getDrawable(imgIce));
-                aux.setBackgroundColor(Color.parseColor(colorIce));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), ice, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.ice));
                 break;
             case 13:
-                aux.setIcon(getResources().getDrawable(imgNormal));
-                aux.setBackgroundColor(Color.parseColor(colorNormal));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), normal, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.normal));
                 break;
             case 14:
-                aux.setIcon(getResources().getDrawable(imgPoison));
-                aux.setBackgroundColor(Color.parseColor(colorPoison));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), poison, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.poison));
                 break;
             case 15:
-                aux.setIcon(getResources().getDrawable(imgPsychic));
-                aux.setBackgroundColor(Color.parseColor(colorPsychic));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), psychic, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.psychic));
                 break;
             case 16:
-                aux.setIcon(getResources().getDrawable(imgRock));
-                aux.setBackgroundColor(Color.parseColor(colorRock));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), rock, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.rock));
                 break;
             case 17:
-                aux.setIcon(getResources().getDrawable(imgSteel));
-                aux.setBackgroundColor(Color.parseColor(colorSteel));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), steel, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.steel));
                 break;
             case 18:
-                aux.setIcon(getResources().getDrawable(imgWater));
-                aux.setBackgroundColor(Color.parseColor(colorWater));
+                aux.setIcon(ResourcesCompat.getDrawable(getResources(), water, null));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.water));
                 break;
         }
 
