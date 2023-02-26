@@ -148,7 +148,7 @@ public class Combat extends AppCompatActivity {
         pk1py1=new PokemonBattler(handler.getPokemonById(3));
         pk2py1=new PokemonBattler(handler.getPokemonById(6));
         pk3py1=new PokemonBattler(handler.getPokemonById(9));
-        pk1py2=new PokemonBattler(handler.getPokemonById(12));
+        pk1py2=new PokemonBattler(handler.getPokemonById(94));
         pk2py2=new PokemonBattler(handler.getPokemonById(15));
         pk3py2=new PokemonBattler(handler.getPokemonById(18));
         //ArrayList auxiliar para rellenar los 4 movimientos
