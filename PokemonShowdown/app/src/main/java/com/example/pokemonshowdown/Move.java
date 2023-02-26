@@ -7,10 +7,10 @@ public class Move {
     private String name;
 
     //CONSTRUCTOR
-    public Move(int id, String name, int dmg, int hitProb, int status, int statusProb, int type, int restoreHPPorc, boolean atkSt, boolean priority) {
+    public Move(int id, String name, int dmg, int accuracy, int status, int statusProb, int type, int restoreHPPorc, boolean atkSt, boolean priority) {
         this.id = id;
         this.dmg = dmg;
-        this.accuracy = hitProb;
+        this.accuracy = accuracy;
         this.status = status;
         this.statusProb = statusProb;
         this.type = type;
@@ -22,11 +22,24 @@ public class Move {
 
     //constructor pocho
 
-    public  Move(String name, int dmg, int hitProb){
+    public Move(String name, int dmg, int hitProb){
         this.name = name;
         this.dmg = dmg;
         this.accuracy = hitProb;
 
+    }
+
+    public Move(Move move){
+        this.id = move.getId();
+        this.dmg = move.getDmg();
+        this.accuracy = move.getAccuracy();
+        this.status = move.getStatus();
+        this.statusProb = move.getStatusProb();
+        this.type = move.getType();
+        this.atkSt = move.isAtkSt();
+        this.name = move.getName();
+        this.restoreHPPorc = move.getRestoreHPPorc();
+        this.priority = move.isPriority();
     }
 
     //GETTERS && SETTERS

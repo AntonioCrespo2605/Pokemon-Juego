@@ -2,9 +2,13 @@ package com.example.pokemonshowdown;
 
 import static com.example.pokemonshowdown.R.drawable.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,13 +23,15 @@ import java.util.ArrayList;
 public class Combat extends AppCompatActivity {
 
     //VIEWS
-    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus;
+    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3;
     private TextView screentext, pk_name, pkb_name, pkb_hp, pkb_maxhp;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
     private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
     private ConstraintLayout constraintPk, constraintPkb, textConstraint;
     private ProgressBar pk_hpBar, pkb_hpBar;
-    private LinearLayout pkbHealth;
+    private LinearLayout pkbHealth, pokemon_team;
+    private CardView cv1, cv2, cv3;
+
 
     //6 pokemon de batalla
     private PokemonBattler pk1py1, pk2py1, pk3py1, pk1py2, pk2py2, pk3py2;
@@ -49,8 +55,11 @@ public class Combat extends AppCompatActivity {
     //handler
     private DBHandler handler;
 
-    //booleano para desactivar los botones y activar el fondo para la animaicion
+    //booleano para desactivar los botones y activar el fondo para la animacion
     private boolean activatedBackGround=false;
+
+    //booleanos para saber si mostrar la pantalla de jugador despues de seleccionar un pokemon en caso de muerte previa
+    boolean p1Died, p2Died;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +91,13 @@ public class Combat extends AppCompatActivity {
         pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
         pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);
         pkbHealth = (LinearLayout) findViewById(R.id.pkbhealth);
+        pokemon_team=(LinearLayout) findViewById(R.id.pokemon_team);
+        pk1=(ImageView) findViewById(R.id.pk1);
+        pk2=(ImageView) findViewById(R.id.pk2);
+        pk3=(ImageView) findViewById(R.id.pk3);
+        cv1=(CardView) findViewById(R.id.cv1);
+        cv2=(CardView) findViewById(R.id.cv2);
+        cv3=(CardView) findViewById(R.id.cv3);
 
         //leer la informacion del Bundle para inicializar los pokemon
         initPokemonsChapuzada();
@@ -89,8 +105,10 @@ public class Combat extends AppCompatActivity {
 
         //INICIO
         turnManager=0;
-        pokemonBack=new PokemonBattler(pk1py1);
-        pokemonFront=new PokemonBattler(pk1py2);
+        pokemonBack=new PokemonBattler(pk1py2);
+        pokemonFront=new PokemonBattler(pk1py1);
+        p1Died=false;
+        p2Died=false;
         changeTurn();
 
         playerturnscreen.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +120,6 @@ public class Combat extends AppCompatActivity {
                     //iniciar con calculos y animacion
 
                     //provisional:
-                    turnManager=1;
                     changeTurn();
                 }else{
                     figth.setVisibility(View.VISIBLE);
@@ -115,7 +132,7 @@ public class Combat extends AppCompatActivity {
         pokemonChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //codigo al cambiar de pokemon
+                selectPokemon();
             }
         });
 
@@ -126,6 +143,7 @@ public class Combat extends AppCompatActivity {
             }
         });
 
+
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +153,131 @@ public class Combat extends AppCompatActivity {
                     hideMoves();
                     pokemonChange.setVisibility(View.VISIBLE);
                     figth.setVisibility(View.VISIBLE);
+                    pokemon_team.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+
+        //3 botones de cambiar pokemon
+        pk1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    if(pokemonBack.getNumDex()!=pk1py1.getNumDex() && pk1py1.isAlive()){
+                        p1Atack=false;
+                        newPokemonP1=new PokemonBattler(pk1py1);
+                        changeTurn();
+                    }
+                }else if(turnManager==2){
+                    if(pokemonBack.getNumDex()!=pk1py2.getNumDex() && pk1py2.isAlive()){
+                        p2Atack=false;
+                        newPokemonP2=new PokemonBattler(pk1py2);
+                        changeTurn();
+                    }
+                }else{
+
+                }
+            }
+        });
+
+        pk2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    if(pokemonBack.getNumDex()!=pk2py1.getNumDex() && pk2py1.isAlive()){
+                        p1Atack=false;
+                        newPokemonP1=new PokemonBattler(pk2py1);
+                        changeTurn();
+                    }
+                }else if(turnManager==2){
+                    if(pokemonBack.getNumDex()!=pk2py2.getNumDex() && pk2py2.isAlive()){
+                        p2Atack=false;
+                        newPokemonP1=new PokemonBattler(pk2py2);
+                        changeTurn();
+                    }
+                }else{
+
+                }
+            }
+        });
+
+        pk3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    if(pokemonBack.getNumDex()!=pk3py1.getNumDex() && pk3py1.isAlive()){
+                        p1Atack=false;
+                        newPokemonP1=new PokemonBattler(pk3py1);
+                        changeTurn();
+                    }
+                }else if(turnManager==2){
+                    if(pokemonBack.getNumDex()!=pk3py2.getNumDex() && pk3py2.isAlive()){
+                        p2Atack=false;
+                        newPokemonP1=new PokemonBattler(pk3py2);
+                        changeTurn();
+                    }
+                }else{
+
+                }
+            }
+        });
+
+        //4 botones de ataques
+        atk1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    moveP1=new Move(pokemonBack.getMoves().get(0));
+                    p1Atack=true;
+                    changeTurn();
+                }else if(turnManager==2){
+                    moveP2=new Move(pokemonBack.getMoves().get(0));
+                }
+            }
+        });
+
+        atk2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    moveP1=new Move(pokemonBack.getMoves().get(1));
+                    p1Atack=true;
+                    changeTurn();
+                }else if(turnManager==2){
+                    moveP2=new Move(pokemonBack.getMoves().get(1));
+                    p2Atack=true;
+                    changeTurn();
+                }
+            }
+        });
+
+        atk3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    moveP1=new Move(pokemonBack.getMoves().get(2));
+                    p1Atack=true;
+                    changeTurn();
+                }else if(turnManager==2){
+                    moveP2=new Move(pokemonBack.getMoves().get(2));
+                    p2Atack=true;
+                    changeTurn();
+                }
+            }
+        });
+
+        atk4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(turnManager==1){
+                    moveP1=new Move(pokemonBack.getMoves().get(3));
+                    p1Atack=true;
+                    changeTurn();
+                }else if(turnManager==2){
+                    moveP2=new Move(pokemonBack.getMoves().get(3));
+                    p2Atack=true;
+                    changeTurn();
                 }
             }
         });
@@ -238,33 +381,57 @@ public class Combat extends AppCompatActivity {
 
 
     //cosas de aitana
-
     public void changeTurn(){
         turnManager++;
         if(turnManager>3)turnManager=1;
+        reverseBattlers();
 
         if(turnManager == 1){
+            playerturnscreen.setImageResource(R.drawable.t1p);
             playerturn.setImageResource(R.drawable.j1);
             textConstraint.setVisibility(View.INVISIBLE);
+            if(!p1Died)playerturnscreen.setVisibility(View.VISIBLE);
         }else if (turnManager == 2){
             playerturnscreen.setImageResource(R.drawable.t2p);
             playerturn.setImageResource(R.drawable.j2);
             textConstraint.setVisibility(View.INVISIBLE);
+            if(!p2Died)playerturnscreen.setVisibility(View.VISIBLE);
         }
 
-        playerturnscreen.setVisibility(View.VISIBLE);
         playerturn.setVisibility(View.VISIBLE);
         textConstraint.setVisibility(View.INVISIBLE);
         pkbHealth.setVisibility(View.VISIBLE);
         figth.setVisibility(View.INVISIBLE);
         pokemonChange.setVisibility(View.INVISIBLE);
+        pokemon_team.setVisibility(View.INVISIBLE);
 
         hideMoves();
+
         //calculo de barras de vida
         pk_hpBar.setProgress(pokemonFront.hpPorcentage());
-        pkb_hpBar.setProgress(pokemonFront.hpPorcentage());
+        pkb_hpBar.setProgress(pokemonBack.hpPorcentage());
+        pkstatus.setVisibility(View.VISIBLE);
         pkbstatus.setVisibility(View.VISIBLE);
-        pkbstatus.setVisibility(View.VISIBLE);
+
+        if(pokemonFront.hpPorcentage()<11){
+            pk_hpBar.setBackgroundColor(ContextCompat.getColor(this, R.color.redhp));
+        }else if(pokemonFront.hpPorcentage()<26){
+            pk_hpBar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangehp));
+        }else if(pokemonFront.hpPorcentage()<51){
+            pk_hpBar.setBackgroundColor(ContextCompat.getColor(this, R.color.yellowhp));
+        }else{
+            pk_hpBar.setBackgroundColor(ContextCompat.getColor(this, R.color.greenhp));
+        }
+
+        if(pokemonBack.hpPorcentage()<11){
+            pkb.setBackgroundColor(ContextCompat.getColor(this, R.color.redhp));
+        }else if(pokemonBack.hpPorcentage()<26){
+            pkb.setBackgroundColor(ContextCompat.getColor(this, R.color.orangehp));
+        }else if(pokemonBack.hpPorcentage()<51){
+            pkb.setBackgroundColor(ContextCompat.getColor(this, R.color.yellowhp));
+        }else{
+            pkb.setBackgroundColor(ContextCompat.getColor(this, R.color.greenhp));
+        }
 
         //cambios de sprites
         pkb.setImageResource(pokemonBack.getImgB());
@@ -310,14 +477,20 @@ public class Combat extends AppCompatActivity {
                 break;
         }
 
+        if(turnManager==3){
+            showBattle();
+        }
+
     }
 
-    public void selectAction(){
-       constraintPk.setVisibility(View.VISIBLE);
-       constraintPkb.setVisibility(View.VISIBLE);
-       figth.setVisibility(View.VISIBLE);
-       pokemonChange.setVisibility(View.VISIBLE);
+    private void showBattle() {
 
+    }
+
+    public void reverseBattlers(){
+        PokemonBattler aux=new PokemonBattler(pokemonBack);
+        pokemonBack=new PokemonBattler(pokemonFront);
+        pokemonFront=new PokemonBattler(aux);
     }
 
     //esto salta cuando le das a "luchar"
@@ -473,7 +646,89 @@ public class Combat extends AppCompatActivity {
 
     }
 
+    public void selectPokemon(){
+        pokemon_team.setVisibility(View.VISIBLE);
+        figth.setVisibility(View.INVISIBLE);
+        pokemonChange.setVisibility(View.INVISIBLE);
 
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+
+        if(turnManager==1){
+            pk1.setImageResource(pk1py1.getImg());
+            pk2.setImageResource(pk2py1.getImg());
+            pk3.setImageResource(pk3py1.getImg());
+
+            if(pk1py1.isAlive()){
+                pk1.setColorFilter(null);
+            }else{
+                pk1.setColorFilter(filter);
+            }
+
+            if(pk2py1.isAlive()){
+                pk2.setColorFilter(null);
+            }else{
+                pk2.setColorFilter(filter);
+            }
+
+            if(pk3py1.isAlive()){
+                pk3.setColorFilter(null);
+            }else{
+                pk3.setColorFilter(filter);
+            }
+
+            if(pokemonBack.getNumDex()==pk1py1.getNumDex()){
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+            }else if(pokemonBack.getNumDex()==pk2py1.getNumDex()){
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+            }else{
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+            }
+        }else if(turnManager==2){
+            pk1.setImageResource(pk1py2.getImg());
+            pk2.setImageResource(pk2py2.getImg());
+            pk3.setImageResource(pk3py2.getImg());
+
+            if(pk1py2.isAlive()){
+                pk1.setColorFilter(null);
+            }else{
+                pk1.setColorFilter(filter);
+            }
+
+            if(pk2py2.isAlive()){
+                pk2.setColorFilter(null);
+            }else{
+                pk2.setColorFilter(filter);
+            }
+
+            if(pk3py2.isAlive()){
+                pk3.setColorFilter(null);
+            }else{
+                pk3.setColorFilter(filter);
+            }
+
+            if(pokemonBack.getNumDex()==pk1py2.getNumDex()){
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+            }else if(pokemonBack.getNumDex()==pk2py2.getNumDex()){
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+            }else{
+                cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+                cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+            }
+        }
+    }
 
 
 }
