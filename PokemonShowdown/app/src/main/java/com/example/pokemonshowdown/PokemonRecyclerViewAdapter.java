@@ -95,14 +95,14 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             public boolean onLongClick(View view) {
                 Toast.makeText(mContext, "patata frita", Toast.LENGTH_SHORT).show();
                 ImageView imgPkm, type1, type2;
-                TextView tv_hp, tv_dmg, tv_def, tv_spd;
+                TextView tv_hp, tv_dmg, tv_def, tv_spd, tv_name;
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                 View dialogView = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.layout_custom_dialog,null);
 
                 imgPkm = dialogView.findViewById(R.id.pokemon_img);
                 type1 = dialogView.findViewById(R.id.type1);
                 type2 = dialogView.findViewById(R.id.type2);
-
+                tv_name = dialogView.findViewById(R.id.txttite);
                 tv_hp = dialogView.findViewById(R.id.tv_hp);
                 tv_dmg = dialogView.findViewById(R.id.tv_dmg);
                 tv_def = dialogView.findViewById(R.id.tv_def);
@@ -224,6 +224,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                         break;
                 }
 
+                tv_name.setText(mData.get(position).getName());
                 tv_hp.setText(mData.get(position).getHp()+ "");
                 tv_dmg.setText(mData.get(position).getDmg()+ "");
                 tv_def.setText(mData.get(position).getDef()+ "");
