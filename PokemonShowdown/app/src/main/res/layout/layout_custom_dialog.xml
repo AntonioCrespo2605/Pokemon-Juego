@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <View
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_corner"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/quit"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="2dp"
+            android:layout_alignParentRight="true" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/pokemon_img"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="56dp"
+                android:elevation="8dp"
+                android:src="@drawable/p003"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="100dp"
+                tools:layout_conversion_absoluteWidth="100dp" />
+
+            <TextView
+                android:id="@+id/txttite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="100dp"
+                android:text="Venusaur"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/pokemon_img"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="27dp"
+                tools:layout_conversion_absoluteWidth="174dp" />
+
+            <ImageView
+                android:id="@+id/type1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toEndOf="@+id/pokemon_img"
+                app:layout_constraintTop_toBottomOf="@+id/txttite"
+                app:srcCompat="@drawable/grass" />
+
+            <ImageView
+                android:id="@+id/type2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toEndOf="@+id/type1"
+                app:layout_constraintTop_toBottomOf="@+id/txttite"
+                app:srcCompat="@drawable/grass" />
+
+            <ImageView
+                android:id="@+id/img_def"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="88dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stats_Title"
+                app:srcCompat="@drawable/def" />
+
+            <ImageView
+                android:id="@+id/img_hp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="88dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stats_Title"
+                app:srcCompat="@drawable/hp" />
+
+            <ImageView
+                android:id="@+id/img_dmg"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_def"
+                app:srcCompat="@drawable/dmg" />
+
+
+            <ImageView
+                android:id="@+id/img_spd"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_def"
+                app:srcCompat="@drawable/spd" />
+
+            <TextView
+                android:id="@+id/tv_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="100dp"
+                android:text="tv_hp"
+                app:layout_constraintStart_toEndOf="@+id/img_hp"
+                app:layout_constraintTop_toBottomOf="@+id/stats_Title" />
+
+            <TextView
+                android:id="@+id/tv_dmg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="60dp"
+                android:text="tv_dmg"
+                app:layout_constraintStart_toEndOf="@+id/img_dmg"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hp" />
+
+            <TextView
+                android:id="@+id/tv_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="100dp"
+                android:text="tv_def"
+                app:layout_constraintStart_toEndOf="@+id/img_def"
+                app:layout_constraintTop_toBottomOf="@+id/stats_Title" />
+
+            <TextView
+                android:id="@+id/tv_spd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="60dp"
+                android:text="tv_spd"
+                app:layout_constraintStart_toEndOf="@+id/img_spd"
+                app:layout_constraintTop_toBottomOf="@+id/tv_def" />
+
+            <TextView
+                android:id="@+id/stats_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="ESTADISTICAS"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
