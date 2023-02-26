@@ -93,7 +93,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(mContext, "patata frita", Toast.LENGTH_SHORT).show();
                 ImageView imgPkm, type1, type2;
                 TextView tv_hp, tv_dmg, tv_def, tv_spd, tv_name;
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());

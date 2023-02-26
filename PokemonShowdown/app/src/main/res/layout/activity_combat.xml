@@ -24,7 +24,7 @@
         android:layout_marginBottom="5dp"
         android:text="@string/atk1"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
         app:iconTint="@null"
@@ -39,7 +39,7 @@
         android:layout_marginBottom="5dp"
         android:text="@string/atk2"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star"
         app:iconTint="@null"
@@ -54,7 +54,7 @@
         android:layout_marginBottom="5dp"
         android:text="@string/atk3"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
         app:iconTint="@null"
@@ -70,7 +70,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/atk4"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:backgroundTint="@color/purple_200"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
@@ -117,6 +117,65 @@
         app:layout_constraintStart_toStartOf="@+id/constraintPkData"
         app:layout_constraintTop_toBottomOf="@+id/constraintPkData"
         app:srcCompat="@drawable/p094" />
+
+    <LinearLayout
+        android:id="@+id/pokemon_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardBackgroundColor="?attr/scrimBackground"
+            app:contentPadding="5dp">
+
+            <ImageView
+                android:id="@+id/pk1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/pokemon_1"
+
+                app:srcCompat="@drawable/p003" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            app:cardBackgroundColor="?attr/scrimBackground"
+            app:contentPadding="5dp">
+
+            <ImageView
+                android:id="@+id/pk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/pokemon_2"
+                app:srcCompat="@drawable/p006" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            app:cardBackgroundColor="?attr/scrimBackground"
+            app:contentPadding="5dp">
+
+            <ImageView
+                android:id="@+id/pk3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/pokemon_3"
+                app:srcCompat="@drawable/p009" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintTexto"
@@ -196,7 +255,7 @@
             android:layout_width="227dp"
             android:layout_height="20dp"
             android:progress="100"
-            android:progressTint="#4EEC63"
+            android:progressTint="@color/greenhp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pkb_name" />

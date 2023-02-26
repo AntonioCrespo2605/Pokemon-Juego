@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,14 +32,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Venusaur"
-                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textSize="24sp"
                 tools:layout_conversion_absoluteHeight="27dp"
                 tools:layout_conversion_absoluteWidth="174dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -69,14 +74,17 @@
         <TextView
             android:id="@+id/stats_Title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:text="ESTADISTICAS"
-            android:textSize="25dp" />
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Estadisticas"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -85,6 +93,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:padding="5dp"
                 app:srcCompat="@drawable/hp" />
 
             <TextView
@@ -93,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_hp" />
+                android:text="tv_hp"
+                android:textAlignment="center" />
 
             <ImageView
                 android:id="@+id/img_dmg"
@@ -101,6 +111,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:padding="5dp"
                 app:srcCompat="@drawable/dmg" />
 
             <TextView
@@ -109,12 +120,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_dmg" />
+                android:text="tv_dmg"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -123,6 +136,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:padding="5dp"
                 app:srcCompat="@drawable/def" />
 
             <TextView
@@ -131,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_def" />
+                android:text="tv_def"
+                android:textAlignment="center" />
 
             <ImageView
                 android:id="@+id/img_spd"
@@ -139,6 +154,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:padding="5dp"
                 app:srcCompat="@drawable/spd" />
 
             <TextView
@@ -147,7 +163,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_dmg" />
+                android:text="tv_spd"
+                android:textAlignment="center" />
         </LinearLayout>
 
     </LinearLayout>

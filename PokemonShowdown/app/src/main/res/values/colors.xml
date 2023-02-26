@@ -32,5 +32,9 @@
     <color name="rock">#48180a</color>
     <color name="steel">#5f756e</color>
     <color name="water">#1552e1</color>
+    <color name="greenhp">#4EEC63</color>
+    <color name="yellowhp">#FFEB3B</color>
+    <color name="orangehp">#FFC107</color>
+    <color name="redhp">#F44336</color>
 
 </resources>
