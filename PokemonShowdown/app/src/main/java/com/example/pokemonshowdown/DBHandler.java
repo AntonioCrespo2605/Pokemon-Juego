@@ -191,7 +191,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(STATUS_PROB_COL, move.getStatusProb());
         values.put(TYPE_M_COL, move.getType());
         values.put(RESTORE_HP_PORC_COL, move.getRestoreHPPorc());
-        values.put(PRIORITY_COL, move.isPriority());
+        if(move.isPriority())values.put(PRIORITY_COL, 1);
+        else values.put(PRIORITY_COL, 0);
         values.put(ATK_ST_COL, move.isAtkSt());
 
         db.insert(MOVE_TABLE, null, values);
@@ -225,6 +226,11 @@ public class DBHandler extends SQLiteOpenHelper {
         for(int i=0;i<pokemon.getMoves().size();i++){
             values2.put(NUM_PK_COL, pokemon.getNumDex());
             values2.put(ID_M_COL, pokemon.getMoves().get(i).getId());
+        }
+
+        if(pokemon.getMoves().size()==0){
+            values2.put(NUM_PK_COL, pokemon.getNumDex());
+            values2.put(ID_M_COL, 1);
         }
 
         db2.insert(POKEMON_MOVE_TABLE, null, values2);

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -89,9 +90,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initMoves();
-        initPokemons();
+        SharedPreferences sh=getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sh.edit();
 
+        boolean started=sh.getBoolean("started",false);
+        if(!started) {
+            initMoves();
+            initPokemons();
+            editor.putBoolean("started", true);
+            editor.commit();
+        }
         handler = new DBHandler(this);
         pokemonList = handler.getPokemons();
         RecyclerView rv = findViewById(R.id.recyclerview_id);
@@ -391,7 +399,7 @@ public class MainActivity extends AppCompatActivity {
         p.addMovesById(new int[]{}, handler.getMoves());
         handler.addNewPokemon(p);
 
-        p = new Pokemon(80, "Slowbro", 18, 15, 95, 100, 110, 30, R.drawable.p080, R.drawable.p080b);
+        p = new Pokemon(82, "Magnemite", 18, 15, 95, 100, 110, 30, R.drawable.p082, R.drawable.p082b);
         p.addMovesById(new int[]{}, handler.getMoves());
         handler.addNewPokemon(p);
 
