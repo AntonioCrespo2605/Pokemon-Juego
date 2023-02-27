@@ -205,7 +205,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                 img.setImageResource(fairy);
                 break;
             case 6:
-                img.setImageResource(fight);
+                img.setImageResource(fighting);
                 break;
             case 7:
                 img.setImageResource(fire);
