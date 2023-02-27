@@ -129,7 +129,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         });
 
     }
-
+    //metodo para los tipos del pokemon en el dialog
     private void selectType(ImageView img, int type) {
         switch (type) {
             case 1:
