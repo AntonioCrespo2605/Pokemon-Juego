@@ -594,7 +594,7 @@ public class Combat extends AppCompatActivity {
             return;
         }
 
-        //if()
+        /if()
 
     }
 
