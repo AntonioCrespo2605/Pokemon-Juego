@@ -526,13 +526,13 @@ public class Combat extends AppCompatActivity {
 
     private ArrayList<String> generateDialogPlayer(int player) {
         toret = new ArrayList<String>();
-        if(checkStatus(player)){
+        if (checkStatus(player)) {
             checkMove(player);
         }
         return toret;
     }
 
-    private boolean checkStatus(int player){
+    private boolean checkStatus(int player) {
         Random r = new Random();
 
         PokemonBattler focus;
@@ -576,12 +576,26 @@ public class Combat extends AppCompatActivity {
         return true;
     }
 
-    private void checkMove(int player){
+    private void checkMove(int player) {
         Random r = new Random();
 
         PokemonBattler focus;
         if (player == 1) focus = new PokemonBattler(pokemonBack);
         else focus = new PokemonBattler(pokemonFront);
+
+        Move movefocus;
+        if (player == 1) movefocus = moveP1;
+        else movefocus = moveP2;
+
+        r=new Random();
+        //si falla
+        if(1+r.nextInt(101)>movefocus.getAccuracy()){
+            toret.add("Pero ha fallado");
+            return;
+        }
+
+        //if()
+
     }
 
 
@@ -828,6 +842,257 @@ public class Combat extends AppCompatActivity {
         }
     }
 
+    private static double getMultiplayerEffectivity(int moveType, int t1, int t2) {
+        double toret = 1;
+
+        switch (moveType) {
+            //tipo bicho;
+            case 1:
+                if (t1 == 10 || t1 == 15 || t1 == 2) toret = 2;
+                else if (t1 == 17 || t1 == 9 || t1 == 5 || t1 == 7 || t1 == 6 || t1 == 14 || t1 == 8)
+                    toret = 0.5;
+                else toret = 1;
+                break;
+            //tipo siniestro
+            case 2:
+                if (t1 == 9 || t1 == 15) toret = 2;
+                else if (t1 == 5 || t1 == 6 || t1 == 2) toret = 0.5;
+                else toret = 1;
+                break;
+            //tipo dragon
+            case 3:
+                if (t1 == 3) toret = 2;
+                else if (t1 == 17) toret = 0.5;
+                else if (t1 == 5) toret = 0;
+                else toret = 1;
+                break;
+            //tipo electrico
+            case 4:
+                if (t1 == 8 || t1 == 18) toret = 2;
+                else if (t1 == 3 || t1 == 4 || t1 == 10) toret = 0.5;
+                else if (t1 == 11) toret = 0;
+                else toret = 1;
+                break;
+            //fairy
+            case 5:
+                if (t1 == 17 || t1 == 7 || t1 == 14) toret = 0.5;
+                else if (t1 == 3 || t1 == 6 || t1 == 2) toret = 2;
+                else toret = 1;
+                break;
+            //lucha
+            case 6:
+                if (t1 == 17 || t1 == 12 || t1 == 13 || t1 == 16 || t1 == 2) toret = 2;
+                else if (t1 == 1 || t1 == 5 || t1 == 15 || t1 == 14 || t1 == 8) toret = 0.5;
+                else if (t1 == 9) toret = 0;
+                else toret = 1;
+                break;
+            //fuego
+            case 7:
+                if (t1 == 17 || t1 == 1 || t1 == 12 || t1 == 10) toret = 2;
+                else if (t1 == 18 || t1 == 3 || t1 == 7 || t1 == 16) toret = 0.5;
+                else toret = 1;
+                break;
+            //volador
+            case 8:
+                if (t1 == 1 || t1 == 6 || t1 == 10) toret = 2;
+                if (t1 == 17 || t1 == 4 || t1 == 16) toret = 0.5;
+                else toret = 1;
+                break;
+            //fantasma
+            case 9:
+                if (t1 == 9 || t1 == 15) toret = 2;
+                else if (t1 == 2) toret = 0.5;
+                else if (t1 == 13) toret = 0;
+                else toret = 1;
+                break;
+            //planta
+            case 10:
+                if (t1 == 18 || t1 == 16 || t1 == 11) toret = 2;
+                else if (t1 == 17 || t1 == 1 || t1 == 3 || t1 == 7 || t1 == 10 || t1 == 14 || t1 == 8)
+                    toret = 0.5;
+                else toret = 1;
+                break;
+            //tierra
+            case 11:
+                if (t1 == 17 || t1 == 4 || t1 == 7 || t1 == 16 || t1 == 14) toret = 2;
+                else if (t1 == 1 || t1 == 10) toret = 0.5;
+                else toret = 1;
+                break;
+            //hielo
+            case 12:
+                if (t1 == 3 || t1 == 10 || t1 == 11 || t1 == 8) toret = 2;
+                else if (t1 == 17 || t1 == 18 || t1 == 7 || t1 == 12) toret = 0.5;
+                else toret = 1;
+                break;
+            //normal
+            case 13:
+                if (t1 == 17 || t1 == 16) toret = 0.5;
+                else if (t1 == 9) toret = 0;
+                else toret = 1;
+                break;
+            //veneno
+            case 14:
+                if (t1 == 10 || t1 == 5) toret = 2;
+                else if (t1 == 9 || t1 == 16 || t1 == 11 || t1 == 14) toret = 0.5;
+                else if (t1 == 17) toret = 0;
+                else toret = 1;
+                break;
+            //psiquico
+            case 15:
+                if (t1 == 17 || t1 == 15) toret = 0.5;
+                else if (t1 == 6 || t1 == 14) toret = 2;
+                else if (t1 == 2) toret = 0;
+                else toret = 1;
+                break;
+            //roca
+            case 16:
+                if (t1 == 1 || t1 == 7 || t1 == 12 || t1 == 8) toret = 2;
+                else if (t1 == 17 || t1 == 6 || t1 == 11) toret = 0.5;
+                else toret = 1;
+                break;
+            //acero
+            case 17:
+                if (t1 == 17 || t1 == 18 || t1 == 4 || t1 == 7) toret = 0.5;
+                else if (t1 == 5 || t1 == 12 || t1 == 16) toret = 2;
+                else toret = 1;
+                break;
+            //agua
+            case 18:
+                if (t1 == 18 || t1 == 3 || t1 == 10) toret = 0.5;
+                else if (t1 == 7 || t1 == 16 || t1 == 11) toret = 2;
+                else toret = 1;
+                break;
+        }
+
+
+        //tipo2
+        if (t2 != 0) {
+            switch (moveType) {
+                //tipo bicho;
+                case 1:
+                    if (t2 == 10 || t2 == 15 || t2 == 2) toret *= 2;
+                    else if (t2 == 17 || t2 == 9 || t2 == 5 || t2 == 7 || t2 == 6 || t2 == 14 || t2 == 8)
+                        toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //tipo siniestro
+                case 2:
+                    if (t2 == 9 || t2 == 15) toret *= 2;
+                    else if (t2 == 5 || t2 == 6 || t2 == 2) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //tipo dragon
+                case 3:
+                    if (t2 == 3) toret *= 2;
+                    else if (t2 == 17) toret *= 0.5;
+                    else if (t2 == 5) toret *= 0;
+                    else toret *= 1;
+                    break;
+                //tipo electrico
+                case 4:
+                    if (t2 == 8 || t2 == 18) toret *= 2;
+                    else if (t2 == 3 || t2 == 4 || t2 == 10) toret *= 0.5;
+                    else if (t2 == 11) toret *= 0;
+                    else toret *= 1;
+                    break;
+                //fairy
+                case 5:
+                    if (t2 == 17 || t2 == 7 || t2 == 14) toret *= 0.5;
+                    else if (t2 == 3 || t2 == 6 || t2 == 2) toret *= 2;
+                    else toret *= 1;
+                    break;
+
+                //lucha
+                case 6:
+                    if (t2 == 17 || t2 == 12 || t2 == 13 || t2 == 16 || t2 == 2) toret *= 2;
+                    else if (t2 == 1 || t2 == 5 || t2 == 15 || t2 == 14 || t2 == 8) toret *= 0.5;
+                    else if (t2 == 9) toret *= 0;
+                    else toret *= 1;
+                    break;
+
+                //fuego
+                case 7:
+                    if (t2 == 17 || t2 == 1 || t2 == 12 || t2 == 10) toret *= 2;
+                    else if (t2 == 18 || t2 == 3 || t2 == 7 || t2 == 16) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //volador
+                case 8:
+                    if (t2 == 1 || t2 == 6 || t2 == 10) toret *= 2;
+                    if (t2 == 17 || t2 == 4 || t2 == 16) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //fantasma
+                case 9:
+                    if (t2 == 9 || t2 == 15) toret *= 2;
+                    else if (t2 == 2) toret *= 0.5;
+                    else if (t2 == 13) toret *= 0;
+                    else toret *= 1;
+                    break;
+
+                //planta
+                case 10:
+                    if (t2 == 18 || t2 == 16 || t2 == 11) toret *= 2;
+                    else if (t2 == 17 || t2 == 1 || t2 == 3 || t2 == 7 || t2 == 10 || t2 == 14 || t2 == 8)
+                        toret *= 0.5;
+                    else toret *= 1;
+                    break;
+
+                //tierra
+                case 11:
+                    if (t2 == 17 || t2 == 4 || t2 == 7 || t2 == 16 || t2 == 14) toret *= 2;
+                    else if (t2 == 1 || t2 == 10) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //hielo
+                case 12:
+                    if (t2 == 3 || t2 == 10 || t2 == 11 || t2 == 8) toret *= 2;
+                    else if (t2 == 17 || t2 == 18 || t2 == 7 || t2 == 12) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //normal
+                case 13:
+                    if (t2 == 17 || t2 == 16) toret *= 0.5;
+                    else if (t2 == 9) toret *= 0;
+                    else toret *= 1;
+                    break;
+                //veneno
+                case 14:
+                    if (t2 == 10 || t2 == 5) toret *= 2;
+                    else if (t2 == 9 || t2 == 16 || t2 == 11 || t2 == 14) toret *= 0.5;
+                    else if (t2 == 17) toret *= 0;
+                    else toret *= 1;
+                    break;
+                //psiquico
+                case 15:
+                    if (t2 == 17 || t2 == 15) toret *= 0.5;
+                    else if (t2 == 6 || t2 == 14) toret *= 2;
+                    else if (t2 == 2) toret *= 0;
+                    else toret *= 1;
+                    break;
+
+                //roca
+                case 16:
+                    if (t2 == 1 || t2 == 7 || t2 == 12 || t2 == 8) toret *= 2;
+                    else if (t2 == 17 || t2 == 6 || t2 == 11) toret *= 0.5;
+                    else toret *= 1;
+                    break;
+                //acero
+                case 17:
+                    if (t2 == 17 || t2 == 18 || t2 == 4 || t2 == 7) toret *= 0.5;
+                    else if (t2 == 5 || t2 == 12 || t2 == 16) toret *= 2;
+                    else toret *= 1;
+                    break;
+                //agua
+                case 18:
+                    if (t2 == 18 || t2 == 3 || t2 == 10) toret *= 0.5;
+                    else if (t2 == 7 || t2 == 16 || t2 == 11) toret *= 2;
+                    else toret *= 1;
+                    break;
+            }
+        }
+        return toret;
+    }
 
 }
 
