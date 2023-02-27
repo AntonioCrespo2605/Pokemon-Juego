@@ -111,7 +111,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                 switch (mData.get(position).getType1()){
                     case 1:
                         type1.setImageResource(bug);
-
                         break;
                     case 2:
                         type1.setImageResource(dark);
