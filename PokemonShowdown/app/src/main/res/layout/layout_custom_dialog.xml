@@ -5,8 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/roundcorner"
+    android:backgroundTint="@color/whitep"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +40,7 @@
                 android:text="Venusaur"
                 android:textAlignment="center"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 tools:layout_conversion_absoluteHeight="27dp"
                 tools:layout_conversion_absoluteWidth="174dp" />
 
@@ -69,7 +73,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundcornerchild"
+        android:backgroundTint="@color/blue_selected"
+        android:orientation="vertical"
+        android:padding="25dp">
 
         <TextView
             android:id="@+id/stats_Title"
@@ -77,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:paddingBottom="15dp"
             android:text="Estadisticas"
             android:textSize="20sp" />
 
@@ -85,20 +93,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="4">
 
             <ImageView
                 android:id="@+id/img_hp"
-                android:layout_width="45dp"
+                android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="5dp"
-                app:srcCompat="@drawable/hp" />
+                app:srcCompat="@drawable/hp"
+                app:tint="@color/blackp" />
 
             <TextView
                 android:id="@+id/tv_hp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -107,16 +117,17 @@
 
             <ImageView
                 android:id="@+id/img_dmg"
-                android:layout_width="45dp"
+                android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="5dp"
-                app:srcCompat="@drawable/dmg" />
+                app:srcCompat="@drawable/dmg"
+                app:tint="@color/blackp" />
 
             <TextView
                 android:id="@+id/tv_dmg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -128,20 +139,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="4">
 
             <ImageView
                 android:id="@+id/img_def"
-                android:layout_width="45dp"
+                android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="5dp"
-                app:srcCompat="@drawable/def" />
+                app:srcCompat="@drawable/def"
+                app:tint="@color/blackp" />
 
             <TextView
                 android:id="@+id/tv_def"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -150,16 +163,17 @@
 
             <ImageView
                 android:id="@+id/img_spd"
-                android:layout_width="45dp"
+                android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:padding="5dp"
-                app:srcCompat="@drawable/spd" />
+                app:srcCompat="@drawable/spd"
+                app:tint="@color/blackp" />
 
             <TextView
                 android:id="@+id/tv_spd"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"

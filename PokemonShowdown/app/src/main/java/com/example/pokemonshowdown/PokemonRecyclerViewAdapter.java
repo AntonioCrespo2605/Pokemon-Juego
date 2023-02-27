@@ -1,26 +1,26 @@
 package com.example.pokemonshowdown;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.media.Image;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import static com.example.pokemonshowdown.R.drawable.*;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -220,6 +220,8 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                     case 18:
                         type2.setImageResource(water);
                         break;
+                    default:
+                        type2.setVisibility(View.GONE);
                 }
 
                 tv_name.setText(mData.get(position).getName());
@@ -230,7 +232,9 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
 
                 builder.setView(dialogView);
                 builder.setCancelable(true);
-                builder.show();
+                AlertDialog alertDialog = builder.create();
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
                 return true;
             }
         });
