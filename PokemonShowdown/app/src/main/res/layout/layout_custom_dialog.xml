@@ -39,6 +39,7 @@
                 android:gravity="center"
                 android:text="Venusaur"
                 android:textAlignment="center"
+                android:textColor="@color/greyp"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:layout_conversion_absoluteHeight="27dp"
@@ -86,7 +87,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:paddingBottom="15dp"
-            android:text="Estadisticas"
+            android:text="Estadísticas"
+            android:textColor="@color/greyp"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -104,7 +106,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 app:srcCompat="@drawable/hp"
-                app:tint="@color/blackp" />
+                app:tint="@color/greyp" />
 
             <TextView
                 android:id="@+id/tv_hp"
@@ -123,7 +125,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 app:srcCompat="@drawable/dmg"
-                app:tint="@color/blackp" />
+                app:tint="@color/greyp" />
 
             <TextView
                 android:id="@+id/tv_dmg"
@@ -150,7 +152,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 app:srcCompat="@drawable/def"
-                app:tint="@color/blackp" />
+                app:tint="@color/greyp" />
 
             <TextView
                 android:id="@+id/tv_def"
@@ -169,7 +171,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 app:srcCompat="@drawable/spd"
-                app:tint="@color/blackp" />
+                app:tint="@color/greyp" />
 
             <TextView
                 android:id="@+id/tv_spd"
