@@ -338,6 +338,7 @@ public class Combat extends AppCompatActivity {
 
         pk1py1.setStatus(1);
         pk1py2.setStatus(2);
+        pk2py1.setCurrentHp(0);
     }
 
     private void initPokemons() {

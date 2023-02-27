@@ -30,6 +30,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     private List<Pokemon> mData;
 
     private List<Boolean> selected;
+    private ArrayList<Pokemon> pchoosed;
     private ViewHolder p;
     private FloatingActionButton f;
 
@@ -166,13 +167,13 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     public ArrayList<Pokemon> getSelected() {
         ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
 
-//        for (int i = 0; i < selected.size(); i++) {
-//            if (selected.get(i)) {
-//                toret.add(mData.get(i));
-//                System.out.println(mData.get(i).toString());
-//            }
-//
-//        }
+        for (int i = 0; i < selected.size(); i++) {
+            if (selected.get(i)) {
+                toret.add(mData.get(i));
+                System.out.println(mData.get(i).toString());
+            }
+
+        }
 
         return toret;
     }
