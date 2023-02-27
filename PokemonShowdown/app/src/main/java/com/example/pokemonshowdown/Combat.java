@@ -204,7 +204,7 @@ public class Combat extends AppCompatActivity {
                 } else if (turnManager == 2) {
                     if (pokemonBack.getNumDex() != pk2py2.getNumDex() && pk2py2.isAlive()) {
                         p2Atack = false;
-                        newPokemonP1 = new PokemonBattler(pk2py2);
+                        newPokemonP2 = new PokemonBattler(pk2py2);
                         changeTurn();
                     }
                 } else {
@@ -225,7 +225,7 @@ public class Combat extends AppCompatActivity {
                 } else if (turnManager == 2) {
                     if (pokemonBack.getNumDex() != pk3py2.getNumDex() && pk3py2.isAlive()) {
                         p2Atack = false;
-                        newPokemonP1 = new PokemonBattler(pk3py2);
+                        newPokemonP2 = new PokemonBattler(pk3py2);
                         changeTurn();
                     }
                 } else {
@@ -543,9 +543,9 @@ public class Combat extends AppCompatActivity {
         if (player == 1) focus = new PokemonBattler(pokemonBack);
         else focus = new PokemonBattler(pokemonFront);
 
-        if (!p1Atack) {
-            toret.add("/backToBall" + player);
-            toret.add("/newPokemonChange" + player);
+        if ((player==1&&!p1Atack)||(player==2&&!p2Atack)) {
+            toret.add("/backToBall" + player);//comando
+            toret.add("/newPokemonChange" + player);//comando
             return false;
         }
         if (!focus.isAlive()) return false;
@@ -554,7 +554,7 @@ public class Combat extends AppCompatActivity {
         if (focus.getStatus() == 4) {
             //si despierta
             if (r.nextInt(5) == 0) {
-                toret.add("/wakeUp" + player);
+                toret.add("/wakeUp" + player);//comando
             } else {
                 toret.add(focus.getName() + " está completamente dormido");
                 return false;
@@ -568,12 +568,21 @@ public class Combat extends AppCompatActivity {
                     toret.add(focus.getName() + " está paralizado\nNo puede moverse!");
                     return false;
                 }
+            //si está congelado
+            } else if(focus.getStatus()==5){
+                //si se descongela
+                if(r.nextInt(10)==0){
+                    toret.add("/defrost"+player);//comando
+                }else{
+                    toret.add(focus.getName() + " está congelado\nNo puede moverse!");
+                    return false;
+                }
             }
         }
 
         Move movefocus;
-        if (player == 1) movefocus = moveP1;
-        else movefocus = moveP2;
+        if (player == 1) movefocus =new Move(moveP1) ;
+        else movefocus = new Move(moveP2);
 
         toret.add(focus.getName() + " ha usado " + movefocus.getName());
 
@@ -588,8 +597,8 @@ public class Combat extends AppCompatActivity {
         else focus = new PokemonBattler(pokemonFront);
 
         Move movefocus;
-        if (player == 1) movefocus = moveP1;
-        else movefocus = moveP2;
+        if (player == 1) movefocus = new Move(moveP1);
+        else movefocus = new Move(moveP2);
 
         r=new Random();
         //si falla
@@ -598,7 +607,7 @@ public class Combat extends AppCompatActivity {
             return;
         }
 
-        //if()
+
 
     }
 
