@@ -129,9 +129,11 @@
         android:contentDescription="@string/pantallaJ"
         android:scaleType="fitXY"
         android:visibility="visible"
-        app:srcCompat="@drawable/t1p"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/t1p" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
