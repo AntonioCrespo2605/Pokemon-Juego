@@ -697,7 +697,7 @@ public class Combat extends AppCompatActivity {
                 break;
             case 6:
                 aux.setIcon(ResourcesCompat.getDrawable(getResources(), fight, null));
-                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.fight));
+                aux.setBackgroundColor(ContextCompat.getColor(this, R.color.fighting));
                 break;
             case 7:
                 aux.setIcon(ResourcesCompat.getDrawable(getResources(), fire, null));
