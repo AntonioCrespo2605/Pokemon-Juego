@@ -1,5 +1,6 @@
 package com.example.pokemonshowdown;
 
+import static android.graphics.Color.valueOf;
 import static com.example.pokemonshowdown.R.drawable.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
@@ -674,6 +677,9 @@ public class Combat extends AppCompatActivity {
         aux.setText(name);
 
         int type = pokemonBack.getMoves().get(pos).getType();
+
+        //opacidad del icono
+        aux.getIcon().setAlpha(190);
 
         switch (type) {
             case 1:
