@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--default colors-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,6 +8,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--personalized colors-->
     <color name="whitep">#EFEFED</color>
     <color name="redp">#ED2E49</color>
     <color name="blackp">#28292a</color>
@@ -14,6 +17,8 @@
     <color name="blue_selected">#9777B9FB</color>
     <color name="white_shadow">#32CFCFCB</color>
     <color name="bluep">#44CCF0</color>
+
+    <!--colors-->
     <color name="bug">#83C301</color>
     <color name="dark">#5B5466</color>
     <color name="dragon">#016FC9</color>
@@ -21,17 +26,19 @@
     <color name="fairy">#FB89EB</color>
     <color name="fighting">#E0306A</color>
     <color name="fire">#FF9741</color>
-    <color name="flying">#4a677d</color>
+    <color name="flying">#89ABE3</color>
     <color name="ghost">#4D6BB3</color>
-    <color name="grass">#117838</color>
-    <color name="ground">#a6712a</color>
-    <color name="ice">#84d4eb</color>
-    <color name="normal">#7a515d</color>
-    <color name="poison">#5d2b8c</color>
-    <color name="psychic">#a52a6b</color>
-    <color name="rock">#48180a</color>
-    <color name="steel">#5f756e</color>
-    <color name="water">#1552e1</color>
+    <color name="grass">#39BE4B</color>
+    <color name="ground">#E87236</color>
+    <color name="ice">#4CD1C0</color>
+    <color name="normal">#919AA2</color>
+    <color name="poison">#B567CE</color>
+    <color name="psychic">#FF6675</color>
+    <color name="rock">#C8B686</color>
+    <color name="steel">#5A8EA2</color>
+    <color name="water">#3692DC</color>
+
+    <!--health bar colors-->
     <color name="greenhp">#4EEC63</color>
     <color name="yellowhp">#FFEB3B</color>
     <color name="orangehp">#FFC107</color>
