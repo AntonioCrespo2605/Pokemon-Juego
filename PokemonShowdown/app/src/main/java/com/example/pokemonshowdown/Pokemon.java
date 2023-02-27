@@ -137,4 +137,5 @@ public class Pokemon {
     public void setMoves(ArrayList<Move> moves) {
         this.moves = moves;
     }
+
 }

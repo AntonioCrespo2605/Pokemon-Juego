@@ -18,7 +18,6 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -29,8 +28,8 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
 
     private Context mContext;
     private List<Pokemon> mData;
+
     private List<Boolean> selected;
-    private DBHandler handler;
     private ViewHolder p;
     private FloatingActionButton f;
 
@@ -40,8 +39,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         this.mData = mData;
         this.p = p;
         this.f = p.getFab();
-
-        this.handler = new DBHandler(mContext);
         this.selected = new ArrayList<Boolean>();
 
         // Se llena la lista de selecciones con valores "false" para cada elemento en la lista de la base de datos de Pokemon
@@ -169,15 +166,20 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     public ArrayList<Pokemon> getSelected() {
         ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
 
-        for (int i = 0; i < selected.size(); i++) {
-            if (selected.get(i)) toret.add(handler.getPokemons().get(i));
-        }
+//        for (int i = 0; i < selected.size(); i++) {
+//            if (selected.get(i)) {
+//                toret.add(mData.get(i));
+//                System.out.println(mData.get(i).toString());
+//            }
+//
+//        }
 
         return toret;
     }
 
+    //borrar seleccion (para siguiente jugador)
     public void deselect() {
-        for (int i = 0; i < handler.getPokemons().size(); i++) {
+        for (int i = 0; i < mData.size(); i++) {
             selected.add(false);
         }
     }
