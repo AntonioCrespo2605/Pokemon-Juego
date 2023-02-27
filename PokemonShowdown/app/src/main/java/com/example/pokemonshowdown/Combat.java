@@ -856,8 +856,7 @@ public class Combat extends AppCompatActivity {
             //tipo bicho;
             case 1:
                 if (t1 == 10 || t1 == 15 || t1 == 2) toret = 2;
-                else if (t1 == 17 || t1 == 9 || t1 == 5 || t1 == 7 || t1 == 6 || t1 == 14 || t1 == 8)
-                    toret = 0.5;
+                else if (t1 == 17 || t1 == 9 || t1 == 5 || t1 == 7 || t1 == 6 || t1 == 14 || t1 == 8) toret = 0.5;
                 else toret = 1;
                 break;
             //tipo siniestro

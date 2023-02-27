@@ -128,12 +128,13 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/pantallaJ"
         android:scaleType="fitXY"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/t1p" />
+        app:srcCompat="@drawable/t1p"
+        tools:ignore="ImageContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
