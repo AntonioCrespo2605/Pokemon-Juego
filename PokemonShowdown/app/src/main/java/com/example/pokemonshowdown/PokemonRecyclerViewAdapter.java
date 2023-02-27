@@ -129,6 +129,61 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         });
 
     }
+
+
+    @Override
+    public int getItemCount() {
+        return mData.size();
+    }
+
+
+    //ONCLICK
+
+    // Clase interna que representa el ViewHolder para cada elemento del RecyclerView
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView pokemon_name;
+        ImageView img_pokemon;
+        CardView cardView;
+        LinearLayout ll;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+
+            pokemon_name = (TextView) itemView.findViewById(R.id.pokemon_name);
+            img_pokemon = (ImageView) itemView.findViewById(R.id.pokemon_img);
+            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
+            ll = (LinearLayout) itemView.findViewById(R.id.llP);
+
+        }
+    }
+
+    // Método auxiliar que cuenta el número de elementos seleccionados
+    private int getCountSelected() {
+        int toret = 0;
+        for (Boolean b : selected) {
+            if (b) toret++;
+        }
+        return toret;
+    }
+
+    public ArrayList<Pokemon> getSelected() {
+        ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
+
+        for (int i = 0; i < selected.size(); i++) {
+            if (selected.get(i)) toret.add(handler.getPokemons().get(i));
+        }
+
+        return toret;
+    }
+
+    public void deselect() {
+        for (int i = 0; i < handler.getPokemons().size(); i++) {
+            selected.add(false);
+        }
+    }
+
+    //ONLONGCLICK
+
     //metodo para los tipos del pokemon en el dialog
     private void selectType(ImageView img, int type) {
         switch (type) {
@@ -190,54 +245,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                 img.setVisibility(View.GONE);
         }
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return mData.size();
-    }
-
-    // Clase interna que representa el ViewHolder para cada elemento del RecyclerView
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView pokemon_name;
-        ImageView img_pokemon;
-        CardView cardView;
-        LinearLayout ll;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-
-            pokemon_name = (TextView) itemView.findViewById(R.id.pokemon_name);
-            img_pokemon = (ImageView) itemView.findViewById(R.id.pokemon_img);
-            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
-            ll = (LinearLayout) itemView.findViewById(R.id.llP);
-
-        }
-    }
-
-    // Método auxiliar que cuenta el número de elementos seleccionados
-    private int getCountSelected() {
-        int toret = 0;
-        for (Boolean b : selected) {
-            if (b) toret++;
-        }
-        return toret;
-    }
-
-    public ArrayList<Pokemon> getSelected() {
-        ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
-
-        for (int i = 0; i < selected.size(); i++) {
-            if (selected.get(i)) toret.add(handler.getPokemons().get(i));
-        }
-
-        return toret;
-    }
-
-    public void deselect() {
-        for (int i = 0; i < handler.getPokemons().size(); i++) {
-            selected.add(false);
-        }
     }
 
 }
