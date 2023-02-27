@@ -32,16 +32,16 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     private List<Boolean> selected;
     private ArrayList<Pokemon> pchoosed;
     private ViewHolder p;
-    private FloatingActionButton f;
+
+
 
     // Constructor
     public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ViewHolder p) {
         this.mContext = mContext;
         this.mData = mData;
         this.p = p;
-        this.f = p.getFab();
-        this.selected = new ArrayList<Boolean>();
-
+        this.selected = new ArrayList<>();
+        this.pchoosed = new ArrayList<>();
         // Se llena la lista de selecciones con valores "false" para cada elemento en la lista de la base de datos de Pokemon
         deselect();
     }
@@ -62,6 +62,8 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.pokemon_name.setText(mData.get(position).getName());
         holder.img_pokemon.setImageResource(mData.get(position).getImg());
 
+        FloatingActionButton fab = p.getFab();
+
         // Si el elemento está seleccionado, se establece el color de fondo en azul, de lo contrario se establece en gris oscuro
         // Mantiene la carta seleccionada cuando actualizas la vista
         if (selected.get(position))
@@ -71,21 +73,31 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selected.get(position)) {
-                    selected.set(position, false);
-                    holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
-                } else {
-                    selected.set(position, true);
-                    holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
-                }
+                if(!(getCountSelected() == 3) ) {
+                    //ya seleccionado
+                    if (selected.get(position)) {
+                        selected.set(position, false);
+                        pchoosed.remove(mData.get(position));
+                        holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
 
+                    } else { //sin seleccionar
+                        selected.set(position, true);
+                        pchoosed.add(mData.get(position));
+                        holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
+
+                    }
+                }else if(selected.get(position)){
+                    selected.set(position, false);
+                    pchoosed.remove(mData.get(position));
+                    holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
+                }
                 // Se muestra o se oculta el botón flotante dependiendo del número de elementos seleccionados
                 if (getCountSelected() == 3) {
-                    f.setVisibility(View.VISIBLE);
+                    fab.setVisibility(View.VISIBLE);
                 } else {
-                    f.setVisibility(View.INVISIBLE);
+                    fab.setVisibility(View.INVISIBLE);
                 }
-
+                updateSelected();
             }
         });
 
@@ -135,7 +147,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     }
 
 
-    //ONCLICK
+
 
     // Clase interna que representa el ViewHolder para cada elemento del RecyclerView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -155,6 +167,8 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         }
     }
 
+    //ONCLICK
+
     // Método auxiliar que cuenta el número de elementos seleccionados
     private int getCountSelected() {
         int toret = 0;
@@ -164,16 +178,49 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         return toret;
     }
 
+    private void updateSelected(){
+        ImageView pk1, pk2, pk3;
+        pk1 = p.getPk1();
+        pk2 = p.getPk2();
+        pk3 = p.getPk3();
+
+        if(pchoosed.size() == 1){
+            pk1.setVisibility(View.VISIBLE);
+            pk1.setImageResource(pchoosed.get(0).getImg());
+            pk2.setVisibility(View.INVISIBLE);
+            pk3.setVisibility(View.INVISIBLE);
+        }else if(pchoosed.size() == 2){
+            pk1.setVisibility(View.VISIBLE);
+            pk1.setImageResource(pchoosed.get(0).getImg());
+            pk2.setVisibility(View.VISIBLE);
+            pk2.setImageResource(pchoosed.get(1).getImg());
+            pk3.setVisibility(View.INVISIBLE);
+        }
+        else if(pchoosed.size() == 3){
+            pk1.setVisibility(View.VISIBLE);
+            pk1.setImageResource(pchoosed.get(0).getImg());
+            pk2.setVisibility(View.VISIBLE);
+            pk2.setImageResource(pchoosed.get(1).getImg());
+            pk3.setVisibility(View.VISIBLE);
+            pk3.setImageResource(pchoosed.get(2).getImg());
+        }else{
+            pk1.setVisibility(View.INVISIBLE);
+            pk2.setVisibility(View.INVISIBLE);
+            pk3.setVisibility(View.INVISIBLE);
+        }
+    }
+
     public ArrayList<Pokemon> getSelected() {
         ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
 
-        for (int i = 0; i < selected.size(); i++) {
-            if (selected.get(i)) {
-                toret.add(mData.get(i));
-                System.out.println(mData.get(i).toString());
-            }
 
-        }
+//        for (int i = 0; i < selected.size(); i++) {
+//            if (selected.get(i)) {
+//                toret.add(mData.get(i));
+//                System.out.println(mData.get(i).toString());
+//            }
+//
+//        }
 
         return toret;
     }

@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         //INVISIBLE
         next.setVisibility(View.INVISIBLE);
         pantJ.setVisibility(View.VISIBLE);
+        pk1.setVisibility(View.INVISIBLE);
+        pk2.setVisibility(View.INVISIBLE);
+        pk3.setVisibility(View.INVISIBLE);
 
         //pantalla para indicar el turno del jugador
         pantJ.setOnClickListener(new View.OnClickListener() {

@@ -25,5 +25,29 @@ public class ViewHolder {
     public void setFab(FloatingActionButton fab) {
         this.fab = fab;
     }
+
+    public ImageView getPk1() {
+        return pk1;
+    }
+
+    public void setPk1(ImageView pk1) {
+        this.pk1 = pk1;
+    }
+
+    public ImageView getPk2() {
+        return pk2;
+    }
+
+    public void setPk2(ImageView pk2) {
+        this.pk2 = pk2;
+    }
+
+    public ImageView getPk3() {
+        return pk3;
+    }
+
+    public void setPk3(ImageView pk3) {
+        this.pk3 = pk3;
+    }
 }
 

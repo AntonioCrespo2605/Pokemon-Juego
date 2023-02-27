@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Pokemon {
     private int numDex, type1, type2, hp, dmg, def, spd, img, imgB;
     private String name;
-    private ArrayList<Move>moves;
+    private ArrayList<Move> moves;
 
     //CONSTRUCTORS
     public Pokemon(int numDex, String name, int type1, int type2, int hp, int dmg, int def, int spd, int img, int imgB, ArrayList<Move> moves) {
@@ -35,12 +35,12 @@ public class Pokemon {
         this.name = name;
     }
 
-    public void addMovesById(int[]msid, ArrayList<Move>ms){
-        ArrayList<Move>add=new ArrayList<>();
+    public void addMovesById(int[] msid, ArrayList<Move> ms) {
+        ArrayList<Move> add = new ArrayList<>();
 
-        for(Move m:ms){
-            for(int i=0;i<msid.length;i++){
-                if(m.getId()==msid[i]){
+        for (Move m : ms) {
+            for (int i = 0; i < msid.length; i++) {
+                if (m.getId() == msid[i]) {
                     add.add(m);
                     break;
                 }
@@ -138,4 +138,10 @@ public class Pokemon {
         this.moves = moves;
     }
 
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+
+                ", name='" + name + '\n' ;
+    }
 }
