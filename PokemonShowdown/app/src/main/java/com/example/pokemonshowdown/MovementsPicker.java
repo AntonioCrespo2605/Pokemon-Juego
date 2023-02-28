@@ -119,7 +119,7 @@ public class MovementsPicker extends AppCompatActivity {
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 6://cambia de activity y envia los pokemon con sus movimientos
-                        movesPk1py1 = listAdapter.getSelected();
+                        movesPk3py2 = listAdapter.getSelected();
                         intent = new Intent(MovementsPicker.this, Combat.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("pk1py1", b.getInt("pk1py1"));
