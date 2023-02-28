@@ -271,4 +271,25 @@ public class DBHandler extends SQLiteOpenHelper {
         return moves.get(0);
     }
 
+    public String showUnnused(){
+        ArrayList<Integer>toret=new ArrayList<Integer>();
+        boolean usado=false;
+        for(Move m:moves){
+            usado=false;
+            for(Pokemon p:pokemons){
+                for(Move m2:p.getMoves()){
+                    if(m.getId()==m2.getId())usado=true;
+                }
+            }
+            if(!usado)toret.add(m.getId());
+        }
+
+        String t="";
+        for(int i=0;i<toret.size();i++){
+            int a= toret.get(i);
+            t+=a+",";
+        }
+        return t;
+    }
+
 }
