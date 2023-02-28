@@ -68,8 +68,11 @@ public class Combat extends AppCompatActivity {
     //array con las strings para generar el dialogo clickable
     private ArrayList<String> firstPart, secondPart;
 
-    //
+    //auxiliar
     private ArrayList<String> toret;
+
+    //
+    private int damage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -511,7 +514,7 @@ public class Combat extends AppCompatActivity {
         generateFirstDialog(pokemonBackFirst());
     }
 
-    //
+    //genera el primer dialogo de cada turno de combate
     private void generateFirstDialog(boolean p1first) {
         if (p1first) firstPart = generateDialogPlayer(1);
         else firstPart = generateDialogPlayer(2);
@@ -575,6 +578,7 @@ public class Combat extends AppCompatActivity {
 
         toret.add(focus.getName() + " ha usado " + movefocus.getName());
 
+
         return true;
     }
 
@@ -589,6 +593,11 @@ public class Combat extends AppCompatActivity {
         if (player == 1)victim = new PokemonBattler(pokemonFront);
         else victim = new PokemonBattler(pokemonBack);
 
+        if(!victim.isAlive()){
+            toret.add("Pero no había objetivo");
+            return;
+        }
+
         Move movefocus;
         if (player == 1) movefocus = new Move(moveP1);
         else movefocus = new Move(moveP2);
@@ -602,8 +611,8 @@ public class Combat extends AppCompatActivity {
 
         //efectividad
         double m=getMultiplayerEffectivity(movefocus.getType(), victim.getType1(), victim.getType2());
-        //si no hace efecto por tipos
-        if(m==0){
+        //si no hace efecto por tipos o si es un movimiento de estado que ataca a un pokemon del mismo tipo
+        if(m==0||(!movefocus.isAtkSt()&&movefocus.getType()==victim.getType1())||(!movefocus.isAtkSt()&&movefocus.getType()==victim.getType2())){
             toret.add("No tiene ningún efecto");
             return;
         }
@@ -620,23 +629,53 @@ public class Combat extends AppCompatActivity {
 
         toret.add("/atak"+player);
 
-        //
+        //si es supereficaz o no poco eficaz muestra el mensaje
         if(m==2||m==4)toret.add("Es supereficaz!");
         else if(m==0.5||m==0.25)toret.add("No es muy efectivo...");
 
+        damage=(int)Math.round(getDamage(movefocus, focus, victim));
+
+        if(victim.getCurrentHp()-damage<=0){
+            toret.add("/kill"+player);
+        }else if(r.nextInt(101)<movefocus.getStatusProb()){
+            toret.add("/newStatusSecond"+player);
+        }
+
+        //si recupera vida
+        if(movefocus.getRestoreHPPorc()>0){
+            toret.add("/healing"+player);
+            return;
+        //si la salud del atacante no sufre retroceso
+        }else if(movefocus.getRestoreHPPorc()==0){
+            return;
+        }
+
+        toret.add("/recoil"+player);
+        if(focus.getCurrentHp()+(movefocus.getRestoreHPPorc()*focus.getHp()*0.01)<=0){
+            toret.add("/killself"+player);
+        }
 
     }
 
     private static double getDamage(Move move, PokemonBattler focus, PokemonBattler victim){
+        Random r=new Random();
+
         double e=getMultiplayerEffectivity(move.getType(), victim.getType1(), victim.getType2());
         double b;
         if(focus.getType1()==move.getType()||focus.getType2()==move.getType())b=1.5;
         else b=1;
         int a=focus.getDmg();
+        int n=50;
+        int v=85+r.nextInt(16);
+        int p=move.getDmg();
+        int d=victim.getDef();
 
+        double p1=0.01*b*e*v;
+        double p2=(0.2*n+1)*a*p;
+        p2=p2/(25*d);
+        p2=p2+2;
 
-
-        return 0;
+        return p1*p2;
     }
 
 
