@@ -13,10 +13,11 @@ import java.util.List;
 
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements View.OnClickListener {
-    private List<Move> mData;
+    public List<Move> mData;
     private LayoutInflater mInflater;
     private Context contexto;
     private View.OnClickListener listener;
+
 
 
     public ListAdapter(List<Move> itemlList, Context contexto) {
@@ -54,6 +55,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
             listener.onClick(view);
         }
     }
+
 
     public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;

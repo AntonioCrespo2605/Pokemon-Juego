@@ -1,10 +1,13 @@
 package com.example.pokemonshowdown;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -27,25 +30,23 @@ public class MovementsPicker extends AppCompatActivity {
     private List<Move> movesPk1py2;
     private List<Move> movesPk2py2;
     private List<Move> movesPk3py2;
-
+    private CardView cv;
     private FloatingActionButton next;
     private int cont;
-
-
-    //esto es para cada vez que se le da a ok comprobar lo que tiene que hacer
-    private int contConfirm=0;
+    private  ListAdapter listAdapter;
+    private List<Boolean> selected;
+    private ArrayList<Move> mchoosed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movements_picker);
-
+        selected = new ArrayList<>();
+        mchoosed = new ArrayList<>();
         next=findViewById(R.id.nextB);
-
 
         Bundle b=getIntent().getExtras();
         handler=new DBHandler(this);
-        Toast.makeText(this, " "+ handler.getMovesFromPokemon(3).size(), Toast.LENGTH_SHORT).show();
         movesPk1py1=handler.getMovesFromPokemon(b.getInt("pk1py1"));
         movesPk2py1=handler.getMovesFromPokemon(b.getInt("pk2py1"));
         movesPk3py1=handler.getMovesFromPokemon(b.getInt("pk3py1"));
@@ -54,96 +55,88 @@ public class MovementsPicker extends AppCompatActivity {
         movesPk3py2=handler.getMovesFromPokemon(b.getInt("pk3py2"));
 
         moves = handler.getMoves();
-//        moves.add(new Move("Guillotina", 90000, 30));
-//        moves.add(new Move("Salpicadura", 0, 100));
-//        moves.add(new Move("Ataque Ala", 50, 100));
-//        moves.add(new Move("Rapidez", 50, 100));
-//        moves.add(new Move("Golpe alto", 80, 50));
-//        moves.add(new Move("Guillotina", 90000, 30));
-//        moves.add(new Move("Salpicadura", 0, 100));
-//        moves.add(new Move("Ataque Ala", 50, 100));
-//        moves.add(new Move("Rapidez", 50, 100));
-//        moves.add(new Move("Golpe alto", 80, 50));
-//        moves.add(new Move("Guillotina", 90000, 30));
-//        moves.add(new Move("Salpicadura", 0, 100));
-//        moves.add(new Move("Ataque Ala", 50, 100));
-//        moves.add(new Move("Rapidez", 50, 100));
-//        moves.add(new Move("Golpe alto", 80, 50));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ListAdapter listAdapter;
-        //ListAdapter listAdapter = new ListAdapter(movesPk1py1, this);
 
+        listAdapter = new ListAdapter(movesPk1py1,MovementsPicker.this);
+        recyclerView.setAdapter(listAdapter);
+
+        listAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int position = recyclerView.getChildAdapterPosition(view);
+                if(!(getCountSelected() == 4)){
+                    if(selected.get(position)){
+                        selected.set(position,false);
+                        mchoosed.remove(listAdapter.mData.get(position));
+                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
+                    }else{
+                        selected.set(position,true);
+                        mchoosed.remove(listAdapter.mData.get(position));
+                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.blue_selected));
+                    }
+                }else if(selected.get(position)){
+                    selected.set(position,false);
+                    mchoosed.remove(listAdapter.mData.get(position));
+                    cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
+                }
+                if (getCountSelected() == 3) {
+                    next.setVisibility(View.VISIBLE);
+                } else {
+                    next.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
 
         cont = 1;
-        switch (cont){
-            case 1:
-                listAdapter = new ListAdapter(movesPk1py1,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
-            case 2:
-                listAdapter = new ListAdapter(movesPk2py1,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
-            case 3:
-                listAdapter = new ListAdapter(movesPk3py1,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
-            case 4:
-                listAdapter = new ListAdapter(movesPk1py2,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
-            case 5:
-                listAdapter = new ListAdapter(movesPk2py2,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
-            case 6:
-                listAdapter = new ListAdapter(movesPk3py2,this);
-                recyclerView.setAdapter(listAdapter);
-                break;
 
-        }
-        /*
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (contConfirm){
-                    case 0://cambia al segundo pokemon del primer jugador
-                    break;
-                    case 1://cambia al tercer pokemon del primer jugador
-                    break;
-                    case 2://despliega la pantalla de intermedio y cambia al primer pokemon del segundo jugador
-                    break;
-                    case 3://cambia al segundo pokemon del segundo jugador
-                    break;
-                    case 4://cambia al tercer pokemon del segundo jugador
-                    break;
-                    case 5://cambia de activity
-                    break;
+
+                switch (cont){
+                    case 1://cambia al segundo pokemon del primer jugador
+                        listAdapter = new ListAdapter(movesPk2py1,MovementsPicker.this);
+                        recyclerView.setAdapter(listAdapter);
+                        break;
+                    case 2:
+                        listAdapter = new ListAdapter(movesPk3py1,MovementsPicker.this);
+                        recyclerView.setAdapter(listAdapter);
+                        break;
+                    case 3:
+                        listAdapter = new ListAdapter(movesPk1py2,MovementsPicker.this);
+                        recyclerView.setAdapter(listAdapter);
+                        break;
+                    case 4:
+                        listAdapter = new ListAdapter(movesPk2py2,MovementsPicker.this);
+                        recyclerView.setAdapter(listAdapter);
+                        break;
+                    case 5:
+                        listAdapter = new ListAdapter(movesPk3py2,MovementsPicker.this);
+                        recyclerView.setAdapter(listAdapter);
+                        break;
+                    case 6:
+                        Intent intent = new Intent(MovementsPicker.this, Combat.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        break;
+
                 }
-                contConfirm++;
-            }
-        });*/
-
-        //borrar mas tarde(pruebas)
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cont != 6 ){
-                    cont ++;
-//                    Intent intent = new Intent(MovementsPicker.this, MovementsPicker.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    startActivity(intent);
-//                    finish();
-                }
-
-
+                cont ++;
             }
         });
 
     }
-
-
+    // Método auxiliar que cuenta el número de elementos seleccionados
+    private int getCountSelected() {
+        int toret = 0;
+        for (Boolean b : selected) {
+            if (b) toret++;
+        }
+        return toret;
+    }
 }
