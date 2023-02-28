@@ -36,6 +36,7 @@ public class PokemonBattler extends  Pokemon{
     }
 
     public void setCurrentHp(int currentHp) {
+        if(currentHp<0)currentHp=0;
         this.currentHp = currentHp;
     }
 

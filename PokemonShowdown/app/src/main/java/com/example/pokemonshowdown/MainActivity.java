@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -259,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initPokemons() {
+        handler=new DBHandler(this);
+
         Pokemon p = new Pokemon(3, "Venusaur", 10, 14, 80, 100, 100, 80, R.drawable.p003, R.drawable.p003b);
         p.addMovesById(new int[]{70, 81, 80, 102, 85, 84, 104, 59, 51, 54, 63, 57, 82, 49}, handler.getMoves());
         handler.addNewPokemon(p);

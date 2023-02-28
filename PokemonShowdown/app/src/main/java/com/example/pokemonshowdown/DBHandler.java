@@ -147,11 +147,20 @@ public class DBHandler extends SQLiteOpenHelper {
                 int img=cursor2.getInt(8);
                 int imgB=cursor2.getInt(9);
                 Pokemon pokemon=new Pokemon(nDex, name, t1, t2, hp, dmg, def, spd, img, imgB);
-                pokemon.setMoves(getMovesFromPokemon(nDex));
-
+                Cursor cursor3=db.rawQuery("SELECT * FROM "+POKEMON_MOVE_TABLE+" WHERE "+NUM_PK_COL+"="+nDex, null);
+                ArrayList<Move>pkMoves=new ArrayList<Move>();
+                if(cursor3.moveToFirst()){
+                    do{
+                        int mId=cursor3.getInt(0);
+                        pkMoves.add(getMoveById(mId));
+                    }while(cursor3.moveToNext());
+                }
+                pokemon.setMoves(pkMoves);
                 pokemons.add(pokemon);
             }while(cursor2.moveToNext());
         }
+
+
 
     }
 
@@ -214,21 +223,21 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         //adding the pokemon´s moveset to the table pokemon_move
-        SQLiteDatabase db2=this.getWritableDatabase();
-        ContentValues values2 =new ContentValues();
-
-        for(int i=0;i<pokemon.getMoves().size();i++){
-            values2.put(NUM_PK_COL, pokemon.getNumDex());
-            values2.put(ID_M_COL, pokemon.getMoves().get(i).getId());
+        for(Move m:pokemon.getMoves()){
+            addPokemonMove(pokemon.getNumDex(), m.getId());
         }
 
-        if(pokemon.getMoves().size()==0){
-            values2.put(NUM_PK_COL, pokemon.getNumDex());
-            values2.put(ID_M_COL, 1);
-        }
+    }
 
-        db2.insert(POKEMON_MOVE_TABLE, null, values2);
-        db2.close();
+    private void addPokemonMove(int numDex, int id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values =new ContentValues();
+
+        values.put(NUM_PK_COL, numDex);
+        values.put(ID_M_COL, id);
+
+        db.insert(POKEMON_MOVE_TABLE, null, values);
+        db.close();
     }
 
     public ArrayList<Move> getMoves() {
