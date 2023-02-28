@@ -10,6 +10,7 @@
         android:id="@+id/background"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/fondo_de_pantalla"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
         app:iconTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/atk3"
         app:layout_constraintEnd_toEndOf="@+id/atk3"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+        tools:ignore="SmallSp,TextContrastCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/atk3"
@@ -45,7 +46,7 @@
         app:iconTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/atk2"
         app:layout_constraintEnd_toEndOf="@+id/atk2"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+        tools:ignore="SmallSp,TextContrastCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/atk2"
@@ -60,7 +61,7 @@
         app:iconTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/atk1"
         app:layout_constraintEnd_toEndOf="@+id/atk1"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+        tools:ignore="SmallSp,TextContrastCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/atk1"
@@ -77,14 +78,14 @@
         app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+        tools:ignore="SmallSp,TextContrastCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fight"
         android:layout_width="130dp"
         android:layout_height="57dp"
         android:layout_marginBottom="15dp"
-        android:text="Luchar"
+        android:text="@string/fight_button"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/changepk"
         app:layout_constraintEnd_toEndOf="@+id/changepk" />
@@ -95,7 +96,7 @@
         android:layout_height="57dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
-        android:text="Pokemon"
+        android:text="@string/change_pokemon_button"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -107,7 +108,9 @@
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintPkBData"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/p094b" />
+        app:srcCompat="@drawable/p094b"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/pokemon_de_espaldas" />
 
     <ImageView
         android:id="@+id/pk"
@@ -116,7 +119,9 @@
         android:layout_marginStart="-20dp"
         app:layout_constraintStart_toStartOf="@+id/constraintPkData"
         app:layout_constraintTop_toBottomOf="@+id/constraintPkData"
-        app:srcCompat="@drawable/p094" />
+        app:srcCompat="@drawable/p094"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/pokemon_de_frente" />
 
     <LinearLayout
         android:id="@+id/pokemon_team"
@@ -142,7 +147,8 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/pokemon_1"
 
-                app:srcCompat="@drawable/p003" />
+                app:srcCompat="@drawable/p003"
+                tools:ignore="ImageContrastCheck" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -195,7 +201,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="Tu Gengar ha usado Garra Umbria"
+            android:text="@string/texto_ejemplo_combate"
             android:textColor="@color/whitep"
             android:textSize="20sp"
             android:visibility="visible"
@@ -220,13 +226,15 @@
             android:layout_width="34dp"
             android:layout_height="20dp"
             android:layout_marginEnd="10dp"
+            android:contentDescription="@string/status"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.792"
             app:layout_constraintStart_toEndOf="@+id/pkbhealth"
             app:layout_constraintTop_toBottomOf="@+id/pkb_hpBar"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@android:drawable/ic_input_delete" />
+            app:srcCompat="@android:drawable/ic_input_delete"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/pkb_name"
@@ -234,7 +242,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="Gengar"
+            android:text="@string/pokemon_ejemplo"
             android:textColor="@color/greyp"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -246,7 +254,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
-            android:text="Nv. 50"
+            android:text="@string/level"
             android:textColor="@color/greyp"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -278,7 +286,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="90"
+                android:text="@string/ejemplo_hp"
                 android:textColor="@color/greyp" />
 
             <TextView
@@ -296,7 +304,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="90"
+                android:text="@string/ejemplo_hp"
                 android:textColor="@color/greyp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -317,7 +325,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="Gengar"
+            android:text="@string/pokemon_ejemplo"
             android:textColor="@color/greyp"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -342,7 +350,9 @@
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pk_name"
-            app:srcCompat="@android:drawable/ic_input_delete" />
+            app:srcCompat="@android:drawable/ic_input_delete"
+            tools:ignore="ImageContrastCheck"
+            android:contentDescription="@string/status" />
 
         <ProgressBar
             android:id="@+id/pk_hpBar"
@@ -365,7 +375,8 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/j1" />
+        app:srcCompat="@drawable/j1"
+        android:contentDescription="@string/turno" />
 
     <ImageView
         android:id="@+id/playerturnscreen"
@@ -379,6 +390,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/ic_launcher_background"
+        android:contentDescription="@string/pantallaJ" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
