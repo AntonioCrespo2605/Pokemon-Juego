@@ -54,7 +54,10 @@ public class MovementsPicker extends AppCompatActivity {
 
         //VIEWS
         FloatingActionButton next = (FloatingActionButton) findViewById(R.id.nextB);
-        ImageView background = (ImageView) findViewById(R.id.pantalla_jugador);
+        next.setVisibility(View.INVISIBLE);
+        ImageView pantJ = (ImageView) findViewById(R.id.pantalla_jugador);
+        pantJ.setVisibility(View.VISIBLE);
+        pantJ.setImageResource(R.drawable.t1m);
         ImageView actual_pokemon;
         vh = new ThisViewHolder(next);
 
@@ -66,6 +69,13 @@ public class MovementsPicker extends AppCompatActivity {
         listAdapter = new ListAdapter(movesPk1py1, MovementsPicker.this, vh);
         recyclerView.setAdapter(listAdapter);
 
+        //pantalla para indicar el turno del jugador
+        pantJ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pantJ.setVisibility(View.INVISIBLE);
+            }
+        });
 
         cont = 1;
         next.setOnClickListener(new View.OnClickListener() {
@@ -75,26 +85,33 @@ public class MovementsPicker extends AppCompatActivity {
                 switch (cont) {
                     case 1://cambia al segundo pokemon del primer jugador
                         movesPk1py1 = listAdapter.getSelected();
+                        next.setVisibility(View.INVISIBLE);
                         listAdapter = new ListAdapter(movesPk2py1, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 2://cambia al tercer pokemon del primer jugador
                         movesPk2py1 = listAdapter.getSelected();
+                        next.setVisibility(View.INVISIBLE);
                         listAdapter = new ListAdapter(movesPk3py1, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 3://cambia al primer pokemon del segundo jugador
                         movesPk3py1 = listAdapter.getSelected();
+                        pantJ.setVisibility(View.VISIBLE);
+                        pantJ.setImageResource(R.drawable.t2m);
+                        next.setVisibility(View.INVISIBLE);
                         listAdapter = new ListAdapter(movesPk1py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 4://cambia al segundo pokemon del segundo jugador
                         movesPk1py2 = listAdapter.getSelected();
+                        next.setVisibility(View.INVISIBLE);
                         listAdapter = new ListAdapter(movesPk2py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 5://cambia al tercer pokemon del segundo jugador
                         movesPk2py2 = listAdapter.getSelected();
+                        next.setVisibility(View.INVISIBLE);
                         listAdapter = new ListAdapter(movesPk3py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;

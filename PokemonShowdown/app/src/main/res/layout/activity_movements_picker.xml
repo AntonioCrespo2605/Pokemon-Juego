@@ -7,33 +7,6 @@
     android:background="#F8F5E7"
     tools:context=".MovementsPicker">
 
-    <ImageView
-        android:id="@+id/pantalla_jugador"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayoutP"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/nextB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:clickable="true"
-        app:tint="@null"
-        android:contentDescription="juju"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/linearLayoutP"
-        app:srcCompat="@drawable/pokeball"
-        tools:ignore="ImageContrastCheck" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -61,6 +34,32 @@
             android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/nextB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        app:tint="@null"
+        android:contentDescription="juju"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayoutP"
+        app:srcCompat="@drawable/pokeball"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/pantalla_jugador"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutP"
+        app:srcCompat="@drawable/t2m" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
