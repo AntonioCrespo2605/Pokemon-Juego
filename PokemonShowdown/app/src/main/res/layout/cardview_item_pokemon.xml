@@ -6,7 +6,7 @@
     android:layout_height="120dp"
     android:layout_margin="5dp"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="@null"
     cardview:cardBackgroundColor="@color/whitep"
     cardview:cardCornerRadius="12dp">
 
@@ -14,7 +14,7 @@
         android:id="@+id/llP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/whitep"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
 
         <ImageView

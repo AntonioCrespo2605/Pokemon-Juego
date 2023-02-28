@@ -71,7 +71,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
         // Mantiene la carta seleccionada cuando actualizas la vista
         if (selected.get(position))
             holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
-        else holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
+        else holder.ll.setBackgroundColor(Color.TRANSPARENT);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +81,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                     if (selected.get(position)) {
                         selected.set(position, false);
                         pchoosed.remove(mData.get(position));
-                        holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
+                        holder.ll.setBackgroundColor(Color.TRANSPARENT);
 
                     } else { //sin seleccionar
                         selected.set(position, true);
@@ -92,7 +92,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                 }else if(selected.get(position)){
                     selected.set(position, false);
                     pchoosed.remove(mData.get(position));
-                    holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white_shadow));
+                    holder.ll.setBackgroundColor(Color.TRANSPARENT);
                 }
                 // Se muestra o se oculta el botón flotante dependiendo del número de elementos seleccionados
                 if (getCountSelected() == 3) {
