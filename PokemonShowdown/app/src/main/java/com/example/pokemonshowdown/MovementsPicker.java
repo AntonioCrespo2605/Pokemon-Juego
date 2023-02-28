@@ -32,6 +32,7 @@ public class MovementsPicker extends AppCompatActivity {
     private ThisViewHolder vh;
 
     private int cont;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,8 @@ public class MovementsPicker extends AppCompatActivity {
         moves = handler.getMoves();
 
         //VIEWS
-        FloatingActionButton next = findViewById(R.id.nextB);
+        FloatingActionButton next = (FloatingActionButton) findViewById(R.id.nextB);
+        ImageView background = (ImageView) findViewById(R.id.pantalla_jugador);
         ImageView actual_pokemon;
         vh = new ThisViewHolder(next);
 
@@ -98,30 +100,29 @@ public class MovementsPicker extends AppCompatActivity {
                         break;
                     case 6://cambia de activity y envia los pokemon con sus movimientos
                         movesPk1py1 = listAdapter.getSelected();
-                        Intent intent = new Intent(MovementsPicker.this, Combat.class);
+                        intent = new Intent(MovementsPicker.this, Combat.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("pk1py1", b.getInt("pk1py1"));
-                        intent = getMoves(intent, movesPk1py1, 1, 1);
+                        intent = getMoves(movesPk1py1, 1, 1);
 
                         intent.putExtra("pk2py1", b.getInt("pk2py1"));
-                        intent = getMoves(intent, movesPk2py1, 2, 1);
+                        intent = getMoves(movesPk2py1, 2, 1);
 
                         intent.putExtra("pk3py1", b.getInt("pk3py1"));
-                        intent = getMoves(intent, movesPk2py1, 3, 1);
+                        intent = getMoves(movesPk3py1, 3, 1);
 
                         intent.putExtra("pk1py2", b.getInt("pk1py2"));
-                        intent = getMoves(intent, movesPk1py2, 1, 2);
+                        intent = getMoves(movesPk1py2, 1, 2);
 
                         intent.putExtra("pk2py2", b.getInt("pk2py2"));
-                        intent = getMoves(intent, movesPk2py2, 2, 2);
+                        intent = getMoves(movesPk2py2, 2, 2);
 
                         intent.putExtra("pk3py2", b.getInt("pk3py2"));
-                        intent = getMoves(intent, movesPk2py1, 3, 2);
+                        getMoves(movesPk3py2, 3, 2);
 
                         startActivity(intent);
                         finish();
                         break;
-
                 }
                 cont++;
             }
@@ -129,19 +130,18 @@ public class MovementsPicker extends AppCompatActivity {
 
     }
 
-    private Intent getMoves(Intent intent, List<Move> moves, int p, int j) {
+    private Intent getMoves(List<Move> moves, int p, int j) {
         switch (moves.size()) {
             case 4:
-                intent.putExtra("m4pk" + p + "p2" + j, moves.get(3).getId());
+                intent.putExtra("mv4pk" + p + "py" + j, moves.get(3).getId());
             case 3:
-                intent.putExtra("m3pk" + p + "p2" + j, moves.get(2).getId());
+                intent.putExtra("mv3pk" + p + "py" + j, moves.get(2).getId());
             case 2:
-                intent.putExtra("m2pk" + p + "p2" + j, moves.get(1).getId());
+                intent.putExtra("mv2pk" + p + "py" + j, moves.get(1).getId());
             case 1:
-                intent.putExtra("m1pk" + p + "p2" + j, moves.get(0).getId());
+                intent.putExtra("mv1pk" + p + "py" + j, moves.get(0).getId());
                 break;
         }
-
         return intent;
     }
 

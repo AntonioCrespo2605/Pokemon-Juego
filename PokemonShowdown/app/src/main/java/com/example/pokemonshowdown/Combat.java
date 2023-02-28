@@ -113,8 +113,8 @@ public class Combat extends AppCompatActivity {
         cv3 = (CardView) findViewById(R.id.cv3);
 
         //leer la informacion del Bundle para inicializar los pokemon
-        initPokemonsChapuzada();
-        //initPokemons();
+        //initPokemonsChapuzada();
+        initPokemons();
 
         //INICIO
         turnManager = 0;
@@ -298,57 +298,57 @@ public class Combat extends AppCompatActivity {
     }
 
     //cuando este la 2 borrar esta xit
-    private void initPokemonsChapuzada() {
-        handler = new DBHandler(this);
-
-        pk1py1 = new PokemonBattler(handler.getPokemonById(3));
-        pk2py1 = new PokemonBattler(handler.getPokemonById(6));
-        pk3py1 = new PokemonBattler(handler.getPokemonById(9));
-        pk1py2 = new PokemonBattler(handler.getPokemonById(89));
-        pk2py2 = new PokemonBattler(handler.getPokemonById(15));
-        pk3py2 = new PokemonBattler(handler.getPokemonById(18));
-        //ArrayList auxiliar para rellenar los 4 movimientos
-        ArrayList<Move> movesAdd;
-        int aux;
-
-        ArrayList<PokemonBattler> battlers = new ArrayList<PokemonBattler>();
-        battlers.add(pk1py1);
-        battlers.add(pk2py1);
-        battlers.add(pk3py1);
-        battlers.add(pk1py2);
-        battlers.add(pk2py2);
-        battlers.add(pk3py2);
-
-        //recorrer jugadores, con sus respectivos pokemon, con sus respectivos ataques
-        for (int player = 1; player <= 2; player++) {
-            for (int pok = 1; pok <= 3; pok++) {
-                movesAdd = new ArrayList<Move>();
-                for (int mv = 1; mv <= 4; mv++) {
-                    aux = player + pok + mv;
-                    if (aux > 0) movesAdd.add(handler.getMoveById(aux));
-                }
-                int pos = -1;
-                if (player == 2) pos = 2;
-                pos += pok;
-                battlers.get(pos).setMoves(movesAdd);
-            }
-        }
-
-        pk1py1 = battlers.get(0);
-        pk2py1 = battlers.get(1);
-        pk3py1 = battlers.get(2);
-        pk1py2 = battlers.get(3);
-        pk2py2 = battlers.get(4);
-        pk3py2 = battlers.get(5);
-
-        pk1py1.setStatus(1);
-        pk1py2.setStatus(2);
-
-
-        pk1py1.setCurrentHp(20);
-        pk2py1.setCurrentHp(0);
-        pk1py2.setCurrentHp(10);
-    }
+//    private void initPokemonsChapuzada() {
+//        handler = new DBHandler(this);
+//
+//        pk1py1 = new PokemonBattler(handler.getPokemonById(3));
+//        pk2py1 = new PokemonBattler(handler.getPokemonById(6));
+//        pk3py1 = new PokemonBattler(handler.getPokemonById(9));
+//        pk1py2 = new PokemonBattler(handler.getPokemonById(89));
+//        pk2py2 = new PokemonBattler(handler.getPokemonById(15));
+//        pk3py2 = new PokemonBattler(handler.getPokemonById(18));
+//        //ArrayList auxiliar para rellenar los 4 movimientos
+//        ArrayList<Move> movesAdd;
+//        int aux;
+//
+//        ArrayList<PokemonBattler> battlers = new ArrayList<PokemonBattler>();
+//        battlers.add(pk1py1);
+//        battlers.add(pk2py1);
+//        battlers.add(pk3py1);
+//        battlers.add(pk1py2);
+//        battlers.add(pk2py2);
+//        battlers.add(pk3py2);
+//
+//        //recorrer jugadores, con sus respectivos pokemon, con sus respectivos ataques
+//        for (int player = 1; player <= 2; player++) {
+//            for (int pok = 1; pok <= 3; pok++) {
+//                movesAdd = new ArrayList<Move>();
+//                for (int mv = 1; mv <= 4; mv++) {
+//                    aux = player + pok + mv;
+//                    if (aux > 0) movesAdd.add(handler.getMoveById(aux));
+//                }
+//                int pos = -1;
+//                if (player == 2) pos = 2;
+//                pos += pok;
+//                battlers.get(pos).setMoves(movesAdd);
+//            }
+//        }
+//
+//        pk1py1 = battlers.get(0);
+//        pk2py1 = battlers.get(1);
+//        pk3py1 = battlers.get(2);
+//        pk1py2 = battlers.get(3);
+//        pk2py2 = battlers.get(4);
+//        pk3py2 = battlers.get(5);
+//
+//        pk1py1.setStatus(1);
+//        pk1py2.setStatus(2);
+//
+//
+//        pk1py1.setCurrentHp(20);
+//        pk2py1.setCurrentHp(0);
+//        pk1py2.setCurrentHp(10);
+//    }
 
     private void initPokemons() {
         Bundle b = getIntent().getExtras();
