@@ -133,6 +133,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:cardBackgroundColor="?attr/scrimBackground"
+            app:cardElevation="10dp"
             app:contentPadding="5dp">
 
             <ImageView
@@ -149,6 +150,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="12dp"
+            app:cardElevation="10dp"
             app:cardBackgroundColor="?attr/scrimBackground"
             app:contentPadding="5dp">
 
@@ -164,6 +166,7 @@
             android:id="@+id/cv3"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            app:cardElevation="10dp"
             android:layout_marginStart="12dp"
             app:cardBackgroundColor="?attr/scrimBackground"
             app:contentPadding="5dp">

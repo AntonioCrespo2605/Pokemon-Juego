@@ -12,6 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import static com.example.pokemonshowdown.R.drawable.*;
+import static com.example.pokemonshowdown.R.drawable.txt_flying;
+import static com.example.pokemonshowdown.R.drawable.txt_ground;
+import static com.example.pokemonshowdown.R.drawable.txt_normal;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
@@ -105,14 +108,15 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             @Override
             public boolean onLongClick(View view) {
                 ImageView imgPkm, type1, type2;
-                TextView tv_hp, tv_dmg, tv_def, tv_spd, tv_name;
+                TextView tv_hp, tv_dmg, tv_def, tv_spd, tv_name, tv_num;
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                 View dialogView = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.layout_custom_dialog, null);
 
                 imgPkm = dialogView.findViewById(R.id.pokemon_img);
                 type1 = dialogView.findViewById(R.id.type1);
                 type2 = dialogView.findViewById(R.id.type2);
-                tv_name = dialogView.findViewById(R.id.txttite);
+                tv_name = dialogView.findViewById(R.id.pk_name_txt);
+                tv_num = dialogView.findViewById(R.id.tv_num);
                 tv_hp = dialogView.findViewById(R.id.tv_hp);
                 tv_dmg = dialogView.findViewById(R.id.tv_dmg);
                 tv_def = dialogView.findViewById(R.id.tv_def);
@@ -124,6 +128,8 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                 selectType(type2, mData.get(position).getType2());
 
                 tv_name.setText(mData.get(position).getName());
+
+                tv_num.setText(formatNumber(mData.get(position).getNumDex()));
                 tv_hp.setText(mData.get(position).getHp() + "");
                 tv_dmg.setText(mData.get(position).getDmg() + "");
                 tv_def.setText(mData.get(position).getDef() + "");
@@ -211,18 +217,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     }
 
     public ArrayList<Pokemon> getSelected() {
-        ArrayList<Pokemon> toret = new ArrayList<Pokemon>();
-
-
-//        for (int i = 0; i < selected.size(); i++) {
-//            if (selected.get(i)) {
-//                toret.add(mData.get(i));
-//                System.out.println(mData.get(i).toString());
-//            }
-//
-//        }
-
-        return toret;
+       return pchoosed;
     }
 
     //borrar seleccion (para siguiente jugador)
@@ -238,64 +233,69 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     private void selectType(ImageView img, int type) {
         switch (type) {
             case 1:
-                img.setImageResource(bug);
+                img.setImageResource(txt_bug);
                 break;
             case 2:
-                img.setImageResource(dark);
+                img.setImageResource(txt_dark);
                 break;
             case 3:
-                img.setImageResource(dragon);
+                img.setImageResource(txt_dragon);
                 break;
             case 4:
-                img.setImageResource(electric);
+                img.setImageResource(txt_electric);
                 break;
             case 5:
-                img.setImageResource(fairy);
+                img.setImageResource(txt_fairy);
                 break;
             case 6:
-                img.setImageResource(fighting);
+                img.setImageResource(txt_fighting);
                 break;
             case 7:
-                img.setImageResource(fire);
+                img.setImageResource(txt_fire);
                 break;
             case 8:
-                img.setImageResource(flying);
+                img.setImageResource(txt_flying);
                 break;
             case 9:
-                img.setImageResource(ghost);
+                img.setImageResource(txt_ghost);
                 break;
             case 10:
-                img.setImageResource(grass);
+                img.setImageResource(txt_grass);
                 break;
             case 11:
-                img.setImageResource(ground);
+                img.setImageResource(txt_ground);
                 break;
             case 12:
-                img.setImageResource(ice);
+                img.setImageResource(txt_ice);
                 break;
             case 13:
-                img.setImageResource(normal);
+                img.setImageResource(txt_normal);
                 break;
             case 14:
-                img.setImageResource(poison);
+                img.setImageResource(txt_poison);
                 break;
             case 15:
-                img.setImageResource(psychic);
+                img.setImageResource(txt_psychic);
                 break;
             case 16:
-                img.setImageResource(rock);
+                img.setImageResource(txt_rock);
                 break;
             case 17:
-                img.setImageResource(steel);
+                img.setImageResource(txt_steel);
                 break;
             case 18:
-                img.setImageResource(water);
+                img.setImageResource(txt_water);
                 break;
             default:
                 img.setVisibility(View.GONE);
         }
 
     }
+
+    public static String formatNumber(int number) {
+        return String.format("#%03d", number);
+    }
+
 
 }
 

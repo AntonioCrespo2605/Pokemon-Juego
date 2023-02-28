@@ -21,6 +21,7 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:elevation="8dp"
+            android:padding="5dp"
             android:src="@drawable/p003"
             tools:layout_conversion_absoluteHeight="100dp"
             tools:layout_conversion_absoluteWidth="100dp" />
@@ -30,20 +31,42 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txttite"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Venusaur"
-                android:textAlignment="center"
-                android:textColor="@color/greyp"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:layout_conversion_absoluteHeight="27dp"
-                tools:layout_conversion_absoluteWidth="174dp" />
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingBottom="1dp"
+                    android:text="#001"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/blackp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/pk_name_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_weight="3"
+                    android:gravity="bottom|start"
+                    android:paddingStart="5dp"
+                    android:text="Venusaur"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/greyp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:layout_conversion_absoluteHeight="27dp"
+                    tools:layout_conversion_absoluteWidth="174dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,19 +77,21 @@
 
                 <ImageView
                     android:id="@+id/type1"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/bug" />
+                    android:paddingEnd="5dp"
+                    app:srcCompat="@drawable/txt_bug" />
 
                 <ImageView
                     android:id="@+id/type2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/bug" />
+                    android:paddingStart="5dp"
+                    app:srcCompat="@drawable/txt_bug" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

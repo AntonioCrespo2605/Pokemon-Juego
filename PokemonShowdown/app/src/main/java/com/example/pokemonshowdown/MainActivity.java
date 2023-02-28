@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                     pantJ.setImageResource(R.drawable.t2p);
                     next.setVisibility(View.INVISIBLE);
                     player.setImageResource(R.drawable.j2);
+                    pk1.setVisibility(View.INVISIBLE);
+                    pk2.setVisibility(View.INVISIBLE);
+                    pk3.setVisibility(View.INVISIBLE);
                 }
             }
         });
