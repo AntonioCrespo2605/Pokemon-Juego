@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements View.OnClickListener {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
     public List<Move> mData;
     private LayoutInflater mInflater;
     private Context contexto;
@@ -35,7 +35,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int ViewType) {
         View view = mInflater.inflate(R.layout.list_element, null);
-        view.setOnClickListener(this);
         return new ListAdapter.ViewHolder(view);
     }
 
@@ -43,17 +42,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int pos) {
         holder.bindData(mData.get(pos));
 
+
+
+
+
     }
 
     public void setItems(List<Move> items) {
         mData = items;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (listener != null) {
-            listener.onClick(view);
-        }
     }
 
 
@@ -85,6 +81,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
             //type.setImageResource(item.getType());
 
         }
+
 
 
     }
