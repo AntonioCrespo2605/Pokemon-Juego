@@ -1,6 +1,6 @@
 package com.example.pokemonshowdown;
 
-import static android.graphics.Color.valueOf;
+
 import static com.example.pokemonshowdown.R.drawable.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -61,6 +61,7 @@ public class Combat extends AppCompatActivity {
 
     //booleano para desactivar los botones y activar el fondo para la animacion
     private boolean activatedBackGround = false;
+    private boolean modeCombat = false;
 
     //booleanos para saber si mostrar la pantalla de jugador despues de seleccionar un pokemon en caso de muerte previa
     boolean p1Died, p2Died;
@@ -71,8 +72,13 @@ public class Combat extends AppCompatActivity {
     //auxiliar
     private ArrayList<String> toret;
 
-    //
+    //variable para almacenar el daño de las comprobaciones para reutilizar en cálculos(al tener factor random puede generar distintos resultados si no se almacena)
     private int damage;
+
+    //contador de clics en el fondo para controlar los dialogos
+    private int clicCounter;
+
+    private Handler h;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +118,8 @@ public class Combat extends AppCompatActivity {
         cv2 = (CardView) findViewById(R.id.cv2);
         cv3 = (CardView) findViewById(R.id.cv3);
 
+        h=new Handler();
+
         //leer la informacion del Bundle para inicializar los pokemon
         //initPokemonsChapuzada();
         initPokemons();
@@ -124,19 +132,26 @@ public class Combat extends AppCompatActivity {
         p2Died = false;
         changeTurn();
 
+
         playerturnscreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 playerturnscreen.setVisibility(View.INVISIBLE);
-
-                if (turnManager == 3) {
-                    //iniciar con calculos y animacion
-
-                    //provisional:
-                    changeTurn();
-                } else {
+                if (turnManager != 3) {
                     figth.setVisibility(View.VISIBLE);
                     pokemonChange.setVisibility(View.VISIBLE);
+                }else{
+                    activatedBackGround=false;
+                    h.postDelayed(new Runnable() {
+                        public void run() {
+                            constraintPk.setVisibility(View.INVISIBLE);
+                            constraintPkb.setVisibility(View.INVISIBLE);
+                            activatedBackGround=true;
+                            textConstraint.setVisibility(View.VISIBLE);
+                            screentext.setText("Hacer click en el fondo para empezar el turno");
+                            clicCounter=0;
+                        }
+                    }, 1000);
                 }
             }
         });
@@ -160,8 +175,15 @@ public class Combat extends AppCompatActivity {
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (activatedBackGround) {
-
+                if (modeCombat&&activatedBackGround) {
+                    if(clicCounter<firstPart.size()){
+                        screentext.setText(firstPart.get(clicCounter));
+                    }else{
+                        if(clicCounter==firstPart.size())generateSecondDialog(pokemonBackFirst());
+                        if(clicCounter<firstPart.size()+secondPart.size())screentext.setText(secondPart.get(clicCounter-firstPart.size()));
+                        else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_SHORT).show();
+                    }
+                    clicCounter++;
                 } else {
                     hideMoves();
                     pokemonChange.setVisibility(View.VISIBLE);
@@ -246,6 +268,8 @@ public class Combat extends AppCompatActivity {
                     changeTurn();
                 } else if (turnManager == 2) {
                     moveP2 = new Move(pokemonBack.getMoves().get(0));
+                    p2Atack = true;
+                    changeTurn();
                 }
             }
         });
@@ -296,59 +320,6 @@ public class Combat extends AppCompatActivity {
         });
 
     }
-
-    //cuando este la 2 borrar esta xit
-//    private void initPokemonsChapuzada() {
-//        handler = new DBHandler(this);
-//
-//        pk1py1 = new PokemonBattler(handler.getPokemonById(3));
-//        pk2py1 = new PokemonBattler(handler.getPokemonById(6));
-//        pk3py1 = new PokemonBattler(handler.getPokemonById(9));
-//        pk1py2 = new PokemonBattler(handler.getPokemonById(89));
-//        pk2py2 = new PokemonBattler(handler.getPokemonById(15));
-//        pk3py2 = new PokemonBattler(handler.getPokemonById(18));
-//        //ArrayList auxiliar para rellenar los 4 movimientos
-//        ArrayList<Move> movesAdd;
-//        int aux;
-//
-//        ArrayList<PokemonBattler> battlers = new ArrayList<PokemonBattler>();
-//        battlers.add(pk1py1);
-//        battlers.add(pk2py1);
-//        battlers.add(pk3py1);
-//        battlers.add(pk1py2);
-//        battlers.add(pk2py2);
-//        battlers.add(pk3py2);
-//
-//        //recorrer jugadores, con sus respectivos pokemon, con sus respectivos ataques
-//        for (int player = 1; player <= 2; player++) {
-//            for (int pok = 1; pok <= 3; pok++) {
-//                movesAdd = new ArrayList<Move>();
-//                for (int mv = 1; mv <= 4; mv++) {
-//                    aux = player + pok + mv;
-//                    if (aux > 0) movesAdd.add(handler.getMoveById(aux));
-//                }
-//                int pos = -1;
-//                if (player == 2) pos = 2;
-//                pos += pok;
-//                battlers.get(pos).setMoves(movesAdd);
-//            }
-//        }
-//
-//        pk1py1 = battlers.get(0);
-//        pk2py1 = battlers.get(1);
-//        pk3py1 = battlers.get(2);
-//        pk1py2 = battlers.get(3);
-//        pk2py2 = battlers.get(4);
-//        pk3py2 = battlers.get(5);
-//
-//        pk1py1.setStatus(1);
-//        pk1py2.setStatus(2);
-//
-//
-//        pk1py1.setCurrentHp(20);
-//        pk2py1.setCurrentHp(0);
-//        pk1py2.setCurrentHp(10);
-//    }
 
     private void initPokemons() {
         Bundle b = getIntent().getExtras();
@@ -511,6 +482,15 @@ public class Combat extends AppCompatActivity {
     //se activa el modo combate
     private void showBattle() {
         activatedBackGround = true;
+        playerturnscreen.setVisibility(View.VISIBLE);
+        pkbHealth.setVisibility(View.INVISIBLE);
+
+        //AITANA CAMBIA AQUI LA PANTALLA DE COMBATE
+        playerturnscreen.setImageResource(portada_vacia);
+
+        modeCombat=true;
+
+        clicCounter=0;
         generateFirstDialog(pokemonBackFirst());
     }
 
@@ -518,6 +498,11 @@ public class Combat extends AppCompatActivity {
     private void generateFirstDialog(boolean p1first) {
         if (p1first) firstPart = generateDialogPlayer(1);
         else firstPart = generateDialogPlayer(2);
+    }
+
+    private void generateSecondDialog(boolean p1first){
+        if (p1first) secondPart = generateDialogPlayer(2);
+        else secondPart = generateDialogPlayer(1);
     }
 
     private ArrayList<String> generateDialogPlayer(int player) {
@@ -711,15 +696,18 @@ public class Combat extends AppCompatActivity {
         hideMoves();
         atk1.setVisibility(View.VISIBLE);
         updateMove(0);
+
         switch (pokemonBack.getMoves().size()) {
             case 2:
                 updateMove(1);
                 atk2.setVisibility(View.VISIBLE);
+                break;
             case 3:
                 updateMove(1);
                 updateMove(2);
                 atk2.setVisibility(View.VISIBLE);
                 atk3.setVisibility(View.VISIBLE);
+                break;
             case 4:
                 updateMove(1);
                 updateMove(2);
@@ -729,7 +717,6 @@ public class Combat extends AppCompatActivity {
                 atk4.setVisibility(View.VISIBLE);
                 break;
         }
-
 
     }
 
@@ -1176,5 +1163,14 @@ public class Combat extends AppCompatActivity {
         return toret;
     }
 
+    //comprueba si al jugador 1 aun le quedan pokemons vivos
+    private boolean player1Continue(){
+        return (pk1py1.isAlive()|| pk2py1.isAlive()|| pk3py1.isAlive());
+    }
+
+    //comprueba si al jugador 2 aun le quedan pokemons vivos
+    private boolean player2Continue(){
+        return (pk1py2.isAlive()|| pk2py2.isAlive()|| pk3py2.isAlive());
+    }
 }
 

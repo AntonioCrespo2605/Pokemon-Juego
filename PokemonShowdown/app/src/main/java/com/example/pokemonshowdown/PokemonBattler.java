@@ -55,6 +55,7 @@ public class PokemonBattler extends  Pokemon{
 
     public int hpPercent(){
         double pc=(this.currentHp*100)/getHp();
+        if(pc<0)return 0;
         return (int)Math.round(pc);
     }
 }

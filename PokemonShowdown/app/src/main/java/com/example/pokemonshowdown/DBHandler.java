@@ -196,7 +196,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(RESTORE_HP_PORC_COL, move.getRestoreHPPorc());
         if(move.isPriority())values.put(PRIORITY_COL, 1);
         else values.put(PRIORITY_COL, 0);
-        values.put(ATK_ST_COL, move.isAtkSt());
+        if(move.isAtkSt())values.put(ATK_ST_COL, 1);
+        else values.put(ATK_ST_COL, 0);
 
         db.insert(MOVE_TABLE, null, values);
         db.close();
