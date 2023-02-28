@@ -9,8 +9,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
@@ -303,7 +301,7 @@ public class Combat extends AppCompatActivity {
         pk1py1 = new PokemonBattler(handler.getPokemonById(3));
         pk2py1 = new PokemonBattler(handler.getPokemonById(6));
         pk3py1 = new PokemonBattler(handler.getPokemonById(9));
-        pk1py2 = new PokemonBattler(handler.getPokemonById(94));
+        pk1py2 = new PokemonBattler(handler.getPokemonById(89));
         pk2py2 = new PokemonBattler(handler.getPokemonById(15));
         pk3py2 = new PokemonBattler(handler.getPokemonById(18));
         //ArrayList auxiliar para rellenar los 4 movimientos
@@ -343,8 +341,9 @@ public class Combat extends AppCompatActivity {
         pk1py1.setStatus(1);
         pk1py2.setStatus(2);
 
-        pk2py1.setCurrentHp(0);
+
         pk1py1.setCurrentHp(20);
+        pk2py1.setCurrentHp(0);
         pk1py2.setCurrentHp(10);
     }
 
@@ -424,19 +423,20 @@ public class Combat extends AppCompatActivity {
         hideMoves();
 
         //calculo de barras de vida
-        pk_hpBar.setProgress(pokemonFront.hpPorcentage());
-        pkb_hpBar.setProgress(pokemonBack.hpPorcentage());
+        pk_hpBar.setProgress(pokemonFront.hpPercent());
+        pkb_hpBar.setProgress(pokemonBack.hpPercent());
         pkstatus.setVisibility(View.VISIBLE);
         pkbstatus.setVisibility(View.VISIBLE);
 
+        //meter este codigo en funciones
         Drawable progressDrawable = pk_hpBar.getProgressDrawable().mutate();
-        if (pokemonFront.hpPorcentage() < 11) {
+        if (pokemonFront.hpPercent() < 11) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
             pk_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonFront.hpPorcentage() < 26) {
+        } else if (pokemonFront.hpPercent() < 26) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
             pk_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonFront.hpPorcentage() < 51) {
+        } else if (pokemonFront.hpPercent() < 51) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
             pk_hpBar.setProgressDrawable(progressDrawable);
         } else {
@@ -444,13 +444,13 @@ public class Combat extends AppCompatActivity {
             pk_hpBar.setProgressDrawable(progressDrawable);
         }
 
-        if (pokemonBack.hpPorcentage() < 11) {
+        if (pokemonBack.hpPercent() < 11) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
             pkb_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonBack.hpPorcentage() < 26) {
+        } else if (pokemonBack.hpPercent() < 26) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
             pkb_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonBack.hpPorcentage() < 51) {
+        } else if (pokemonBack.hpPercent() < 51) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
             pkb_hpBar.setProgressDrawable(progressDrawable);
         } else {
@@ -472,52 +472,37 @@ public class Combat extends AppCompatActivity {
         //cambio en la vida total
         pkb_maxhp.setText(pokemonBack.getHp() + "");
 
-        switch (pokemonBack.getStatus()) {
-            case 0:
-                pkbstatus.setVisibility(View.INVISIBLE);
-                break;
-            case 1:
-                pkbstatus.setImageResource(R.drawable.paralizado);
-                break;
-            case 2:
-                pkbstatus.setImageResource(R.drawable.quemado);
-                break;
-            case 3:
-                pkbstatus.setImageResource(R.drawable.envenenado);
-                break;
-            case 4:
-                pkbstatus.setImageResource(R.drawable.dormido);
-                break;
-            case 5:
-                pkbstatus.setImageResource(R.drawable.congelado);
-                break;
-        }
-
-        switch (pokemonFront.getStatus()) {
-            case 0:
-                pkstatus.setVisibility(View.INVISIBLE);
-                break;
-            case 1:
-                pkstatus.setImageResource(R.drawable.paralizado);
-                break;
-            case 2:
-                pkstatus.setImageResource(R.drawable.quemado);
-                break;
-            case 3:
-                pkstatus.setImageResource(R.drawable.envenenado);
-                break;
-            case 4:
-                pkstatus.setImageResource(R.drawable.dormido);
-                break;
-            case 5:
-                pkstatus.setImageResource(R.drawable.congelado);
-                break;
-        }
+        //convertir los switchs en funcion
+        getPokemonStatus(pokemonBack, pkbstatus);
+        getPokemonStatus(pokemonFront, pkstatus);
 
         if (turnManager == 3) {
             showBattle();
         }
 
+    }
+
+    private void getPokemonStatus(PokemonBattler pokemon, ImageView status){
+        switch (pokemon.getStatus()) {
+            case 0:
+                status.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                status.setImageResource(R.drawable.paralizado);
+                break;
+            case 2:
+                status.setImageResource(R.drawable.quemado);
+                break;
+            case 3:
+                status.setImageResource(R.drawable.envenenado);
+                break;
+            case 4:
+                status.setImageResource(R.drawable.dormido);
+                break;
+            case 5:
+                status.setImageResource(R.drawable.congelado);
+                break;
+        }
     }
 
     //se activa el modo combate

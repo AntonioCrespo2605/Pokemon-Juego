@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PokemonBattler extends  Pokemon{
     private int currentHp;
     private int status;
+    private int hppercent;
     /*
     * 0-no status
     * 1-paralizado
@@ -52,8 +53,8 @@ public class PokemonBattler extends  Pokemon{
         return(currentHp>0);
     }
 
-    public int hpPorcentage(){
-        double pc=(currentHp*100)/getHp();
+    public int hpPercent(){
+        double pc=(this.currentHp*100)/getHp();
         return (int)Math.round(pc);
     }
 }
