@@ -38,15 +38,18 @@ public class Pokemon {
     public void addMovesById(int[] msid, ArrayList<Move> ms) {
         ArrayList<Move> add = new ArrayList<>();
 
-        for (Move m : ms) {
-            for (int i = 0; i < msid.length; i++) {
-                if (m.getId() == msid[i]) {
-                    add.add(m);
-                    break;
-                }
-            }
+        for(int i=0;i<msid.length;i++){
+            add.add(getMoveByIdFrom(msid[i], ms));
         }
-        setMoves(add);
+
+        this.setMoves(add);
+    }
+
+    private Move getMoveByIdFrom(int id, ArrayList<Move> ms){
+        for(Move m:ms){
+            if (m.getId()==id)return m;
+        }
+        return ms.get(0);
     }
 
     //GETTERS && SETTERS
