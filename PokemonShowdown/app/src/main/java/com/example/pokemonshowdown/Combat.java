@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
@@ -180,7 +181,7 @@ public class Combat extends AppCompatActivity {
                     }else{
                         if(clicCounter==firstPart.size())generateSecondDialog(pokemonBackFirst());
                         if(clicCounter<firstPart.size()+secondPart.size())screentext.setText(secondPart.get(clicCounter-firstPart.size()));
-                        else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_SHORT).show();
+                        else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_LONG).show();
                     }
                     clicCounter++;
                 } else {
