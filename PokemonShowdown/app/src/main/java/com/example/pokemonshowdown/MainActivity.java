@@ -247,13 +247,13 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewMove(new Move(96, "Huesomerang", 100, 90, -1, 0, 11, 0, false, false));
         handler.addNewMove(new Move(97, "Terremoto", 100, 100, -1, 0, 11, 0, false, false));
         // poison type
-        handler.addNewMove(new Move(98, "Ácido", 40, 100, -1, 0, 9, 0, false, false));
-        handler.addNewMove(new Move(99, "Gas venenoso", 0, 90, 3, 100, 9, 0, true, false));
-        handler.addNewMove(new Move(100, "Picotazo veneno", 15, 100, 3, 20, 9, 0, false, false));
-        handler.addNewMove(new Move(101, "Polución", 30, 70, 3, 40, 9, 0, false, false));
-        handler.addNewMove(new Move(102, "Polvo veneno", 0, 75, 3, 100, 9, 0, false, false));
-        handler.addNewMove(new Move(103, "Residuos", 65, 100, 3, 30, 9, 0, false, false));
-        handler.addNewMove(new Move(104, "Tóxico", 0, 90, 3, 100, 9, 0, true, false));
+        handler.addNewMove(new Move(98, "Ácido", 40, 100, -1, 0, 14, 0, false, false));
+        handler.addNewMove(new Move(99, "Gas venenoso", 0, 90, 3, 100, 14, 0, true, false));
+        handler.addNewMove(new Move(100, "Picotazo veneno", 15, 100, 3, 20, 14, 0, false, false));
+        handler.addNewMove(new Move(101, "Polución", 30, 70, 3, 40, 14, 0, false, false));
+        handler.addNewMove(new Move(102, "Polvo veneno", 0, 75, 3, 100, 14, 0, false, false));
+        handler.addNewMove(new Move(103, "Residuos", 65, 100, 3, 30, 14, 0, false, false));
+        handler.addNewMove(new Move(104, "Tóxico", 0, 90, 3, 100, 14, 0, true, false));
         // flying type
         handler.addNewMove(new Move(105, "Ataque aéreo", 140, 90, -1, 0, 8, 0, false, false));
         handler.addNewMove(new Move(106, "Ataque ala", 60, 100, -1, 0, 8, 0, false, false));

@@ -405,12 +405,12 @@ public class Combat extends AppCompatActivity {
         reverseBattlers();
 
         if (turnManager == 1) {
-            playerturnscreen.setImageResource(R.drawable.t1p);
+            playerturnscreen.setImageResource(R.drawable.t1);
             playerturn.setImageResource(R.drawable.j1);
             textConstraint.setVisibility(View.INVISIBLE);
             if (!p1Died) playerturnscreen.setVisibility(View.VISIBLE);
         } else if (turnManager == 2) {
-            playerturnscreen.setImageResource(R.drawable.t2p);
+            playerturnscreen.setImageResource(R.drawable.t2);
             playerturn.setImageResource(R.drawable.j2);
             textConstraint.setVisibility(View.INVISIBLE);
             if (!p2Died) playerturnscreen.setVisibility(View.VISIBLE);
