@@ -153,8 +153,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     }
 
 
-
-
     // Clase interna que representa el ViewHolder para cada elemento del RecyclerView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView pokemon_name;

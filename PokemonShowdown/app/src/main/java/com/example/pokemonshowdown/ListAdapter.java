@@ -91,10 +91,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
             }
         });
 
-
-
-
-
     }
 
     public void setItems(List<Move> items) {
@@ -140,12 +136,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
         }
         return toret;
     }
-
     //borrar seleccion (para siguiente jugador)
     public void deselect() {
         for (int i = 0; i < mData.size(); i++) {
             selected.add(false);
         }
+    }
+
+    public ArrayList<Move> getSelected() {
+        return mchoosed;
     }
 
 }

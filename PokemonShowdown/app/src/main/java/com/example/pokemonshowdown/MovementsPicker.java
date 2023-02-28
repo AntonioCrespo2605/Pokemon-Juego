@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,80 +18,91 @@ import java.util.List;
 
 public class MovementsPicker extends AppCompatActivity {
 
-    private List<Move> moves;
-
     private DBHandler handler;
-
+    private List<Move> moves;
+    //Lista de ataques
     private List<Move> movesPk1py1;
     private List<Move> movesPk2py1;
     private List<Move> movesPk3py1;
     private List<Move> movesPk1py2;
     private List<Move> movesPk2py2;
     private List<Move> movesPk3py2;
-    private FloatingActionButton next;
-    private int cont;
-    private  ListAdapter listAdapter;
-    private List<Boolean> selected;
-    private ArrayList<Move> mchoosed;
+
+    private ListAdapter listAdapter;
     private ThisViewHolder vh;
+
+    private int cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movements_picker);
-        selected = new ArrayList<>();
-        mchoosed = new ArrayList<>();
-        next=findViewById(R.id.nextB);
 
+        //Bundle
+        Bundle b = getIntent().getExtras();
+        handler = new DBHandler(this);
+        movesPk1py1 = handler.getMovesFromPokemon(b.getInt("pk1py1"));
+        movesPk2py1 = handler.getMovesFromPokemon(b.getInt("pk2py1"));
+        movesPk3py1 = handler.getMovesFromPokemon(b.getInt("pk3py1"));
+        movesPk1py2 = handler.getMovesFromPokemon(b.getInt("pk1py2"));
+        movesPk2py2 = handler.getMovesFromPokemon(b.getInt("pk2py2"));
+        movesPk3py2 = handler.getMovesFromPokemon(b.getInt("pk3py2"));
 
-        Bundle b=getIntent().getExtras();
-        handler=new DBHandler(this);
-        movesPk1py1=handler.getMovesFromPokemon(b.getInt("pk1py1"));
-        movesPk2py1=handler.getMovesFromPokemon(b.getInt("pk2py1"));
-        movesPk3py1=handler.getMovesFromPokemon(b.getInt("pk3py1"));
-        movesPk1py2=handler.getMovesFromPokemon(b.getInt("pk1py2"));
-        movesPk2py2=handler.getMovesFromPokemon(b.getInt("pk2py2"));
-        movesPk3py2=handler.getMovesFromPokemon(b.getInt("pk3py2"));
-
+        //No se para que es este
         moves = handler.getMoves();
 
-
+        //VIEWS
+        FloatingActionButton next = findViewById(R.id.nextB);
+        ImageView actual_pokemon;
         vh = new ThisViewHolder(next);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        listAdapter = new ListAdapter(movesPk1py1,MovementsPicker.this, vh);
+        //primer pokemon del primer jugador
+        listAdapter = new ListAdapter(movesPk1py1, MovementsPicker.this, vh);
         recyclerView.setAdapter(listAdapter);
 
+
         cont = 1;
+
+        //FALTA PONER LA RECOGIDA DE MOVIMIENTOS
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                switch (cont){
+                switch (cont) {
                     case 1://cambia al segundo pokemon del primer jugador
-                        listAdapter = new ListAdapter(movesPk2py1,MovementsPicker.this, vh);
+                        movesPk1py1 = listAdapter.getSelected();
+                        listAdapter = new ListAdapter(movesPk2py1, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
-                    case 2:
-                        listAdapter = new ListAdapter(movesPk3py1,MovementsPicker.this, vh);
+                    case 2://cambia al tercer pokemon del primer jugador
+                        movesPk2py1 = listAdapter.getSelected();
+                        listAdapter = new ListAdapter(movesPk3py1, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
-                    case 3:
-                        listAdapter = new ListAdapter(movesPk1py2,MovementsPicker.this, vh);
+                    case 3://cambia al primer pokemon del segundo jugador
+                        movesPk3py1 = listAdapter.getSelected();
+                        listAdapter = new ListAdapter(movesPk1py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
-                    case 4:
-                        listAdapter = new ListAdapter(movesPk2py2,MovementsPicker.this, vh);
+                    case 4://cambia al segundo pokemon del segundo jugador
+                        movesPk1py2 = listAdapter.getSelected();
+                        listAdapter = new ListAdapter(movesPk2py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
-                    case 5:
-                        listAdapter = new ListAdapter(movesPk3py2,MovementsPicker.this, vh);
+                    case 5://cambia al tercer pokemon del segundo jugador
+                        movesPk2py2 = listAdapter.getSelected();
+                        listAdapter = new ListAdapter(movesPk3py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
-                    case 6:
+                    case 6://cambia de activity y envia los pokemon con sus movimientos
+                        movesPk1py1 = listAdapter.getSelected();
+                        //FALTAN LOS BUNDLES
+
                         Intent intent = new Intent(MovementsPicker.this, Combat.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
@@ -97,19 +110,10 @@ public class MovementsPicker extends AppCompatActivity {
                         break;
 
                 }
-                cont ++;
+                cont++;
             }
         });
 
     }
-    // Método auxiliar que cuenta el número de elementos seleccionados
-    private int getCountSelected() {
-        int toret = 0;
-        for (Boolean b : selected) {
-            if (b) toret++;
-        }
-        return toret;
-    }
-
 
 }
