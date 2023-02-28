@@ -17,5 +17,14 @@
     <string name="atk3">At3</string>
     <string name="atk4">At4</string>
     <string name="fabMoves">Boton para terminar la selección de movimientos</string>
+    <string name="status">Estado aplicado en el pokemon</string>
+    <string name="texto_ejemplo_combate">Tu Gengar ha usado Garra Umbria</string>
+    <string name="fondo_de_pantalla">Fondo de pantalla</string>
+    <string name="fight_button">Luchar</string>
+    <string name="change_pokemon_button">Pokemon</string>
+    <string name="pokemon_de_espaldas">Pokemon de espaldas</string>
+    <string name="pokemon_de_frente">Pokemon de frente</string>
+    <string name="pokemon_ejemplo">Gengar</string>
+    <string name="ejemplo_hp">90</string>
 
 </resources>

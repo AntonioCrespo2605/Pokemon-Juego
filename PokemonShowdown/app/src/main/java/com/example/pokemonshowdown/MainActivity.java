@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         next = findViewById(R.id.nextB);
         pantJ = findViewById(R.id.pantalla_jugador);
         player = findViewById(R.id.player);
-        pk1 = findViewById(R.id.pk1);
+        pk1 = findViewById(R.id.pokemon);
         pk2 = findViewById(R.id.pk2);
         pk3 = findViewById(R.id.pk3);
         //INVISIBLE
