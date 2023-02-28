@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +56,7 @@ public class MovementsPicker extends AppCompatActivity {
         //VIEWS
         FloatingActionButton next = (FloatingActionButton) findViewById(R.id.nextB);
         next.setVisibility(View.INVISIBLE);
+        next.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MovementsPicker.this, R.color.redpy)));
         ImageView pantJ = (ImageView) findViewById(R.id.pantalla_jugador);
         pantJ.setVisibility(View.VISIBLE);
         pantJ.setImageResource(R.drawable.t1m);
@@ -100,6 +102,7 @@ public class MovementsPicker extends AppCompatActivity {
                         pantJ.setVisibility(View.VISIBLE);
                         pantJ.setImageResource(R.drawable.t2m);
                         next.setVisibility(View.INVISIBLE);
+                        next.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MovementsPicker.this, R.color.bluepy)));
                         listAdapter = new ListAdapter(movesPk1py2, MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;

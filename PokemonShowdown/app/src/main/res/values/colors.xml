@@ -16,7 +16,8 @@
     <color name="greyp">#ED28292A</color>
     <color name="blue_selected">#9777B9FB</color>
     <color name="white_shadow">#32CFCFCB</color>
-    <color name="bluep">#44CCF0</color>
+    <color name="bluepy">#44CCF0</color>
+    <color name="redpy">#F0445D</color>
 
     <!--type colors-->
     <color name="bug">#83C301</color>

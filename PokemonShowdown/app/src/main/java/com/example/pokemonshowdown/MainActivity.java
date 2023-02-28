@@ -1,11 +1,13 @@
 package com.example.pokemonshowdown;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         pk2.setVisibility(View.INVISIBLE);
         pk3.setVisibility(View.INVISIBLE);
 
+        next.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redpy)));
+
         //pantalla para indicar el turno del jugador
         pantJ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     pantJ.setVisibility(View.VISIBLE);
                     pantJ.setImageResource(R.drawable.t2p);
                     next.setVisibility(View.INVISIBLE);
+                    next.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.bluepy)));
                     player.setImageResource(R.drawable.j2);
                     pk1.setVisibility(View.INVISIBLE);
                     pk2.setVisibility(View.INVISIBLE);

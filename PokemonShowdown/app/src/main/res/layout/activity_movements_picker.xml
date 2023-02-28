@@ -41,13 +41,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:clickable="true"
-        app:tint="@null"
-        android:contentDescription="juju"
+        android:contentDescription="@string/fabMoves"
         android:focusable="true"
+        app:backgroundTint="@color/redpy"
+        app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayoutP"
         app:srcCompat="@drawable/pokeball"
+        app:tint="@null"
         tools:ignore="ImageContrastCheck" />
 
     <ImageView
@@ -59,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayoutP"
-        app:srcCompat="@drawable/t2m" />
+        app:srcCompat="@drawable/t1m" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

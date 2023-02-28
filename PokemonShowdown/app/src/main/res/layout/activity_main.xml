@@ -95,14 +95,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:clickable="true"
-        app:tint="@null"
         android:contentDescription="@string/fabPokemon"
         android:focusable="true"
-        app:backgroundTint="@color/bluep"
+        app:backgroundTint="@color/bluepy"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayoutP"
         app:srcCompat="@drawable/pokeball"
+        app:tint="@null"
         tools:ignore="ImageContrastCheck" />
 
     <LinearLayout

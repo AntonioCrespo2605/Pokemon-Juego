@@ -16,5 +16,6 @@
     -<string name="atk2">At2</string>*-
     <string name="atk3">At3</string>
     <string name="atk4">At4</string>
+    <string name="fabMoves">Boton para terminar la selección de movimientos</string>
 
 </resources>
