@@ -1,14 +1,20 @@
 package com.example.pokemonshowdown;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,14 +22,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
     public List<Move> mData;
     private LayoutInflater mInflater;
     private Context contexto;
-    private View.OnClickListener listener;
+
+    private List<Boolean> selected;
+    private ArrayList<Move> mchoosed;
+    private ThisViewHolder p;
 
 
 
-    public ListAdapter(List<Move> itemlList, Context contexto) {
+    public ListAdapter(List<Move> itemlList, Context contexto, ThisViewHolder p) {
         this.mInflater = LayoutInflater.from(contexto);
         this.contexto = contexto;
         this.mData = itemlList;
+        this.p = p;
+        this.selected = new ArrayList<>();
+        this.mchoosed = new ArrayList<>();
+        deselect();
     }
 
     @Override
@@ -39,8 +52,44 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int pos) {
-        holder.bindData(mData.get(pos));
+    public void onBindViewHolder(final ListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        holder.bindData(mData.get(position));
+        FloatingActionButton fab = p.getFab();
+
+        if (selected.get(position))
+            holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
+        else holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.whitep));
+
+        holder.rv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!(getCountSelected() ==  4)) {
+                    //ya seleccionado
+                    if (selected.get(position)) {
+                        selected.set(position, false);
+                        mchoosed.remove(mData.get(position));
+                        holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.whitep));
+
+                    } else { //sin seleccionar
+                        selected.set(position, true);
+                        mchoosed.add(mData.get(position));
+                        holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
+
+                    }
+                }else if(selected.get(position)){
+                    selected.set(position, false);
+                    mchoosed.remove(mData.get(position));
+                    holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.whitep));
+                }
+                // Se muestra o se oculta el botón flotante dependiendo del número de elementos seleccionados
+                if ((getCountSelected() >= 1) && (getCountSelected() <=  4)) {
+                    fab.setVisibility(View.VISIBLE);
+                } else {
+                    fab.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
 
 
 
@@ -52,14 +101,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
         mData = items;
     }
 
-
-    public void setOnClickListener(View.OnClickListener listener) {
-        this.listener = listener;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iconImage, type;
         TextView name, mov_dmg, mov_accuracy;
+        RelativeLayout rv;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +113,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
             name = itemView.findViewById(R.id.mov_name);
             mov_dmg = itemView.findViewById(R.id.mov_dmg);
             mov_accuracy = itemView.findViewById(R.id.mov_accuracy);
+            rv = itemView.findViewById(R.id.rl);
 
         }
 
@@ -85,5 +131,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
 
 
     }
+
+    // Método auxiliar que cuenta el número de elementos seleccionados
+    private int getCountSelected() {
+        int toret = 0;
+        for (Boolean b : selected) {
+            if (b) toret++;
+        }
+        return toret;
+    }
+
+    //borrar seleccion (para siguiente jugador)
+    public void deselect() {
+        for (int i = 0; i < mData.size(); i++) {
+            selected.add(false);
+        }
+    }
+
 }
 

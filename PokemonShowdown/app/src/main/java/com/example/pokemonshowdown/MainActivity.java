@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         handler = new DBHandler(this);
         pokemonList = handler.getPokemons();
         RecyclerView rv = findViewById(R.id.recyclerview_id);
-        ViewHolder p = new ViewHolder(next, pk1, pk2, pk3);
+        ThisViewHolder p = new ThisViewHolder(next, pk1, pk2, pk3);
         myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             pPlyr1 = myAdapter.getSelected();
             RecyclerView rv = findViewById(R.id.recyclerview_id);
-            ViewHolder p = new ViewHolder(next, pk1, pk2, pk3);
+            ThisViewHolder p = new ThisViewHolder(next, pk1, pk2, pk3);
             myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
             rv.setLayoutManager(new GridLayoutManager(this, 3));
             rv.setAdapter(myAdapter);

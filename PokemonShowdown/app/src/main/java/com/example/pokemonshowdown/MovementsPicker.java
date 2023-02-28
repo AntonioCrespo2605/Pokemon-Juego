@@ -1,20 +1,16 @@
 package com.example.pokemonshowdown;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +26,12 @@ public class MovementsPicker extends AppCompatActivity {
     private List<Move> movesPk1py2;
     private List<Move> movesPk2py2;
     private List<Move> movesPk3py2;
-    private CardView cv;
     private FloatingActionButton next;
     private int cont;
     private  ListAdapter listAdapter;
     private List<Boolean> selected;
     private ArrayList<Move> mchoosed;
+    private ThisViewHolder vh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +40,7 @@ public class MovementsPicker extends AppCompatActivity {
         selected = new ArrayList<>();
         mchoosed = new ArrayList<>();
         next=findViewById(R.id.nextB);
+
 
         Bundle b=getIntent().getExtras();
         handler=new DBHandler(this);
@@ -56,40 +53,14 @@ public class MovementsPicker extends AppCompatActivity {
 
         moves = handler.getMoves();
 
+
+        vh = new ThisViewHolder(next);
         RecyclerView recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        listAdapter = new ListAdapter(movesPk1py1,MovementsPicker.this);
+        listAdapter = new ListAdapter(movesPk1py1,MovementsPicker.this, vh);
         recyclerView.setAdapter(listAdapter);
-
-        listAdapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                int position = recyclerView.getChildAdapterPosition(view);
-                if(!(getCountSelected() == 4)){
-                    if(selected.get(position)){
-                        selected.set(position,false);
-                        mchoosed.remove(listAdapter.mData.get(position));
-                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
-                    }else{
-                        selected.set(position,true);
-                        mchoosed.remove(listAdapter.mData.get(position));
-                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.blue_selected));
-                    }
-                }else if(selected.get(position)){
-                    selected.set(position,false);
-                    mchoosed.remove(listAdapter.mData.get(position));
-                    cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
-                }
-                if (getCountSelected() == 3) {
-                    next.setVisibility(View.VISIBLE);
-                } else {
-                    next.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
 
         cont = 1;
 
@@ -99,23 +70,23 @@ public class MovementsPicker extends AppCompatActivity {
 
                 switch (cont){
                     case 1://cambia al segundo pokemon del primer jugador
-                        listAdapter = new ListAdapter(movesPk2py1,MovementsPicker.this);
+                        listAdapter = new ListAdapter(movesPk2py1,MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 2:
-                        listAdapter = new ListAdapter(movesPk3py1,MovementsPicker.this);
+                        listAdapter = new ListAdapter(movesPk3py1,MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 3:
-                        listAdapter = new ListAdapter(movesPk1py2,MovementsPicker.this);
+                        listAdapter = new ListAdapter(movesPk1py2,MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 4:
-                        listAdapter = new ListAdapter(movesPk2py2,MovementsPicker.this);
+                        listAdapter = new ListAdapter(movesPk2py2,MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 5:
-                        listAdapter = new ListAdapter(movesPk3py2,MovementsPicker.this);
+                        listAdapter = new ListAdapter(movesPk3py2,MovementsPicker.this, vh);
                         recyclerView.setAdapter(listAdapter);
                         break;
                     case 6:
@@ -139,4 +110,6 @@ public class MovementsPicker extends AppCompatActivity {
         }
         return toret;
     }
+
+
 }

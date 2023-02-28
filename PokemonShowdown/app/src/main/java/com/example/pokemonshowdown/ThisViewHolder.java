@@ -4,13 +4,18 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ViewHolder {
+public class ThisViewHolder {
     private FloatingActionButton fab;
-    ImageView pk1;
-    ImageView pk2;
-    ImageView pk3;
+    private ImageView pk1;
+    private ImageView pk2;
+    private ImageView pk3;
 
-    public ViewHolder(FloatingActionButton fab, ImageView pk1, ImageView pk2, ImageView pk3) {
+
+    public ThisViewHolder(FloatingActionButton fab) {
+        this.fab = fab;
+    }
+
+    public ThisViewHolder(FloatingActionButton fab, ImageView pk1, ImageView pk2, ImageView pk3) {
         this.fab = fab;
         this.pk1 = pk1;
         this.pk2 = pk2;

@@ -34,12 +34,12 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
 
     private List<Boolean> selected;
     private ArrayList<Pokemon> pchoosed;
-    private ViewHolder p;
+    private ThisViewHolder p;
 
 
 
     // Constructor
-    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ViewHolder p) {
+    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ThisViewHolder p) {
         this.mContext = mContext;
         this.mData = mData;
         this.p = p;
