@@ -343,6 +343,7 @@ public class Combat extends AppCompatActivity {
         pk1py1.setStatus(1);
         pk1py2.setStatus(2);
         pk2py1.setCurrentHp(0);
+        pk1py2.setCurrentHp((int)Math.round(pk1py2.getHp()/5));
     }
 
     private void initPokemons() {
@@ -597,6 +598,10 @@ public class Combat extends AppCompatActivity {
         if (player == 1) focus = new PokemonBattler(pokemonBack);
         else focus = new PokemonBattler(pokemonFront);
 
+        PokemonBattler victim;
+        if (player == 1)victim = new PokemonBattler(pokemonFront);
+        else victim = new PokemonBattler(pokemonBack);
+
         Move movefocus;
         if (player == 1) movefocus = new Move(moveP1);
         else movefocus = new Move(moveP2);
@@ -608,8 +613,43 @@ public class Combat extends AppCompatActivity {
             return;
         }
 
+        //efectividad
+        double m=getMultiplayerEffectivity(movefocus.getType(), victim.getType1(), victim.getType2());
+        //si no hace efecto por tipos
+        if(m==0){
+            toret.add("No tiene ningún efecto");
+            return;
+        }
+
+        //si es un movimiento de estado
+        if(!movefocus.isAtkSt()){
+            if(victim.getStatus()!=0){
+                toret.add(focus.getName()+" ha fallado el ataque");
+            }else{
+                toret.add("/newStatus"+player);//comando
+            }
+            return;
+        }
+
+        toret.add("/atak"+player);
+
+        //
+        if(m==2||m==4)toret.add("Es supereficaz!");
+        else if(m==0.5||m==0.25)toret.add("No es muy efectivo...");
 
 
+    }
+
+    private static double getDamage(Move move, PokemonBattler focus, PokemonBattler victim){
+        double e=getMultiplayerEffectivity(move.getType(), victim.getType1(), victim.getType2());
+        double b;
+        if(focus.getType1()==move.getType()||focus.getType2()==move.getType())b=1.5;
+        else b=1;
+        int a=focus.getDmg();
+
+
+
+        return 0;
     }
 
 
