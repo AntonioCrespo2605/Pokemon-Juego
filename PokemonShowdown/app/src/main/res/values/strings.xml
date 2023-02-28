@@ -21,10 +21,22 @@
     <string name="texto_ejemplo_combate">Tu Gengar ha usado Garra Umbria</string>
     <string name="fondo_de_pantalla">Fondo de pantalla</string>
     <string name="fight_button">Luchar</string>
-    <string name="change_pokemon_button">Pokemon</string>
+    <string name="change_pokemon_button">Pkmn</string>
     <string name="pokemon_de_espaldas">Pokemon de espaldas</string>
     <string name="pokemon_de_frente">Pokemon de frente</string>
     <string name="pokemon_ejemplo">Gengar</string>
     <string name="ejemplo_hp">90</string>
+    <string name="stats_txt">Estadísticas</string>
+    <string name="tv_hp">tv_hp</string>
+    <string name="tv_def">tv_def</string>
+    <string name="tv_dmg">tv_dmg</string>
+    <string name="tv_spd">tv_spd</string>
+    <string name="num_pokedex_ejemplo">#094</string>
+    <string name="type1">Primer tipo de un pokemon</string>
+    <string name="corazon_a_modo_de_hp">corazon a modo de hp</string>
+    <string name="espada_a_modo_de_da_o">espada a modo de daño</string>
+    <string name="escudo_a_modo_de_defensa">escudo a modo de defensa</string>
+    <string name="zapatillas_a_modo_de_velocidad">zapatillas a modo de velocidad</string>
+    <string name="type2">Segundo tipo de un pokemon</string>
 
 </resources>
