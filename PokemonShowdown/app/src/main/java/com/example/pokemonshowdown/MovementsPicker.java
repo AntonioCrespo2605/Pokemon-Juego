@@ -29,7 +29,7 @@ public class MovementsPicker extends AppCompatActivity {
     private List<Move> movesPk3py2;
 
     private FloatingActionButton next;
-
+    private int cont;
 
 
     //esto es para cada vez que se le da a ok comprobar lo que tiene que hacer
@@ -45,7 +45,7 @@ public class MovementsPicker extends AppCompatActivity {
 
         Bundle b=getIntent().getExtras();
         handler=new DBHandler(this);
-
+        Toast.makeText(this, " "+ handler.getMovesFromPokemon(3).size(), Toast.LENGTH_SHORT).show();
         movesPk1py1=handler.getMovesFromPokemon(b.getInt("pk1py1"));
         movesPk2py1=handler.getMovesFromPokemon(b.getInt("pk2py1"));
         movesPk3py1=handler.getMovesFromPokemon(b.getInt("pk3py1"));
@@ -53,29 +53,58 @@ public class MovementsPicker extends AppCompatActivity {
         movesPk2py2=handler.getMovesFromPokemon(b.getInt("pk2py2"));
         movesPk3py2=handler.getMovesFromPokemon(b.getInt("pk3py2"));
 
-        moves = new ArrayList<>();
-        moves.add(new Move("Guillotina", 90000, 30));
-        moves.add(new Move("Salpicadura", 0, 100));
-        moves.add(new Move("Ataque Ala", 50, 100));
-        moves.add(new Move("Rapidez", 50, 100));
-        moves.add(new Move("Golpe alto", 80, 50));
-        moves.add(new Move("Guillotina", 90000, 30));
-        moves.add(new Move("Salpicadura", 0, 100));
-        moves.add(new Move("Ataque Ala", 50, 100));
-        moves.add(new Move("Rapidez", 50, 100));
-        moves.add(new Move("Golpe alto", 80, 50));
-        moves.add(new Move("Guillotina", 90000, 30));
-        moves.add(new Move("Salpicadura", 0, 100));
-        moves.add(new Move("Ataque Ala", 50, 100));
-        moves.add(new Move("Rapidez", 50, 100));
-        moves.add(new Move("Golpe alto", 80, 50));
+        moves = handler.getMoves();
+//        moves.add(new Move("Guillotina", 90000, 30));
+//        moves.add(new Move("Salpicadura", 0, 100));
+//        moves.add(new Move("Ataque Ala", 50, 100));
+//        moves.add(new Move("Rapidez", 50, 100));
+//        moves.add(new Move("Golpe alto", 80, 50));
+//        moves.add(new Move("Guillotina", 90000, 30));
+//        moves.add(new Move("Salpicadura", 0, 100));
+//        moves.add(new Move("Ataque Ala", 50, 100));
+//        moves.add(new Move("Rapidez", 50, 100));
+//        moves.add(new Move("Golpe alto", 80, 50));
+//        moves.add(new Move("Guillotina", 90000, 30));
+//        moves.add(new Move("Salpicadura", 0, 100));
+//        moves.add(new Move("Ataque Ala", 50, 100));
+//        moves.add(new Move("Rapidez", 50, 100));
+//        moves.add(new Move("Golpe alto", 80, 50));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ListAdapter listAdapter = new ListAdapter(moves, this);
+        ListAdapter listAdapter;
         //ListAdapter listAdapter = new ListAdapter(movesPk1py1, this);
-        recyclerView.setAdapter(listAdapter);
+
+
+        cont = 1;
+        switch (cont){
+            case 1:
+                listAdapter = new ListAdapter(movesPk1py1,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+            case 2:
+                listAdapter = new ListAdapter(movesPk2py1,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+            case 3:
+                listAdapter = new ListAdapter(movesPk3py1,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+            case 4:
+                listAdapter = new ListAdapter(movesPk1py2,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+            case 5:
+                listAdapter = new ListAdapter(movesPk2py2,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+            case 6:
+                listAdapter = new ListAdapter(movesPk3py2,this);
+                recyclerView.setAdapter(listAdapter);
+                break;
+
+        }
         /*
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,10 +131,15 @@ public class MovementsPicker extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MovementsPicker.this, Combat.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                if(cont != 6 ){
+                    cont ++;
+//                    Intent intent = new Intent(MovementsPicker.this, MovementsPicker.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(intent);
+//                    finish();
+                }
+
+
             }
         });
 

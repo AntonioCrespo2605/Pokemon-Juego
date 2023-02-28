@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    private static final String DB_NAME="pokemonDB";
+    private static final String DB_NAME="pokemonDB.sqlite";
     private static int DB_VERSION=1;
 
     private static final String POKEMON_TABLE="pokemon";
@@ -157,16 +157,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //it returns an arrayList with the pokemon´s moveset reading from database
     public ArrayList<Move> getMovesFromPokemon(int numDex){
-        ArrayList<Move>toret=new ArrayList<Move>();
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("SELECT "+ID_M_COL+ " FROM "+POKEMON_MOVE_TABLE+" WHERE "+NUM_PK_COL+"="+numDex,null);
-        if(cursor.moveToFirst()){
-            do{
-                int id=cursor.getInt(0);
-                toret.add(moves.get(getPositionOfMove(id)));
-            }while(cursor.moveToNext());
+        for(Pokemon p:pokemons){
+            if(p.getNumDex()==numDex)return p.getMoves();
         }
-        return toret;
+        return new ArrayList<Move>();
     }
 
     //it returns the position of a move in the moves arrayList having its id
