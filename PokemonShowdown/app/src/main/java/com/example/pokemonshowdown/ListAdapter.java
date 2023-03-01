@@ -38,6 +38,7 @@ import static com.example.pokemonshowdown.R.drawable.txt_water;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,6 +92,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.bindData(mData.get(position));
         FloatingActionButton fab = p.getFab();
+        MediaPlayer click = MediaPlayer.create(contexto, R.raw.pokemon_a_sound);
 
         if (selected.get(position))
             holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
@@ -109,6 +111,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                     } else { //sin seleccionar
                         selected.set(position, true);
                         mchoosed.add(mData.get(position));
+                        click.start();
                         holder.rv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
 
                     }
