@@ -206,7 +206,6 @@
         android:layout_height="77dp"
         android:layout_marginBottom="10dp"
         android:background="@color/blackp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -219,7 +218,6 @@
             android:text="@string/texto_ejemplo_combate"
             android:textColor="@color/whitep"
             android:textSize="20sp"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -232,7 +230,6 @@
         android:layout_height="77dp"
         android:layout_marginBottom="10dp"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -330,7 +327,6 @@
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
