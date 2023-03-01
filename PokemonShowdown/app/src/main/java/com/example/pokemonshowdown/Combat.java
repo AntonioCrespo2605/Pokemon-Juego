@@ -177,14 +177,17 @@ public class Combat extends AppCompatActivity {
             public void onClick(View view) {
                 if (modeCombat&&activatedBackGround) {
                     if(clicCounter<firstPart.size()){
-                        screentext.setText(firstPart.get(clicCounter));
+                        if(firstPart.get(clicCounter).charAt(0)=='/')executeCommand(firstPart.get(clicCounter));
+                        else screentext.setText(firstPart.get(clicCounter));
                     }else{
                         if(clicCounter==firstPart.size())generateSecondDialog(pokemonBackFirst());
-                        if(clicCounter<firstPart.size()+secondPart.size())screentext.setText(secondPart.get(clicCounter-firstPart.size()));
-                        else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_LONG).show();
+                        if(clicCounter<firstPart.size()+secondPart.size()){
+                           if(secondPart.get(clicCounter-firstPart.size()).charAt(0)=='/')executeCommand(secondPart.get(clicCounter-firstPart.size()));
+                           else screentext.setText(secondPart.get(clicCounter-firstPart.size()));
+                        } else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_LONG).show();
                     }
                     clicCounter++;
-                } else {
+                } else if(!modeCombat){
                     hideMoves();
                     pokemonChange.setVisibility(View.VISIBLE);
                     figth.setVisibility(View.VISIBLE);
@@ -320,6 +323,107 @@ public class Combat extends AppCompatActivity {
         });
 
     }
+
+    private void executeCommand(String command){
+        switch (command){
+            case "/backToBall1":commandBackToBall(1);
+                break;
+            case "/backToBall2":commandBackToBall(2);
+                break;
+            case "/newPokemonChange1":commandNewPokemonChange(1);
+                break;
+            case "/newPokemonChange2":commandNewPokemonChange(2);
+                break;
+            case "/wakeUp1":
+                break;
+            case "/wakeUp2":
+                break;
+            case "/defrost1":
+                break;
+            case "/defrost2":
+                break;
+            case "/newStatus1":
+                break;
+            case "/newStatus2":
+                break;
+            case "/atak1":
+                break;
+            case "/atak2":
+                break;
+            case "/kill1":
+                break;
+            case "/kill2":
+                break;
+            case "/newStatusSecond1":
+                break;
+            case "/newStatusSecond2":
+                break;
+            case "/healing1":
+                break;
+            case "/healing2":
+                break;
+            case "/recoil1":
+                break;
+            case "/recoil2":
+                break;
+            case "/killself1":
+                break;
+            case "/killself2":
+                break;
+        }
+    }
+    /*******************************************************************************/
+    private void commandBackToBall(int player){
+        activatedBackGround=false;
+        textConstraint.setVisibility(View.INVISIBLE);
+        if(player==1){
+            pkb.setVisibility(View.INVISIBLE);
+            constraintPkb.setVisibility(View.INVISIBLE);
+        }else{
+            pk.setVisibility(View.INVISIBLE);
+            constraintPk.setVisibility(View.INVISIBLE);
+        }
+
+        h.postDelayed(new Runnable() {
+            public void run() {
+                textConstraint.setVisibility(View.VISIBLE);
+                if(player==1)screentext.setText(pokemonBack.getName()+" ha vuelto a la pokeball");
+                else screentext.setText(pokemonFront.getName()+" ha vuelto a la pokeball");
+                activatedBackGround=true;
+            }
+        }, 1000);
+    }
+
+    private void commandNewPokemonChange(int player){
+        activatedBackGround=false;
+        textConstraint.setVisibility(View.INVISIBLE);
+        constraintPk.setVisibility(View.VISIBLE);
+        constraintPkb.setVisibility(View.VISIBLE);
+        pkbHealth.setVisibility(View.INVISIBLE);
+        if(player==1)pokemonBack=new PokemonBattler(newPokemonP1);
+        else pokemonFront=new PokemonBattler(newPokemonP2);
+
+        pk_name.setText(pokemonFront.getName());
+        pkb_name.setText(pokemonBack.getName());
+        pk_hpBar.setProgress(pokemonFront.hpPercent());
+        pkb_hpBar.setProgress(pokemonBack.hpPercent());
+        pk.setImageResource(pokemonFront.getImg());
+        pkb.setImageResource(pokemonBack.getImgB());
+        pk.setVisibility(View.VISIBLE);
+        pkb.setVisibility(View.VISIBLE);
+
+        h.postDelayed(new Runnable() {
+            public void run() {
+                textConstraint.setVisibility(View.VISIBLE);
+                constraintPk.setVisibility(View.INVISIBLE);
+                constraintPkb.setVisibility(View.INVISIBLE);
+                if(player==1)screentext.setText("Jugador 1 ha sacado a"+pokemonBack.getName());
+                else screentext.setText("Jugador 2 ha sacado a "+pokemonFront.getName());
+                activatedBackGround=true;
+            }
+        }, 1000);
+    }
+    /*******************************************************************************/
 
     private void initPokemons() {
         Bundle b = getIntent().getExtras();
@@ -651,7 +755,7 @@ public class Combat extends AppCompatActivity {
         else b=1;
         int a=focus.getDmg();
         int n=50;
-        int v=85+r.nextInt(16);
+        int v=65+r.nextInt(16);
         int p=move.getDmg();
         int d=victim.getDef();
 
