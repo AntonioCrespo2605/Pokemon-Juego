@@ -104,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:text="20"
                     android:textAlignment="viewEnd"
+                    android:textColor="#94000000"
                     android:textSize="16sp"
                     tools:ignore="TextContrastCheck" />
             </LinearLayout>

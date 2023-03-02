@@ -128,7 +128,7 @@ public class MovementsPicker extends AppCompatActivity {
                         break;
                     case 6://cambia de activity y envia los pokemon con sus movimientos
                         movesPk3py2 = listAdapter.getSelected();
-                        intent = new Intent(MovementsPicker.this, Combat.class);
+                        intent = new Intent(MovementsPicker.this, Battle.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("pk1py1", b.getInt("pk1py1"));
                         intent = getMoves(movesPk1py1, 1, 1);
