@@ -87,6 +87,17 @@ public class Battle extends AppCompatActivity {
 
     private Handler h;
 
+    private static final int[]BACKGROUNDS= {fondo_pixel_desierto_manhana, fondo_pixel_desierto_mediodia, fondo_pixel_desierto_noche, fondo_pixel_disco, fondo_pixel_nieve_manhana,
+    fondo_pixel_nieve_mediodia, fondo_pixel_nieve_noche, fondo_pixel_paseo, fondo_pixel_paseo_madera, fondo_pixel_prado_atardecer, fondo_pixel_prado_manhana,
+    fondo_pixel_prado_mediodia, fondo_pixel_prado_noche};
+    /*
+    private static final int[]BACKGROUNDS= {fondo_agua, fondo_bosque, fondo_bosque_noche, fondo_circulo_azul, fondo_circulo_morado, fondo_ciudad_dia, fondo_ciudad_noche,
+            fondo_cueva_submarina, fondo_futbol, fondo_futurista, fondo_helado, fondo_luna, fondo_mansion, fondo_montanha_nieve, fondo_monte, fondo_nieve, fondo_otonho,
+            fondo_piscina, fondo_pixel_desierto_manhana, fondo_pixel_desierto_mediodia, fondo_pixel_desierto_noche, fondo_pixel_disco, fondo_pixel_nieve_manhana,
+            fondo_pixel_nieve_mediodia, fondo_pixel_nieve_noche, fondo_pixel_paseo, fondo_pixel_paseo_madera, fondo_pixel_prado_atardecer, fondo_pixel_prado_manhana,
+            fondo_pixel_prado_mediodia, fondo_pixel_prado_noche, fondo_playa_atardecer, fondo_playa_dia, fondo_pradera_dia, fondo_pradera_mediodia, fondo_pradera_noche,
+            fondo_pueblo_arena, fondo_rocoso, fondo_taller, fondo_templo, fondo_tunel, fondo_volcan};*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +135,8 @@ public class Battle extends AppCompatActivity {
         cv3 = (CardView) findViewById(R.id.cv3);
         pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);
         pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
+
+        randomBackground();
 
         h = new Handler();
 
@@ -360,6 +373,12 @@ public class Battle extends AppCompatActivity {
         });
 
     }
+
+    private void randomBackground() {
+        Random r=new Random();
+        background.setImageResource(BACKGROUNDS[r.nextInt(BACKGROUNDS.length)]);
+    }
+
     private void showDeads(){
         cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
         cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
