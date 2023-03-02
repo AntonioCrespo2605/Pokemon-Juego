@@ -173,14 +173,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
             if (item.getDmg() == 0) {
                 mov_dmg.setText("Pot: " + "-");
-            } else {
+            } else if(item.getDmg() > 200){
+                mov_dmg.setText("Pot: " + "∞");
+            }else{
                 mov_dmg.setText("Pot: " + dmg);
             }
 
             if (item.getAccuracy() == 0) {
-                mov_accuracy.setText("Pot: " + "-");
+                mov_accuracy.setText("Prec: " + "-");
             } else {
-                mov_accuracy.setText("Pot: " + accuracy);
+                mov_accuracy.setText("Prec: " + accuracy);
             }
 
             switch (item.getType()) {

@@ -32,7 +32,8 @@ public class Combat extends AppCompatActivity {
     private TextView screentext, pk_name, pkb_name, pkb_hp, pkb_maxhp;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
     private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
-    private ConstraintLayout constraintPk, constraintPkb, textConstraint;
+    private ConstraintLayout constraintPk, textConstraint;
+    LinearLayout constraintPkb;
     private ProgressBar pk_hpBar, pkb_hpBar;
     private LinearLayout pkbHealth, pokemon_team;
     private CardView cv1, cv2, cv3;
@@ -105,7 +106,7 @@ public class Combat extends AppCompatActivity {
         atk3 = (ExtendedFloatingActionButton) findViewById(R.id.atk3);
         atk4 = (ExtendedFloatingActionButton) findViewById(R.id.atk4);
         constraintPk = (ConstraintLayout) findViewById(R.id.constraintPkData);
-        constraintPkb = (ConstraintLayout) findViewById(R.id.constraintPkBData);
+        constraintPkb = (LinearLayout) findViewById(R.id.constraintPkBData);
         textConstraint = (ConstraintLayout) findViewById(R.id.constraintTexto);
         pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
         pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);

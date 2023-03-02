@@ -46,6 +46,7 @@
                     android:gravity="bottom"
                     android:orientation="horizontal"
                     android:paddingStart="5dp"
+                    android:paddingEnd="0dp"
                     android:paddingBottom="2dp">
 
                     <TextView
@@ -60,7 +61,8 @@
                         android:id="@+id/type_of_move"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:paddingLeft="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="0dp"
                         app:srcCompat="@drawable/dmg_move"
                         app:tint="@color/greyp" />
 
@@ -71,8 +73,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="65dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="65dp"
                     app:srcCompat="@drawable/txt_normal" />
 
             </LinearLayout>
@@ -83,7 +85,8 @@
                 android:layout_weight="1"
                 android:gravity="center|center_horizontal"
                 android:orientation="vertical"
-                android:paddingRight="20dp">
+                android:paddingStart="0dp"
+                android:paddingEnd="20dp">
 
                 <TextView
                     android:id="@+id/mov_accuracy"
@@ -101,7 +104,8 @@
                     android:layout_height="wrap_content"
                     android:text="20"
                     android:textAlignment="viewEnd"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="TextContrastCheck" />
             </LinearLayout>
 
         </LinearLayout>
