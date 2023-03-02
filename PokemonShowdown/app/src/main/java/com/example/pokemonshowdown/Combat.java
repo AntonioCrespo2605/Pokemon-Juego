@@ -34,7 +34,8 @@ public class Combat extends AppCompatActivity {
     private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
     private ConstraintLayout constraintPk, textConstraint;
     LinearLayout constraintPkb;
-    private ProgressBar pk_hpBar, pkb_hpBar;
+    private ProgressBar pk_hpBar;
+    private ProgressBar pkb_hpBar;
     private LinearLayout pkbHealth, pokemon_team;
     private CardView cv1, cv2, cv3;
 
@@ -87,6 +88,7 @@ public class Combat extends AppCompatActivity {
         setContentView(R.layout.activity_combat);
 
         //VIEWS
+        pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
         background = (ImageView) findViewById(R.id.background);
         playerturn = (ImageView) findViewById(R.id.playerturn);
         playerturnscreen = (ImageView) findViewById(R.id.playerturnscreen);
@@ -108,8 +110,6 @@ public class Combat extends AppCompatActivity {
         constraintPk = (ConstraintLayout) findViewById(R.id.constraintPkData);
         constraintPkb = (LinearLayout) findViewById(R.id.constraintPkBData);
         textConstraint = (ConstraintLayout) findViewById(R.id.constraintTexto);
-        pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
-        pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);
         pkbHealth = (LinearLayout) findViewById(R.id.pkbhealth);
         pokemon_team = (LinearLayout) findViewById(R.id.pokemon_team);
         pk1 = (ImageView) findViewById(R.id.pk1);
@@ -118,6 +118,7 @@ public class Combat extends AppCompatActivity {
         cv1 = (CardView) findViewById(R.id.cv1);
         cv2 = (CardView) findViewById(R.id.cv2);
         cv3 = (CardView) findViewById(R.id.cv3);
+        pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);
 
         h=new Handler();
 
@@ -177,7 +178,9 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (modeCombat&&activatedBackGround) {
-                    if(clicCounter<firstPart.size()){
+                    if(clicCounter==-1){
+
+                    } else if(clicCounter<firstPart.size()){
                         if(firstPart.get(clicCounter).charAt(0)=='/')executeCommand(firstPart.get(clicCounter));
                         else screentext.setText(firstPart.get(clicCounter));
                     }else{
@@ -185,7 +188,9 @@ public class Combat extends AppCompatActivity {
                         if(clicCounter<firstPart.size()+secondPart.size()){
                            if(secondPart.get(clicCounter-firstPart.size()).charAt(0)=='/')executeCommand(secondPart.get(clicCounter-firstPart.size()));
                            else screentext.setText(secondPart.get(clicCounter-firstPart.size()));
-                        } else Toast.makeText(Combat.this, "ataquí ya hacido", Toast.LENGTH_LONG).show();
+                        } else{
+
+                        }
                     }
                     clicCounter++;
                 } else if(!modeCombat){
@@ -516,42 +521,73 @@ public class Combat extends AppCompatActivity {
         constraintPk.setVisibility(View.VISIBLE);
         constraintPkb.setVisibility(View.VISIBLE);
         textConstraint.setVisibility(View.INVISIBLE);
+        if(player==1)pokemonFront.setCurrentHp(pokemonFront.getCurrentHp()-damage);
+        else pokemonBack.setCurrentHp(pokemonBack.getCurrentHp()-damage);
 
+        /*
         h.postDelayed(new Runnable() {
             public void run() {
                 if(player==1){
-                    pokemonFront.setCurrentHp(pokemonFront.getCurrentHp()-damage);
                     pk_hpBar.setProgress(pokemonFront.hpPercent());
-                    Toast.makeText(Combat.this, ""+(pokemonFront.getHp()-pokemonFront.getCurrentHp()), Toast.LENGTH_SHORT).show();
+                    pkb_hpBar.setProgress(pokemonBack.hpPercent());
+                    Toast.makeText(Combat.this, player+"/"+(pokemonFront.hpPercent()), Toast.LENGTH_SHORT).show();
                     if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
                     else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
                     else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
                 }else{
-                    pokemonBack.setCurrentHp(pokemonBack.getCurrentHp()-damage);
+                    pk_hpBar.setProgress(pokemonFront.hpPercent());
                     pkb_hpBar.setProgress(pokemonBack.hpPercent());
                     if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
                     else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
                     else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
                 }
+                pk_hpBar.setProgress(pokemonFront.hpPercent());
+                pkb_hpBar.setProgress(pokemonBack.hpPercent());
             }
-        }, 500);
+        }, 1000);*/
+
+        if(player==1){
+            h.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pk_hpBar.setProgress(pokemonFront.hpPercent());
+                    pkb_hpBar.setProgress(pokemonBack.hpPercent());
+                    Toast.makeText(Combat.this, player+"/"+(pokemonFront.hpPercent()), Toast.LENGTH_SHORT).show();
+                    if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
+                    else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
+                    else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
+                }
+            },1000);
+        }else{
+            h.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pk_hpBar.setProgress(pokemonFront.hpPercent());
+                    pkb_hpBar.setProgress(pokemonBack.hpPercent());
+                    if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
+                    else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
+                    else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
+                }
+            },1000);
+        }
 
         h.postDelayed(new Runnable() {
             public void run() {
                 constraintPk.setVisibility(View.INVISIBLE);
                 constraintPkb.setVisibility(View.INVISIBLE);
                 textConstraint.setVisibility(View.VISIBLE);
+                screentext.setText("...");
                 activatedBackGround=true;
             }
-        }, 1000);
+        }, 5000);
     }
 
     private void commandKill(int player){
         if(player==1){
-            pkb.setVisibility(View.INVISIBLE);
+            pk.setVisibility(View.INVISIBLE);
             screentext.setText(pokemonFront.getName()+" ha sido debilitado");
         }else{
-            pk.setVisibility(View.INVISIBLE);
+            pkb.setVisibility(View.INVISIBLE);
             screentext.setText(pokemonBack.getName()+" ha sido debilitado");
         }
     }
