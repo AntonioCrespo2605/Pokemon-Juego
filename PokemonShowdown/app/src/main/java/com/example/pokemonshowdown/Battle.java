@@ -223,13 +223,13 @@ public class Battle extends AppCompatActivity {
                         if (pk1py1.isAlive()) {
                             pokemonBack = new PokemonBattler(pk1py1);
                             p1Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     } else {
                         if (pk1py2.isAlive()) {
                             pokemonFront = new PokemonBattler(pk1py2);
                             p2Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     }
 
@@ -257,13 +257,13 @@ public class Battle extends AppCompatActivity {
                         if (pk2py1.isAlive()) {
                             pokemonBack = new PokemonBattler(pk2py1);
                             p1Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     } else {
                         if (pk2py2.isAlive()) {
                             pokemonFront = new PokemonBattler(pk2py2);
                             p2Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     }
 
@@ -291,13 +291,13 @@ public class Battle extends AppCompatActivity {
                         if (pk3py1.isAlive()) {
                             pokemonBack = new PokemonBattler(pk3py1);
                             p1Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     } else {
                         if (pk3py2.isAlive()) {
                             pokemonFront = new PokemonBattler(pk3py2);
                             p2Died = false;
-                            checkIfDied();
+                            checkIfIsDead();
                         }
                     }
 
@@ -380,182 +380,14 @@ public class Battle extends AppCompatActivity {
 
     }
 
-    private void randomBackground() {
-        Random r = new Random();
-        int random = r.nextInt(BACKGROUNDS.length);
-        background.setImageResource(BACKGROUNDS[random]);
-        switch (random) {
+    protected void onPause() {
+        super.onPause();
+        music.pause();
+    }
 
-            case 1:
-            case 2:
-            case 25:
-                music = MediaPlayer.create(Battle.this, R.raw.eterna_forest);
-                break;
-
-            case 5:
-            case 6:
-            case 40:
-                music = MediaPlayer.create(Battle.this, R.raw.anistar_city);
-                break;
-
-            case 0:
-            case 7:
-            case 26:
-            case 31:
-            case 32:
-                music = MediaPlayer.create(Battle.this, R.raw.on_the_beach);
-                break;
-
-            case 16:
-            case 33:
-            case 34:
-            case 35:
-            case 36:
-               music = MediaPlayer.create(Battle.this, R.raw.route_209);
-                break;
-            case 27:
-            case 28:
-            case 29:
-            case 30:
-                music = MediaPlayer.create(Battle.this, R.raw.one_summer_day);
-                break;
-            case 39:
-                music = MediaPlayer.create(Battle.this, R.raw.underground_ruins_bw);
-                break;
-            case 10:
-            case 13:
-            case 15:
-            case 22:
-            case 23:
-            case 24:
-                music = MediaPlayer.create(Battle.this, R.raw.route_216);
-                break;
-            case 3:
-            case 4:
-            case 12:
-                music = MediaPlayer.create(Battle.this, R.raw.pokemon_mansion);
-                break;
-            case 38:
-                music = MediaPlayer.create(Battle.this, R.raw.xy_electric_gym);
-                break;
-
-            case 9:
-                music = MediaPlayer.create(Battle.this, R.raw.trainer_battle);
-                break;
-
-            case 17:
-                music = MediaPlayer.create(Battle.this, R.raw.pastoriacity);
-                break;
-            case 21:
-                music = MediaPlayer.create(Battle.this, R.raw.driftveil_city);
-                break;
-
-            case 18:
-            case 19:
-            case 20:
-                music = MediaPlayer.create(Battle.this, R.raw.route111);
-                break;
-            case 8:
-                music = MediaPlayer.create(Battle.this, R.raw.nimbasa_city);
-                break;
-            case 14:
-            case 37:
-            case 41:
-                music = MediaPlayer.create(Battle.this, R.raw.vast_canyon);
-                break;
-            case 11:
-                music = MediaPlayer.create(Battle.this, R.raw.lunala_appears);
-                break;
-        }
-        music.setLooping(true);
+    protected void onResume() {
+        super.onResume();
         music.start();
-    }
-
-    private void showDeads() {
-        cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
-        cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
-        cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
-        ColorMatrix matrix = new ColorMatrix();
-        matrix.setSaturation(0);
-        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-        pokemon_team.setVisibility(View.VISIBLE);
-        if (p1Died) {
-            pk1.setImageResource(pk1py1.getImg());
-            pk2.setImageResource(pk2py1.getImg());
-            pk3.setImageResource(pk3py1.getImg());
-            if (pk1py1.isAlive()) {
-                pk1.setColorFilter(null);
-            } else {
-                pk1.setColorFilter(filter);
-            }
-            if (pk2py1.isAlive()) {
-                pk2.setColorFilter(null);
-            } else {
-                pk2.setColorFilter(filter);
-            }
-            if (pk3py1.isAlive()) {
-                pk3.setColorFilter(null);
-            } else {
-                pk3.setColorFilter(filter);
-            }
-        } else {
-            pk1.setImageResource(pk1py2.getImg());
-            pk2.setImageResource(pk2py2.getImg());
-            pk3.setImageResource(pk3py2.getImg());
-            if (pk1py2.isAlive()) {
-                pk1.setColorFilter(null);
-            } else {
-                pk1.setColorFilter(filter);
-            }
-            if (pk2py2.isAlive()) {
-                pk2.setColorFilter(null);
-            } else {
-                pk2.setColorFilter(filter);
-            }
-            if (pk3py2.isAlive()) {
-                pk3.setColorFilter(null);
-            } else {
-                pk3.setColorFilter(filter);
-            }
-        }
-    }
-
-    private void checkFinal() {
-        if (!player1Continue() && !player2Continue()) {
-            Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
-        } else if (!player1Continue()) {
-            Toast.makeText(this, "Gana el jugador 2", Toast.LENGTH_SHORT).show();
-        } else if (!player2Continue()) {
-            Toast.makeText(this, "Gana el jugador 1", Toast.LENGTH_SHORT).show();
-        } else {
-            activatedBackGround = false;
-            clicCounter = 0;
-            checkIfDied();
-        }
-    }
-
-    private void checkIfDied() {
-        if (!p1Died && !p2Died) {
-            pk.setVisibility(View.VISIBLE);
-            pkb.setVisibility(View.VISIBLE);
-            deadMode = false;
-            modeCombat = false;
-            activatedBackGround = false;
-            playerturnscreen.setImageResource(t1);
-            reverseBattlers();
-            constraintPk.setVisibility(View.VISIBLE);
-            constraintPkb.setVisibility(View.VISIBLE);
-            pkbHealth.setVisibility(View.VISIBLE);
-            changeTurn();
-        } else {
-            screentext.setText("Elije un nuevo pokemon");
-
-            if (p1Died) playerturnscreen.setImageResource(t1);
-            else playerturnscreen.setImageResource(t2);
-
-            deadMode = true;
-            playerturnscreen.setVisibility(View.VISIBLE);
-        }
     }
 
     private void backgroundClicker() {
@@ -1109,6 +941,99 @@ public class Battle extends AppCompatActivity {
         } else playerturn.setVisibility(View.VISIBLE);
 
     }
+     //fondo random y musica dependiente de este
+    private void randomBackground() {
+        Random r = new Random();
+        int random = r.nextInt(BACKGROUNDS.length);
+        background.setImageResource(BACKGROUNDS[random]);
+        switch (random) {
+
+            case 1:
+            case 2:
+            case 25:
+                music = MediaPlayer.create(Battle.this, R.raw.eterna_forest);
+                break;
+
+            case 5:
+            case 6:
+            case 40:
+                music = MediaPlayer.create(Battle.this, R.raw.anistar_city);
+                break;
+
+            case 0:
+            case 7:
+            case 26:
+            case 31:
+            case 32:
+                music = MediaPlayer.create(Battle.this, R.raw.on_the_beach);
+                break;
+
+            case 16:
+            case 33:
+            case 34:
+            case 35:
+            case 36:
+                music = MediaPlayer.create(Battle.this, R.raw.route_209);
+                break;
+            case 27:
+            case 28:
+            case 29:
+            case 30:
+                music = MediaPlayer.create(Battle.this, R.raw.one_summer_day);
+                break;
+            case 39:
+                music = MediaPlayer.create(Battle.this, R.raw.underground_ruins_bw);
+                break;
+            case 10:
+            case 13:
+            case 15:
+            case 22:
+            case 23:
+            case 24:
+                music = MediaPlayer.create(Battle.this, R.raw.route_216);
+                break;
+            case 3:
+            case 4:
+            case 12:
+                music = MediaPlayer.create(Battle.this, R.raw.pokemon_mansion);
+                break;
+            case 38:
+                music = MediaPlayer.create(Battle.this, R.raw.xy_electric_gym);
+                break;
+
+            case 9:
+                music = MediaPlayer.create(Battle.this, R.raw.trainer_battle);
+                break;
+
+            case 17:
+                music = MediaPlayer.create(Battle.this, R.raw.pastoriacity);
+                break;
+            case 21:
+                music = MediaPlayer.create(Battle.this, R.raw.driftveil_city);
+                break;
+
+            case 18:
+            case 19:
+            case 20:
+                music = MediaPlayer.create(Battle.this, R.raw.route111);
+                break;
+            case 8:
+                music = MediaPlayer.create(Battle.this, R.raw.nimbasa_city);
+                break;
+            case 14:
+            case 37:
+            case 41:
+                music = MediaPlayer.create(Battle.this, R.raw.vast_canyon);
+                break;
+            case 11:
+                music = MediaPlayer.create(Battle.this, R.raw.lunala_appears);
+                break;
+            default:
+                music = MediaPlayer.create(Battle.this, R.raw.trainer_battle);
+        }
+        music.setLooping(true);
+        music.start();
+    }
 
     //se activa el modo combate
     private void showBattle() {
@@ -1347,6 +1272,55 @@ public class Battle extends AppCompatActivity {
                 cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
                 cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
                 cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_selected));
+            }
+        }
+    }
+    //muestra los pokemon debilitados oscuros al elegir pokemon
+    private void showDeads() {
+        cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+        cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+        cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+        pokemon_team.setVisibility(View.VISIBLE);
+        if (p1Died) {
+            pk1.setImageResource(pk1py1.getImg());
+            pk2.setImageResource(pk2py1.getImg());
+            pk3.setImageResource(pk3py1.getImg());
+            if (pk1py1.isAlive()) {
+                pk1.setColorFilter(null);
+            } else {
+                pk1.setColorFilter(filter);
+            }
+            if (pk2py1.isAlive()) {
+                pk2.setColorFilter(null);
+            } else {
+                pk2.setColorFilter(filter);
+            }
+            if (pk3py1.isAlive()) {
+                pk3.setColorFilter(null);
+            } else {
+                pk3.setColorFilter(filter);
+            }
+        } else {
+            pk1.setImageResource(pk1py2.getImg());
+            pk2.setImageResource(pk2py2.getImg());
+            pk3.setImageResource(pk3py2.getImg());
+            if (pk1py2.isAlive()) {
+                pk1.setColorFilter(null);
+            } else {
+                pk1.setColorFilter(filter);
+            }
+            if (pk2py2.isAlive()) {
+                pk2.setColorFilter(null);
+            } else {
+                pk2.setColorFilter(filter);
+            }
+            if (pk3py2.isAlive()) {
+                pk3.setColorFilter(null);
+            } else {
+                pk3.setColorFilter(filter);
             }
         }
     }
@@ -1622,6 +1596,44 @@ public class Battle extends AppCompatActivity {
             toret.add("/killself" + player);
         }
 
+    }
+
+    private void checkIfIsDead() {
+        if (!p1Died && !p2Died) {
+            pk.setVisibility(View.VISIBLE);
+            pkb.setVisibility(View.VISIBLE);
+            deadMode = false;
+            modeCombat = false;
+            activatedBackGround = false;
+            playerturnscreen.setImageResource(t1);
+            reverseBattlers();
+            constraintPk.setVisibility(View.VISIBLE);
+            constraintPkb.setVisibility(View.VISIBLE);
+            pkbHealth.setVisibility(View.VISIBLE);
+            changeTurn();
+        } else {
+            screentext.setText("Elije un nuevo pokemon");
+
+            if (p1Died) playerturnscreen.setImageResource(t1);
+            else playerturnscreen.setImageResource(t2);
+
+            deadMode = true;
+            playerturnscreen.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void checkFinal() {
+        if (!player1Continue() && !player2Continue()) {
+            Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
+        } else if (!player1Continue()) {
+            Toast.makeText(this, "Gana el jugador 2", Toast.LENGTH_SHORT).show();
+        } else if (!player2Continue()) {
+            Toast.makeText(this, "Gana el jugador 1", Toast.LENGTH_SHORT).show();
+        } else {
+            activatedBackGround = false;
+            clicCounter = 0;
+            checkIfIsDead();
+        }
     }
 
     private static double getDamage(Move move, PokemonBattler focus, PokemonBattler victim) {
