@@ -5,9 +5,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -44,6 +48,11 @@ public class MovementsPicker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movements_picker);
+
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        startService(music);
 
         next = findViewById(R.id.nextB);
 
@@ -157,7 +166,8 @@ public class MovementsPicker extends AppCompatActivity {
 
                         intent.putExtra("pk3py2", b.getInt("pk3py2"));
                         getMoves(movesPk3py2, 3, 2);
-
+                        mServ.stopMusic();
+                        doUnbindService();
                         startActivity(intent);
                         finish();
                         break;
@@ -169,6 +179,19 @@ public class MovementsPicker extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mServ.pauseMusic();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mServ.resumeMusic();
+    }
+
+    //servicio de musica
     private Intent getMoves(List<Move> moves, int p, int j) {
         switch (moves.size()) {
             case 4:
@@ -182,6 +205,33 @@ public class MovementsPicker extends AppCompatActivity {
                 break;
         }
         return intent;
+    }
+
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder) binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService() {
+        if (mIsBound) {
+            unbindService(Scon);
+            mIsBound = false;
+        }
     }
 
 }

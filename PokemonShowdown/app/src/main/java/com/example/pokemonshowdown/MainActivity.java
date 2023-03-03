@@ -5,10 +5,14 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        startService(music);
 
         //VIEWS
         ll = findViewById(R.id.linearLayoutP);
@@ -120,6 +129,18 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new PokemonRecyclerViewAdapter(this, pokemonList, p);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
         rv.setAdapter(myAdapter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mServ.pauseMusic();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mServ.resumeMusic();
     }
 
     private void fillPokemons() {
@@ -624,4 +645,31 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
     }
 
+    //servicio de musica
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder) binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService() {
+        if (mIsBound) {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
 }
