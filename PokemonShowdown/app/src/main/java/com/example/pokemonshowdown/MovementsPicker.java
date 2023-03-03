@@ -40,7 +40,6 @@ public class MovementsPicker extends AppCompatActivity {
     private ListAdapter listAdapter;
     private ThisViewHolder vh;
 
-
     private int cont;
     private Intent intent;
 
@@ -182,13 +181,25 @@ public class MovementsPicker extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mServ.pauseMusic();
+        try {
+            if (mServ.isPlaying()) {
+                mServ.pauseMusic();
+            }
+        }catch (Exception e){
+            System.err.println("Error" + e);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mServ.resumeMusic();
+        try {
+            if (!mServ.isPlaying()) {
+                mServ.resumeMusic();
+            }
+        }catch (Exception e){
+            System.err.println("Error" + e);
+        }
     }
 
     //servicio de musica

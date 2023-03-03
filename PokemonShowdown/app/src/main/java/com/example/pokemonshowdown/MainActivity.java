@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Pokemon> pPlyr1;
     private ArrayList<Pokemon> pPlyr2;
 
+    private boolean service = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Intent music = new Intent();
         music.setClass(this,MusicService.class);
         startService(music);
+        service = true;
 
         //VIEWS
         ll = findViewById(R.id.linearLayoutP);
@@ -134,13 +137,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mServ.pauseMusic();
+        try {
+            if (mServ.isPlaying()) {
+                mServ.pauseMusic();
+            }
+        }catch (Exception e){
+            System.err.println("Error" + e);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mServ.resumeMusic();
+        try {
+            if (!mServ.isPlaying()) {
+                mServ.resumeMusic();
+            }
+        }catch (Exception e){
+            System.err.println("Error" + e);
+        }
     }
 
     private void fillPokemons() {

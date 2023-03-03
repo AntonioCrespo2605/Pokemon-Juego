@@ -65,6 +65,8 @@ import android.widget.Toast;
             }
         }
 
+
+
         public void resumeMusic() {
             if (mPlayer.isPlaying() == false) {
                 mPlayer.seekTo(length);
@@ -106,5 +108,15 @@ import android.widget.Toast;
             return false;
         }
 
+        public boolean isPlaying() {
+            if (mPlayer != null) {
+                try {
+                    return mPlayer.isPlaying();
+                } catch (Exception e){
+                    System.err.println("Error en Music Service" + e);
+                }
+            }
+            return false;
+        }
     }
 
