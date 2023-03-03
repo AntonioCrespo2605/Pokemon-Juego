@@ -468,6 +468,10 @@ public class Battle extends AppCompatActivity {
                 break;
             case "/poison2":commandPoison(2);
                 break;
+            case "/transformation1":commandTransformation(1);
+                break;
+            case "/transformation2":commandTransformation(2);
+                break;
         }
     }
 
@@ -695,7 +699,6 @@ public class Battle extends AppCompatActivity {
 
     //variable necesaria para este metodo
     private int hpAux;
-
     private void commandHealing(int player) {
         activatedBackGround = false;
         constraintPk.setVisibility(View.VISIBLE);
@@ -861,6 +864,36 @@ public class Battle extends AppCompatActivity {
                 activatedBackGround = true;
             }
         }, 1000);
+    }
+
+    private void commandTransformation(int player){
+        if(player==1){
+            pokemonBack.setImg(pokemonFront.getImg());
+            pokemonBack.setImgB(pokemonFront.getImgB());
+            pokemonBack.setMoves(pokemonFront.getMoves());
+            pokemonBack.setType1(pokemonFront.getType1());
+            pokemonBack.setType2(pokemonFront.getType2());
+
+            screentext.setText(pokemonBack.getName()+" se ha transformado");
+            pkb.setImageResource(pokemonBack.getImgB());
+
+            if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
+            else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
+            else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
+
+        }else{
+            pokemonFront.setImg(pokemonBack.getImg());
+            pokemonFront.setImgB(pokemonBack.getImgB());
+            pokemonFront.setMoves(pokemonBack.getMoves());
+            pokemonFront.setType1(pokemonBack.getType1());
+            pokemonFront.setType2(pokemonBack.getType2());
+
+            screentext.setText(pokemonFront.getName()+" se ha transformado");
+
+            if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
+            else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
+            else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
+        }
     }
     /******************************* UI ******************************************/
 
@@ -1557,15 +1590,14 @@ public class Battle extends AppCompatActivity {
 
         //si es un movimiento de estado
         if (!movefocus.isAtkSt()) {
-            //if(movefocus.getId()==x){
-
-
-            
-            // }
-            if (victim.getStatus() != 0) {
-                toret.add(focus.getName() + " ha fallado el ataque");
-            } else {
-                toret.add("/newStatus" + player);//comando
+            if(movefocus.getId()==111){
+                toret.add("/transformation"+player);
+            }else{
+                if (victim.getStatus() != 0) {
+                    toret.add(focus.getName() + " ha fallado el ataque");
+                } else {
+                    toret.add("/newStatus" + player);//comando
+                }
             }
             return;
         }

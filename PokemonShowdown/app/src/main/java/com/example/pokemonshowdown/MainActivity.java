@@ -266,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewMove(new Move(108, "Picotazo", 35, 100, -1, 0, 8, 0, true, false));
         handler.addNewMove(new Move(109, "Tornado", 40, 100, -1, 0, 8, 0, true, false));
         handler.addNewMove(new Move(110, "Vuelo", 90, 95, -1, 0, 8, 0, true, false));
+
+        handler.addNewMove(new Move(111, "Transformación", 0, 100, -1, 0, 13, 0, false, false));
     }
 
     private void initPokemons() {
@@ -618,7 +620,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(151, "Mew", 15, 0, 100, 100, 100, 100, R.drawable.p151, R.drawable.p151b);
-        p.addMovesById(new int[]{65, 67, 90, 64, 104, 68, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 82, 84, 12, 15, 97, 94, 39, 41, 22, 44, 105, 16, 88, 55, 91, 76, 49, 110, 7, 56}, handler.getMoves());
+        p.addMovesById(new int[]{65, 67, 90, 64, 104, 68, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 82, 84, 12, 15, 97, 94, 39, 41, 22, 44, 105, 16, 88, 55, 91, 76, 49, 110, 7, 56, 111}, handler.getMoves());
         handler.addNewPokemon(p);
     }
 

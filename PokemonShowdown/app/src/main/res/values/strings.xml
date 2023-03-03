@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PokemonShowdown</string>
+    <string name="app_name">Pokemon Showdown</string>
     <string name="logo_de_pokemon">Logo de pokemon</string>
     <string name="pokeball">Pokeball</string>
     <string name="portada">Pantalla dividida en blanco y rojo</string>
