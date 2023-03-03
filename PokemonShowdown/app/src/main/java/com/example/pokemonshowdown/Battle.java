@@ -390,31 +390,7 @@ public class Battle extends AppCompatActivity {
         music.start();
     }
 
-    private void backgroundClicker() {
-        if (clicCounter < firstPart.size()) {
-            if (firstPart.get(clicCounter).charAt(0) == '/')
-                executeCommand(firstPart.get(clicCounter));
-            else screentext.setText(firstPart.get(clicCounter));
-        } else {
-            if (clicCounter == firstPart.size())
-                generateSecondDialog(player1first);
-            if (clicCounter < firstPart.size() + secondPart.size()) {
-                if (secondPart.get(clicCounter - firstPart.size()).charAt(0) == '/')
-                    executeCommand(secondPart.get(clicCounter - firstPart.size()));
-                else screentext.setText(secondPart.get(clicCounter - firstPart.size()));
-            }else if (clicCounter == firstPart.size() + secondPart.size()) {
-                generateThirdDialog();
-                if(thirdPart.size()!=0){
-                    executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
-                }
-            } else if (clicCounter < firstPart.size() + secondPart.size() + thirdPart.size()) {
-                executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
-            } else {
-                checkFinal();
-            }
-        }
-        clicCounter++;
-    }
+
 
     private void executeCommand(String command) {
         switch (command) {
@@ -1440,6 +1416,32 @@ public class Battle extends AppCompatActivity {
         PokemonBattler aux = new PokemonBattler(pokemonBack);
         pokemonBack = new PokemonBattler(pokemonFront);
         pokemonFront = new PokemonBattler(aux);
+    }
+
+    private void backgroundClicker() {
+        if (clicCounter < firstPart.size()) {
+            if (firstPart.get(clicCounter).charAt(0) == '/')
+                executeCommand(firstPart.get(clicCounter));
+            else screentext.setText(firstPart.get(clicCounter));
+        } else {
+            if (clicCounter == firstPart.size())
+                generateSecondDialog(player1first);
+            if (clicCounter < firstPart.size() + secondPart.size()) {
+                if (secondPart.get(clicCounter - firstPart.size()).charAt(0) == '/')
+                    executeCommand(secondPart.get(clicCounter - firstPart.size()));
+                else screentext.setText(secondPart.get(clicCounter - firstPart.size()));
+            }else if (clicCounter == firstPart.size() + secondPart.size()) {
+                generateThirdDialog();
+                if(thirdPart.size()!=0){
+                    executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
+                }
+            } else if (clicCounter < firstPart.size() + secondPart.size() + thirdPart.size()) {
+                executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
+            } else {
+                checkFinal();
+            }
+        }
+        clicCounter++;
     }
 
     //COMBATE
