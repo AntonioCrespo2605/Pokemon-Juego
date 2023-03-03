@@ -16,6 +16,13 @@
     -<string name="atk2">At2</string>*-
     <string name="atk3">At3</string>
     <string name="atk4">At4</string>
+<<<<<<< HEAD
+    <string name="disco">img disco</string>
+    <string name="name_move">Move Name</string>
+    <string name="precision">Accracy</string>
+    <string name="move_type">Move type</string>
+    <string name="potency">Potencia</string>
+=======
     <string name="fabMoves">Boton para terminar la selección de movimientos</string>
     <string name="status">Estado aplicado en el pokemon</string>
     <string name="texto_ejemplo_combate">Tu Gengar ha usado Garra Umbria</string>
@@ -47,5 +54,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+>>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
 
 </resources>

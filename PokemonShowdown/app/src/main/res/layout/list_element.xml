@@ -18,6 +18,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+<<<<<<< HEAD
+        <ImageView
+            android:id="@+id/cd"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/disco"
+            app:srcCompat="@drawable/p003" />
+
+        <TextView
+            android:id="@+id/mov_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/cd"
+            android:text="@string/name_move"
+            android:textColor="#94000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mov_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="28dp"
+            android:text="@string/precision"
+            android:textColor="#94000000" />
+
+        <TextView
+            android:id="@+id/mov_dmg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mov_name"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="21dp"
+            android:text="@string/potency"
+            android:textColor="#616161" />
+
+        <ImageView
+            android:id="@+id/mov_type"
+            android:layout_width="78dp"
+            android:layout_height="22dp"
+            android:layout_below="@+id/mov_name"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
+            android:contentDescription="@string/move_type"
+            android:layout_toEndOf="@+id/cd"
+            app:srcCompat="@drawable/p003" />
+=======
         <LinearLayout
             android:id="@+id/rl"
             android:layout_width="match_parent"
@@ -48,6 +101,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="0dp"
                     android:paddingBottom="2dp">
+>>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
 
                     <TextView
                         android:id="@+id/mov_name"
