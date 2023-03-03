@@ -581,7 +581,7 @@ public class Battle extends AppCompatActivity {
                     pkstatus.setImageResource(quemado);
                     break;
                 case 3:
-                    screentext.setText(pokemonFront.getName() + " ha sido envenenado puta");
+                    screentext.setText(pokemonFront.getName() + " ha sido envenenado");
                     pkstatus.setImageResource(envenenado);
                     break;
                 case 4:
