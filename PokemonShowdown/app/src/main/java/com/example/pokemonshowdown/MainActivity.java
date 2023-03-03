@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(20, "Raticate", 13, 0, 55, 81, 70, 97, R.drawable.p020, R.drawable.p020b);
-        p.addMovesById(new int[]{70, 37, 104, 59, 51, 54, 6, 5, 25, 26, 63, 57, 15, 44}, handler.getMoves());
+        p.addMovesById(new int[]{60,70, 37, 104, 59, 51, 54, 6, 5, 25, 26, 63, 57, 15, 44}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(22, "Fearow", 13, 8, 65, 90, 65, 100, R.drawable.p022, R.drawable.p022b);
@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(28, "Sandslash", 11, 0, 75, 100, 110, 65, R.drawable.p028, R.drawable.p028b);
-        p.addMovesById(new int[]{34, 50, 100, 104, 59, 51, 54, 63, 32, 57, 97, 94, 44, 91, 49, 56}, handler.getMoves());
+        p.addMovesById(new int[]{34, 50, 100, 104, 59, 51, 54, 63, 32, 57, 97, 94, 44, 91, 49, 56,60}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(31, "Nidoqueen", 14, 11, 90, 92, 87, 76, R.drawable.p031, R.drawable.p031b);
@@ -351,23 +351,23 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(52, "Meowth", 13, 0, 40, 45, 40, 90, R.drawable.p052, R.drawable.p052b);
-        p.addMovesById(new int[]{34, 93, 52, 50, 51, 104, 59, 54, 6, 5, 57, 15}, handler.getMoves());
+        p.addMovesById(new int[]{34, 93, 52, 50, 51, 104, 59, 54, 6, 5, 57, 15,60}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(53, "Persian", 13, 0, 65, 70, 65, 115, R.drawable.p053, R.drawable.p053b);
-        p.addMovesById(new int[]{34, 93, 52, 50, 104, 59, 51, 54, 6, 5, 63, 57, 15, 44}, handler.getMoves());
+        p.addMovesById(new int[]{34, 93, 52, 50, 104, 59, 51, 54, 6, 5, 63, 57, 15, 44,60}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(54, "Psyduck", 18, 0, 50, 69, 50, 100, R.drawable.p054, R.drawable.p054b);
-        p.addMovesById(new int[]{34, 86, 3, 51, 29, 89, 66, 65, 64, 59, 104, 54, 6, 5, 25, 26, 52, 32, 57, 44, 7, 56}, handler.getMoves());
+        p.addMovesById(new int[]{60,34, 86, 3, 51, 29, 89, 66, 65, 64, 59, 104, 54, 6, 5, 25, 26, 52, 32, 57, 44, 7, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(55, "Golduck", 18, 0, 80, 95, 80, 85, R.drawable.p055, R.drawable.p055b);
-        p.addMovesById(new int[]{34, 86, 3, 51, 29, 89, 66, 65, 64, 104, 59, 54, 6, 5, 25, 26, 63, 52, 32, 57, 44, 7, 56}, handler.getMoves());
+        p.addMovesById(new int[]{60,34, 86, 3, 51, 29, 89, 66, 65, 64, 104, 59, 54, 6, 5, 25, 26, 63, 52, 32, 57, 44, 7, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(57, "Primeape", 6, 0, 65, 105, 70, 95, R.drawable.p057, R.drawable.p057b);
-        p.addMovesById(new int[]{34, 29, 28, 57, 65, 64, 104, 59, 51, 54, 63, 52, 32, 15, 44, 91, 56}, handler.getMoves());
+        p.addMovesById(new int[]{34, 29, 28, 57, 65, 64, 104, 59, 51, 54, 63, 52, 32, 15, 44, 91, 56,60}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(59, "Arcanine", 7, 0, 90, 110, 85, 95, R.drawable.p059, R.drawable.p059b);
@@ -379,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(65, "Alakazam", 15, 0, 55, 135, 95, 120, R.drawable.p065, R.drawable.p065b);
-        p.addMovesById(new int[]{86, 65, 64, 104, 59, 51, 54, 63, 32, 57, 90, 44, 16, 88, 76}, handler.getMoves());
+        p.addMovesById(new int[]{86,73, 65, 64, 104, 59, 51, 54, 63, 32, 57, 90, 44, 16, 88, 76}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(68, "Machamp", 6, 0, 90, 130, 85, 55, R.drawable.p068, R.drawable.p068b);
@@ -391,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(73, "Tentacruel", 18, 14, 80, 80, 120, 100, R.drawable.p073, R.drawable.p073b);
-        p.addMovesById(new int[]{98, 75, 47, 100, 5, 3, 25, 26, 63, 49, 7, 2}, handler.getMoves());
+        p.addMovesById(new int[]{98,74, 75, 47, 100, 5, 3, 25, 26, 63, 49, 7, 2}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(76, "Golem", 16, 11, 80, 120, 130, 45, R.drawable.p076, R.drawable.p076b);
@@ -427,7 +427,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(91, "Cloyster", 18, 12, 50, 95, 180, 70, R.drawable.p091, R.drawable.p091b);
-        p.addMovesById(new int[]{24, 75, 8, 104, 51, 54, 6, 5, 25, 26, 63, 57, 55, 76, 7}, handler.getMoves());
+        p.addMovesById(new int[]{24, 75, 8, 104, 51, 54, 6, 5, 25, 26, 63, 57, 55, 76, 7, 46}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(94, "Gengar", 9, 14, 80, 130, 95, 110, R.drawable.p094, R.drawable.p094b);
@@ -463,7 +463,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(107, "Hitmonchan", 6, 0, 50, 105, 110, 76, R.drawable.p107, R.drawable.p107b);
-        p.addMovesById(new int[]{71, 23, 14, 65, 64, 104, 59, 51, 54, 32, 57, 44, 56}, handler.getMoves());
+        p.addMovesById(new int[]{71,72, 23, 14, 65, 64, 104, 59, 51, 54, 32, 57, 44, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(108, "Lickitung", 13, 0, 90, 60, 76, 30, R.drawable.p108, R.drawable.p108b);
@@ -479,15 +479,15 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(113, "Chansey", 13, 0, 250, 35, 105, 50, R.drawable.p113, R.drawable.p113b);
-        p.addMovesById(new int[]{53, 45, 54, 65, 64, 104, 59, 51, 6, 5, 25, 26, 63, 32, 57, 84, 15, 90, 41, 22, 44, 16, 88, 76, 56}, handler.getMoves());
+        p.addMovesById(new int[]{53,67, 45, 54, 65, 64, 104, 59, 51, 6, 5, 25, 26, 63, 32, 57, 84, 15, 90, 41, 22, 44, 16, 88, 76, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(114, "Tangela", 10, 0, 65, 100, 115, 60, R.drawable.p114, R.drawable.p114b);
-        p.addMovesById(new int[]{35, 77, 81, 102, 83, 85, 38, 104, 59, 51, 54, 63, 57, 82, 84, 44, 49}, handler.getMoves());
+        p.addMovesById(new int[]{35, 77,74, 81, 102, 83, 85, 38, 104, 59, 51, 54, 63, 57, 82, 84, 44, 49}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(115, "Kangaskhan", 13, 0, 105, 95, 80, 90, R.drawable.p115, R.drawable.p115b);
-        p.addMovesById(new int[]{93, 69, 58, 65, 64, 104, 59, 51, 54, 6, 5, 25, 26, 63, 32, 57, 15, 97, 94, 22, 44, 91, 7, 56}, handler.getMoves());
+        p.addMovesById(new int[]{93,72, 69, 58, 65, 64, 104, 59, 51, 54, 6, 5, 25, 26, 63, 32, 57, 15, 97, 94, 22, 44, 91, 7, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(117, "Seadra", 18, 0, 55, 95, 95, 85, R.drawable.p117, R.drawable.p117b);
@@ -499,7 +499,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(121, "Starmie", 18, 15, 60, 100, 85, 115, R.drawable.p121, R.drawable.p121b);
-        p.addMovesById(new int[]{5, 70, 104, 51, 54, 6, 25, 26, 63, 57, 15, 90, 44, 16, 88, 76, 7}, handler.getMoves());
+        p.addMovesById(new int[]{5, 70,73, 104, 51, 54, 6, 25, 26, 63, 57, 15, 90, 44, 16, 88, 76, 7}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(122, "Mr.Mime", 15, 5, 40, 100, 120, 90, R.drawable.p122, R.drawable.p122b);
@@ -559,11 +559,11 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(137, "Porygon", 13, 0, 65, 85, 75, 30, R.drawable.p137, R.drawable.p137b);
-        p.addMovesById(new int[]{70, 89, 76, 104, 51, 54, 25, 26, 63, 57, 15, 90, 44, 16, 88}, handler.getMoves());
+        p.addMovesById(new int[]{70,73, 89, 76, 104, 51, 54, 25, 26, 63, 57, 15, 90, 44, 16, 88}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(139, "Omastar", 16, 18, 70, 115, 125, 55, R.drawable.p139, R.drawable.p139b);
-        p.addMovesById(new int[]{5, 48, 3, 104, 68, 59, 51, 54, 6, 25, 26, 63, 32, 57, 44, 7}, handler.getMoves());
+        p.addMovesById(new int[]{5, 48,74, 3, 104, 68, 59, 51, 54, 6, 25, 26, 63, 32, 57, 44, 7,46}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(141, "Kabutops", 16, 18, 60, 115, 105, 80, R.drawable.p141, R.drawable.p141b);
@@ -595,11 +595,12 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(150, "Mewtwo", 15, 0, 106, 154, 90, 130, R.drawable.p150, R.drawable.p150b);
-        p.addMovesById(new int[]{86, 90, 65, 64, 104, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 84, 15, 39, 22, 44, 16, 88, 76, 56}, handler.getMoves());
+        p.addMovesById(new int[]{86,73, 90, 65, 64, 104, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 84, 15, 39, 22, 44, 16, 88, 76, 56}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(151, "Mew", 15, 0, 100, 100, 100, 100, R.drawable.p151, R.drawable.p151b);
-        p.addMovesById(new int[]{65, 90, 64, 104, 68, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 82, 84, 12, 15, 97, 94, 39, 41, 22, 44, 105, 16, 88, 55, 91, 76, 49, 110, 7, 56}, handler.getMoves());
+        p.addMovesById(new int[]{65,67, 90, 64, 104, 68, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 82, 84, 12, 15, 97, 94, 39, 41, 22, 44, 105, 16, 88, 55, 91, 76, 49, 110, 7, 56}, handler.getMoves());
         handler.addNewPokemon(p);
     }
+
 }

@@ -16,5 +16,10 @@
     -<string name="atk2">At2</string>*-
     <string name="atk3">At3</string>
     <string name="atk4">At4</string>
+    <string name="disco">img disco</string>
+    <string name="name_move">Move Name</string>
+    <string name="precision">Accracy</string>
+    <string name="move_type">Move type</string>
+    <string name="potency">Potencia</string>
 
 </resources>

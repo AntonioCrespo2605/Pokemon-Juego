@@ -30,7 +30,6 @@ public class MovementsPicker extends AppCompatActivity {
     private List<Move> movesPk1py2;
     private List<Move> movesPk2py2;
     private List<Move> movesPk3py2;
-    private CardView cv;
     private FloatingActionButton next;
     private int cont;
     private  ListAdapter listAdapter;
@@ -41,8 +40,7 @@ public class MovementsPicker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movements_picker);
-        selected = new ArrayList<>();
-        mchoosed = new ArrayList<>();
+
         next=findViewById(R.id.nextB);
 
         Bundle b=getIntent().getExtras();
@@ -62,6 +60,10 @@ public class MovementsPicker extends AppCompatActivity {
 
         listAdapter = new ListAdapter(movesPk1py1,MovementsPicker.this);
         recyclerView.setAdapter(listAdapter);
+        selected = new ArrayList<>();
+        mchoosed = new ArrayList<>();
+        deselect();
+
 
         listAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,16 +74,16 @@ public class MovementsPicker extends AppCompatActivity {
                     if(selected.get(position)){
                         selected.set(position,false);
                         mchoosed.remove(listAdapter.mData.get(position));
-                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
+                        listAdapter.holder.cardDeselect();
                     }else{
                         selected.set(position,true);
                         mchoosed.remove(listAdapter.mData.get(position));
-                        cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.blue_selected));
+                        listAdapter.holder.cardSelect();
                     }
                 }else if(selected.get(position)){
                     selected.set(position,false);
                     mchoosed.remove(listAdapter.mData.get(position));
-                    cv.setBackgroundColor(ContextCompat.getColor(MovementsPicker.this, R.color.whitep));
+                    listAdapter.holder.cardDeselect();
                 }
                 if (getCountSelected() == 3) {
                     next.setVisibility(View.VISIBLE);
@@ -138,5 +140,11 @@ public class MovementsPicker extends AppCompatActivity {
             if (b) toret++;
         }
         return toret;
+    }
+
+    public void deselect() {
+        for (int i = 0; i < listAdapter.mData.size(); i++) {
+            selected.add(false);
+        }
     }
 }

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,6 +19,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     private LayoutInflater mInflater;
     private Context contexto;
     private View.OnClickListener listener;
+    public ViewHolder holder;
+
 
 
 
@@ -36,12 +40,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int ViewType) {
         View view = mInflater.inflate(R.layout.list_element, null);
         view.setOnClickListener(this);
-        return new ListAdapter.ViewHolder(view);
+        this.holder =  new ListAdapter.ViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int pos) {
         holder.bindData(mData.get(pos));
+
 
     }
 
@@ -64,7 +70,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iconImage, type;
         TextView name, mov_dmg, mov_accuracy;
-
+        private CardView cv;
         ViewHolder(View itemView) {
             super(itemView);
             iconImage = itemView.findViewById(R.id.cd);
@@ -72,6 +78,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
             name = itemView.findViewById(R.id.mov_name);
             mov_dmg = itemView.findViewById(R.id.mov_dmg);
             mov_accuracy = itemView.findViewById(R.id.mov_accuracy);
+            cv = itemView.findViewById(R.id.cv);
 
         }
 
@@ -84,6 +91,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
             mov_accuracy.setText(accuracy);
             //type.setImageResource(item.getType());
 
+        }
+
+        public  void cardSelect(){
+            cv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
+        }
+        public  void cardDeselect(){
+            cv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.whitep));
         }
 
 
