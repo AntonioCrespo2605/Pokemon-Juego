@@ -91,6 +91,7 @@ public class Battle extends AppCompatActivity {
     private boolean player1first;
 
     //Mediaplayer
+    MediaPlayer music;
 
 
     private Handler h;
@@ -380,28 +381,22 @@ public class Battle extends AppCompatActivity {
     }
 
     private void randomBackground() {
-        MediaPlayer bosque = MediaPlayer.create(Battle.this, R.raw.eterna_forest);
-        MediaPlayer city = MediaPlayer.create(Battle.this, R.raw.anistar_city);
-        MediaPlayer beach = MediaPlayer.create(Battle.this, R.raw.on_the_beach);
-        MediaPlayer route = MediaPlayer.create(Battle.this, R.raw.route_209);
-        MediaPlayer ghibli = MediaPlayer.create(Battle.this, R.raw.one_summer_day);
-        MediaPlayer ruins = MediaPlayer.create(Battle.this, R.raw.underground_ruins_bw);
-        MediaPlayer snow = MediaPlayer.create(Battle.this, R.raw.route_216);
         Random r = new Random();
         int random = r.nextInt(BACKGROUNDS.length);
         background.setImageResource(BACKGROUNDS[random]);
+        music.setLooping(true);
         switch (random) {
 
             case 1:
             case 2:
             case 25:
-                bosque.start();
+                music = MediaPlayer.create(Battle.this, R.raw.eterna_forest);
                 break;
 
             case 5:
             case 6:
             case 40:
-                city.start();
+                music = MediaPlayer.create(Battle.this, R.raw.anistar_city);
                 break;
 
             case 0:
@@ -409,47 +404,72 @@ public class Battle extends AppCompatActivity {
             case 26:
             case 31:
             case 32:
-                beach.start();
+                music = MediaPlayer.create(Battle.this, R.raw.on_the_beach);
                 break;
 
+            case 16:
             case 33:
             case 34:
             case 35:
             case 36:
-                route.start();
+               music = MediaPlayer.create(Battle.this, R.raw.route_209);
                 break;
             case 27:
             case 28:
             case 29:
             case 30:
-                ghibli.start();
+                music = MediaPlayer.create(Battle.this, R.raw.one_summer_day);
                 break;
             case 39:
-                ruins.start();
+                music = MediaPlayer.create(Battle.this, R.raw.underground_ruins_bw);
                 break;
-            case 11:
+            case 10:
             case 13:
             case 15:
             case 22:
             case 23:
             case 24:
-                snow.start();
+                music = MediaPlayer.create(Battle.this, R.raw.route_216);
+                break;
+            case 3:
+            case 4:
+            case 12:
+                music = MediaPlayer.create(Battle.this, R.raw.pokemon_mansion);
+                break;
+            case 38:
+                music = MediaPlayer.create(Battle.this, R.raw.xy_electric_gym);
                 break;
 
+            case 9:
+                music = MediaPlayer.create(Battle.this, R.raw.trainer_battle);
+                break;
 
+            case 17:
+                music = MediaPlayer.create(Battle.this, R.raw.pastoriacity);
+                break;
+            case 21:
+                music = MediaPlayer.create(Battle.this, R.raw.driftveil_city);
+                break;
 
-
-
-
+            case 18:
+            case 19:
+            case 20:
+                music = MediaPlayer.create(Battle.this, R.raw.route111);
+                break;
+            case 8:
+                music = MediaPlayer.create(Battle.this, R.raw.nimbasa_city);
+                break;
+            case 14:
+            case 37:
+            case 41:
+                music = MediaPlayer.create(Battle.this, R.raw.vast_canyon);
+                break;
+            case 11:
+                music = MediaPlayer.create(Battle.this, R.raw.lunala_appears);
+                break;
         }
 
-
-//        , 4fondo_circulo_azul, 5fondo_circulo_morado,  9fondo_futbol, 10fondo_futurista, 12fondo_luna, 13fondo_mansion,
-//                 15fondo_monte, 17fondo_otonho,
-//                18fondo_piscina,
-//                19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche,
-//                22fondo_pixel_disco,
-//                38fondo_rocoso, 39fondo_taller, 42fondo_volcan
+        music.start();
     }
 
     private void showDeads() {
