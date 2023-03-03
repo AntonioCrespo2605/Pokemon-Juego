@@ -1,4 +1,4 @@
-package com.example.pokemonshowdown;
+package com.example.pokemonshowdown.uicontrollers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,6 +22,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pokemonshowdown.objects.Pokemon;
+import com.example.pokemonshowdown.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

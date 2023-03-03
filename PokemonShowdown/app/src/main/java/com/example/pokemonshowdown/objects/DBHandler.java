@@ -1,4 +1,4 @@
-package com.example.pokemonshowdown;
+package com.example.pokemonshowdown.objects;
 
 import android.content.ContentValues;
 import android.content.Context;

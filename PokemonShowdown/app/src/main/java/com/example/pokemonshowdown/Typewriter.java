@@ -12,6 +12,7 @@ public class Typewriter extends androidx.appcompat.widget.AppCompatTextView{
     private CharSequence myText;
     private int myIndex;
     private long myDelay = 150;
+    private boolean isAlive;
 
     public Typewriter(Context context) {
         super(context);
@@ -25,9 +26,12 @@ public class Typewriter extends androidx.appcompat.widget.AppCompatTextView{
     private Runnable characterAdder = new Runnable(){
         @Override
         public void run(){
+            isAlive = true;
             setText(myText.subSequence(0, myIndex++));
             if(myIndex<=myText.length()){
                 myHandler.postDelayed(characterAdder, myDelay);
+            }else{
+                isAlive = false;
             }
         }
     };
@@ -42,6 +46,10 @@ public class Typewriter extends androidx.appcompat.widget.AppCompatTextView{
 
         myHandler.postDelayed(characterAdder, myDelay);
 
+    }
+
+    public boolean isAlive(){
+    return isAlive;
     }
 
     public void setCharacterDelay(long m){

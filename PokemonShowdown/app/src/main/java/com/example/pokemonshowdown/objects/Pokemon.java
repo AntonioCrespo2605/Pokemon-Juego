@@ -1,4 +1,6 @@
-package com.example.pokemonshowdown;
+package com.example.pokemonshowdown.objects;
+
+import com.example.pokemonshowdown.objects.Move;
 
 import java.util.ArrayList;
 

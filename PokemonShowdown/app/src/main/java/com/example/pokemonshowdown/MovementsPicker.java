@@ -11,6 +11,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.pokemonshowdown.objects.DBHandler;
+import com.example.pokemonshowdown.objects.Move;
+import com.example.pokemonshowdown.uicontrollers.ListAdapter;
+import com.example.pokemonshowdown.uicontrollers.ThisViewHolder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

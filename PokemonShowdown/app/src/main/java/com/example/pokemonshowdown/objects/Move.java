@@ -1,4 +1,4 @@
-package com.example.pokemonshowdown;
+package com.example.pokemonshowdown.objects;
 
 public class Move {
 

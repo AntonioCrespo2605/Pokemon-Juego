@@ -441,7 +441,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
+            <com.example.pokemonshowdown.Typewriter
                 android:id="@+id/screentext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

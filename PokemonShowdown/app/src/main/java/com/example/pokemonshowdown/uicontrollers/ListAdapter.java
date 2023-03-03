@@ -1,4 +1,4 @@
-package com.example.pokemonshowdown;
+package com.example.pokemonshowdown.uicontrollers;
 
 import static com.example.pokemonshowdown.R.drawable.mt_bug;
 import static com.example.pokemonshowdown.R.drawable.mt_dark;
@@ -44,12 +44,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pokemonshowdown.objects.Move;
+import com.example.pokemonshowdown.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

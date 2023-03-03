@@ -21,6 +21,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pokemonshowdown.objects.DBHandler;
+import com.example.pokemonshowdown.objects.Move;
+import com.example.pokemonshowdown.objects.PokemonBattler;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -30,7 +33,8 @@ public class Battle extends AppCompatActivity {
 
     //VIEWS
     private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3;
-    private TextView screentext, pk_name, pkb_name, pkb_hp, pkb_maxhp;
+    private TextView  pk_name, pkb_name, pkb_hp, pkb_maxhp;
+    private Typewriter screentext;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
     private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
     private ConstraintLayout constraintPk, textConstraint;
@@ -111,7 +115,7 @@ public class Battle extends AppCompatActivity {
         pkb = (ImageView) findViewById(R.id.pkB);
         pkstatus = (ImageView) findViewById(R.id.pkstatus);
         pkbstatus = (ImageView) findViewById(R.id.pkbstatus);
-        screentext = (TextView) findViewById(R.id.screentext);
+        screentext =  findViewById(R.id.screentext);
         pk_name = (TextView) findViewById(R.id.pk_name);
         pkb_name = (TextView) findViewById(R.id.pkb_name);
         pkb_hp = (TextView) findViewById(R.id.pkb_actual_hp);
@@ -196,6 +200,7 @@ public class Battle extends AppCompatActivity {
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean textanimation;
                 if (modeCombat && activatedBackGround) {
                     backgroundClicker();
                 } else if (!modeCombat) {
