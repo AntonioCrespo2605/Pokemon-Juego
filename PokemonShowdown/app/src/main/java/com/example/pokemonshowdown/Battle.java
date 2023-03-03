@@ -384,7 +384,6 @@ public class Battle extends AppCompatActivity {
         Random r = new Random();
         int random = r.nextInt(BACKGROUNDS.length);
         background.setImageResource(BACKGROUNDS[random]);
-        music.setLooping(true);
         switch (random) {
 
             case 1:
@@ -468,7 +467,7 @@ public class Battle extends AppCompatActivity {
                 music = MediaPlayer.create(Battle.this, R.raw.lunala_appears);
                 break;
         }
-
+        music.setLooping(true);
         music.start();
     }
 
