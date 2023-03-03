@@ -251,14 +251,14 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewMove(new Move(64, "Megapatada", 120, 75, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(65, "Megapuño", 80, 85, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(66, "Meteoros", 60, 100, -1, 0, 13, 0, true, false));
-        handler.addNewMove(new Move(67, "Ovocuracion", 0, 100, -1, 0, 13, 50, false, false));//
+        handler.addNewMove(new Move(67, "Ovocuracion", 0, 100, -1, 0, 13, 50, true, false));//
         handler.addNewMove(new Move(68, "Perforador", 4000, 30, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(69, "Pisotón", 65, 100, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(70, "Placaje", 41, 100, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(71, "Puño cometa", 90, 85, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(72, "Puño mareo", 70, 100, -1, 0, 13, 0, true, false));
-        handler.addNewMove(new Move(73, "Recuperacion", 0, 75, -1, 0, 13, 50, false, false));//
-        handler.addNewMove(new Move(74, "Restriccion", 50, 100, -1, 0, 13, 0, true, false));
+        handler.addNewMove(new Move(73, "Recuperación", 0, 75, -1, 0, 13, 50, true, false));//
+        handler.addNewMove(new Move(74, "Restricción", 50, 100, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(75, "Supersónico", 100, 55, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(76, "Triataque", 80, 100, -1, 0, 13, 0, true, false));
         // grass type

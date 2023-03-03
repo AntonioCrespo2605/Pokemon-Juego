@@ -1393,6 +1393,9 @@ public class Battle extends AppCompatActivity {
             case 5:
                 status.setImageResource(R.drawable.congelado);
                 break;
+            default:
+                status.setVisibility(View.INVISIBLE);
+                break;
         }
     }
 
