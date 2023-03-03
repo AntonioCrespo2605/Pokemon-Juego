@@ -46,10 +46,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-<<<<<<< HEAD
-import androidx.cardview.widget.CardView;
-=======
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,16 +61,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public List<Move> mData;
     private LayoutInflater mInflater;
     private Context contexto;
-<<<<<<< HEAD
-    private View.OnClickListener listener;
-    public ViewHolder holder;
-
-=======
-
     private List<Boolean> selected;
     private ArrayList<Move> mchoosed;
     private ThisViewHolder p;
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
+
 
 
     public ListAdapter(List<Move> itemlList, Context contexto, ThisViewHolder p) {
@@ -96,13 +86,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int ViewType) {
         View view = mInflater.inflate(R.layout.list_element, null);
-<<<<<<< HEAD
-        view.setOnClickListener(this);
-        this.holder =  new ListAdapter.ViewHolder(view);
-        return holder;
-=======
+
         return new ListAdapter.ViewHolder(view);
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
+
     }
 
     @Override
@@ -157,12 +143,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iconImage, type, move_type;
         TextView name, mov_dmg, mov_accuracy;
-<<<<<<< HEAD
-        private CardView cv;
-=======
+
         LinearLayout rv;
 
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
         ViewHolder(View itemView) {
             super(itemView);
             iconImage = itemView.findViewById(R.id.cd);
@@ -170,13 +153,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             name = itemView.findViewById(R.id.mov_name);
             mov_dmg = itemView.findViewById(R.id.mov_dmg);
             mov_accuracy = itemView.findViewById(R.id.mov_accuracy);
-<<<<<<< HEAD
-            cv = itemView.findViewById(R.id.cv);
-=======
+
             rv = itemView.findViewById(R.id.rl);
             move_type = itemView.findViewById(R.id.type_of_move);
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
-
         }
 
         void bindData(final Move item) {
@@ -289,14 +268,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             }
 
         }
-
-        public  void cardSelect(){
-            cv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.blue_selected));
-        }
-        public  void cardDeselect(){
-            cv.setBackgroundColor(ContextCompat.getColor(contexto, R.color.whitep));
-        }
-
 
     }
 

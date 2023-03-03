@@ -91,9 +91,7 @@ public class Battle extends AppCompatActivity {
     private boolean player1first;
 
     //Mediaplayer
-    MediaPlayer bosque = MediaPlayer.create(this, R.raw.eterna_forest);
-    MediaPlayer city = MediaPlayer.create(this, R.raw.anistar_city);
-    MediaPlayer beach = MediaPlayer.create(this, R.raw.on_the_beach);
+
 
     private Handler h;
 
@@ -382,6 +380,10 @@ public class Battle extends AppCompatActivity {
     }
 
     private void randomBackground() {
+        MediaPlayer bosque = MediaPlayer.create(Battle.this, R.raw.eterna_forest);
+        MediaPlayer city = MediaPlayer.create(Battle.this, R.raw.anistar_city);
+        MediaPlayer beach = MediaPlayer.create(Battle.this, R.raw.on_the_beach);
+        MediaPlayer route = MediaPlayer.create(Battle.this, R.raw.route_209);
         Random r = new Random();
         int random = r.nextInt(BACKGROUNDS.length);
         background.setImageResource(BACKGROUNDS[random]);
@@ -397,29 +399,39 @@ public class Battle extends AppCompatActivity {
             case 5:
 
             case 6:
-
                 city.start();
                 break;
             case 0:
 
             case 7:
 
+            case 26:
+
             case 31:
 
             case 32:
                 beach.start();
+                break;
 
+            case 33:
+            case 34:
+            case 35:
+            case 36:
+                route.start();
+                break;
 
 
         }
 
 
-//        1fondo_agua, 4fondo_circulo_azul, 5fondo_circulo_morado, 6fondo_ciudad_dia, 7fondo_ciudad_noche,
-//                8fondo_cueva_submarina, 9fondo_futbol, 10fondo_futurista, 11fondo_helado, 12fondo_luna, 13fondo_mansion, 14fondo_montanha_nieve, 15fondo_monte, 16fondo_nieve, 17fondo_otonho,
-//                18fondo_piscina, 19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche, 22fondo_pixel_disco, 23fondo_pixel_nieve_manhana,
-//                24fondo_pixel_nieve_mediodia, 25fondo_pixel_nieve_noche, 26fondo_pixel_paseo, 27fondo_pixel_paseo_madera, 28fondo_pixel_prado_atardecer, 29fondo_pixel_prado_manhana,
-//                30fondo_pixel_prado_mediodia, 31fondo_pixel_prado_noche, 32fondo_playa_atardecer, 33fondo_playa_dia, 34fondo_pradera_dia, 35fondo_pradera_mediodia, 36fondo_pradera_noche,
-//                37fondo_pueblo_arena, 38fondo_rocoso, 39fondo_taller, 40fondo_templo, 41fondo_tunel, 42fondo_volcan
+//        , 4fondo_circulo_azul, 5fondo_circulo_morado,  9fondo_futbol, 10fondo_futurista, 11fondo_helado, 12fondo_luna, 13fondo_mansion,
+//        14fondo_montanha_nieve, 15fondo_monte, 16fondo_nieve, 17fondo_otonho,
+//                18fondo_piscina, 19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche,
+//                22fondo_pixel_disco, 23fondo_pixel_nieve_manhana,
+//                24fondo_pixel_nieve_mediodia, 25fondo_pixel_nieve_noche,
+//                26fondo_pixel_paseo,
+//                28fondo_pixel_prado_atardecer,29fondo_pixel_prado_manhana, 30fondo_pixel_prado_mediodia, 31fondo_pixel_prado_noche,
+//                38fondo_rocoso, 39fondo_taller, 40fondo_templo, 41fondo_tunel, 42fondo_volcan
     }
 
     private void showDeads() {

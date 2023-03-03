@@ -30,14 +30,13 @@ public class MovementsPicker extends AppCompatActivity {
     private List<Move> movesPk1py2;
     private List<Move> movesPk2py2;
     private List<Move> movesPk3py2;
-<<<<<<< HEAD
+
     private FloatingActionButton next;
-=======
 
     private ListAdapter listAdapter;
     private ThisViewHolder vh;
 
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
+
     private int cont;
     private Intent intent;
 
@@ -45,11 +44,8 @@ public class MovementsPicker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movements_picker);
-<<<<<<< HEAD
 
-        next=findViewById(R.id.nextB);
-=======
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
+        next = findViewById(R.id.nextB);
 
         //Bundle
         Bundle b = getIntent().getExtras();
@@ -85,49 +81,21 @@ public class MovementsPicker extends AppCompatActivity {
         //primer pokemon del primer jugador
         listAdapter = new ListAdapter(movesPk1py1, MovementsPicker.this, vh);
         recyclerView.setAdapter(listAdapter);
-        selected = new ArrayList<>();
-        mchoosed = new ArrayList<>();
-        deselect();
 
 
         //pantalla para indicar el turno del jugador
         pantJ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
-
-                int position = recyclerView.getChildAdapterPosition(view);
-                if(!(getCountSelected() == 4)){
-                    if(selected.get(position)){
-                        selected.set(position,false);
-                        mchoosed.remove(listAdapter.mData.get(position));
-                        listAdapter.holder.cardDeselect();
-                    }else{
-                        selected.set(position,true);
-                        mchoosed.remove(listAdapter.mData.get(position));
-                        listAdapter.holder.cardSelect();
-                    }
-                }else if(selected.get(position)){
-                    selected.set(position,false);
-                    mchoosed.remove(listAdapter.mData.get(position));
-                    listAdapter.holder.cardDeselect();
-                }
-                if (getCountSelected() == 3) {
-                    next.setVisibility(View.VISIBLE);
-                } else {
-                    next.setVisibility(View.INVISIBLE);
-                }
-=======
                 pantJ.setVisibility(View.INVISIBLE);
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
             }
         });
 
         cont = 1;
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 switch (cont) {
                     case 1://cambia al segundo pokemon del primer jugador
                         movesPk1py1 = listAdapter.getSelected();
@@ -198,6 +166,7 @@ public class MovementsPicker extends AppCompatActivity {
             }
         });
 
+
     }
 
     private Intent getMoves(List<Move> moves, int p, int j) {
@@ -215,12 +184,4 @@ public class MovementsPicker extends AppCompatActivity {
         return intent;
     }
 
-<<<<<<< HEAD
-    public void deselect() {
-        for (int i = 0; i < listAdapter.mData.size(); i++) {
-            selected.add(false);
-        }
-    }
-=======
->>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
 }
