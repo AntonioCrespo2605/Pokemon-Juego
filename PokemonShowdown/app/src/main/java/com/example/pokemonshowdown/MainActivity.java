@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Pokemon> pPlyr1;
     private ArrayList<Pokemon> pPlyr2;
 
-    private boolean service = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Intent music = new Intent();
         music.setClass(this,MusicService.class);
         startService(music);
-        service = true;
+
 
         //VIEWS
         ll = findViewById(R.id.linearLayoutP);
