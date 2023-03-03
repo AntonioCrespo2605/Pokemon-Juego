@@ -196,7 +196,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(RESTORE_HP_PORC_COL, move.getRestoreHPPorc());
         if(move.isPriority())values.put(PRIORITY_COL, 1);
         else values.put(PRIORITY_COL, 0);
-        values.put(ATK_ST_COL, move.isAtkSt());
+        if(move.isAtkSt())values.put(ATK_ST_COL, 1);
+        else values.put(ATK_ST_COL, 0);
 
         db.insert(MOVE_TABLE, null, values);
         db.close();
@@ -268,6 +269,27 @@ public class DBHandler extends SQLiteOpenHelper {
             if(m.getId()==id)return m;
         }
         return moves.get(0);
+    }
+
+    public String showUnnused(){
+        ArrayList<Integer>toret=new ArrayList<Integer>();
+        boolean usado=false;
+        for(Move m:moves){
+            usado=false;
+            for(Pokemon p:pokemons){
+                for(Move m2:p.getMoves()){
+                    if(m.getId()==m2.getId())usado=true;
+                }
+            }
+            if(!usado)toret.add(m.getId());
+        }
+
+        String t="";
+        for(int i=0;i<toret.size();i++){
+            int a= toret.get(i);
+            t+=a+",";
+        }
+        return t;
     }
 
 }

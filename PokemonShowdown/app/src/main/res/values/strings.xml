@@ -16,10 +16,44 @@
     -<string name="atk2">At2</string>*-
     <string name="atk3">At3</string>
     <string name="atk4">At4</string>
+<<<<<<< HEAD
     <string name="disco">img disco</string>
     <string name="name_move">Move Name</string>
     <string name="precision">Accracy</string>
     <string name="move_type">Move type</string>
     <string name="potency">Potencia</string>
+=======
+    <string name="fabMoves">Boton para terminar la selección de movimientos</string>
+    <string name="status">Estado aplicado en el pokemon</string>
+    <string name="texto_ejemplo_combate">Tu Gengar ha usado Garra Umbria</string>
+    <string name="fondo_de_pantalla">Fondo de pantalla</string>
+    <string name="fight_button">Luchar</string>
+    <string name="change_pokemon_button">Pkmn</string>
+    <string name="pokemon_de_espaldas">Pokemon de espaldas</string>
+    <string name="pokemon_de_frente">Pokemon de frente</string>
+    <string name="pokemon_ejemplo">Gengar</string>
+    <string name="ejemplo_hp">90</string>
+    <string name="stats_txt">Estadísticas</string>
+    <string name="tv_hp">tv_hp</string>
+    <string name="tv_def">tv_def</string>
+    <string name="tv_dmg">tv_dmg</string>
+    <string name="tv_spd">tv_spd</string>
+    <string name="num_pokedex_ejemplo">#094</string>
+    <string name="type1">Primer tipo de un pokemon</string>
+    <string name="corazon_a_modo_de_hp">corazon a modo de hp</string>
+    <string name="espada_a_modo_de_da_o">espada a modo de daño</string>
+    <string name="escudo_a_modo_de_defensa">escudo a modo de defensa</string>
+    <string name="zapatillas_a_modo_de_velocidad">zapatillas a modo de velocidad</string>
+    <string name="type2">Segundo tipo de un pokemon</string>
+    <string name="title_activity_battle">Battle</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+>>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
 
 </resources>

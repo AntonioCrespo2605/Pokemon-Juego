@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +35,12 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
 
     private List<Boolean> selected;
     private ArrayList<Pokemon> pchoosed;
-    private ViewHolder p;
+    private ThisViewHolder p;
 
 
 
     // Constructor
-    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ViewHolder p) {
+    public PokemonRecyclerViewAdapter(Context mContext, List<Pokemon> mData, ThisViewHolder p) {
         this.mContext = mContext;
         this.mData = mData;
         this.p = p;
@@ -64,8 +65,10 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
 
         holder.pokemon_name.setText(mData.get(position).getName());
         holder.img_pokemon.setImageResource(mData.get(position).getImg());
-
+        MediaPlayer click = MediaPlayer.create(mContext, R.raw.pokemon_a_sound);
         FloatingActionButton fab = p.getFab();
+
+
 
         // Si el elemento está seleccionado, se establece el color de fondo en azul, de lo contrario se establece en gris oscuro
         // Mantiene la carta seleccionada cuando actualizas la vista
@@ -87,7 +90,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                         selected.set(position, true);
                         pchoosed.add(mData.get(position));
                         holder.ll.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue_selected));
-
+                        click.start();
                     }
                 }else if(selected.get(position)){
                     selected.set(position, false);
@@ -101,6 +104,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
                     fab.setVisibility(View.INVISIBLE);
                 }
                 updateSelected();
+
             }
         });
 
@@ -151,8 +155,6 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     public int getItemCount() {
         return mData.size();
     }
-
-
 
 
     // Clase interna que representa el ViewHolder para cada elemento del RecyclerView

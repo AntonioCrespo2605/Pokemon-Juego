@@ -6,18 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="#FEF1E5"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardUseCompatPadding="true"
-    android:focusable="true">
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
+<<<<<<< HEAD
         <ImageView
             android:id="@+id/cd"
             android:layout_width="100dp"
@@ -69,7 +70,100 @@
             android:contentDescription="@string/move_type"
             android:layout_toEndOf="@+id/cd"
             app:srcCompat="@drawable/p003" />
+=======
+        <LinearLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/cd"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:contentDescription="to do"
+                app:srcCompat="@drawable/mt_normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="2dp">
+>>>>>>> 63fea73867a5d29262a4490a5f8e8f5e666c71d6
+
+                    <TextView
+                        android:id="@+id/mov_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guillotina"
+                        android:textColor="@color/greyp"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/type_of_move"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="0dp"
+                        app:srcCompat="@drawable/dmg_move"
+                        app:tint="@color/greyp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/mov_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="65dp"
+                    app:srcCompat="@drawable/txt_normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|center_horizontal"
+                android:orientation="vertical"
+                android:paddingStart="0dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:id="@+id/mov_accuracy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="100"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#94000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/mov_dmg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#94000000"
+                    android:textSize="16sp"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

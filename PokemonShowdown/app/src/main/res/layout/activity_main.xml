@@ -28,52 +28,52 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="24dp"
-                app:contentPadding="5dp"
-                app:cardBackgroundColor="@color/white_shadow" >
+                app:cardBackgroundColor="@color/white_shadow"
+                app:contentPadding="5dp">
 
                 <ImageView
-                    android:id="@+id/pk1"
+                    android:id="@+id/pokemon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/p003"
-                    android:contentDescription="@string/pokemon_1" />
+                    android:contentDescription="@string/pokemon_1"
+                    app:srcCompat="@drawable/p003" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="24dp"
-                app:contentPadding="5dp"
-                app:cardBackgroundColor="@color/white_shadow">
+                app:cardBackgroundColor="@color/white_shadow"
+                app:contentPadding="5dp">
 
                 <ImageView
                     android:id="@+id/pk2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/p006"
-                    android:contentDescription="@string/pokemon_2" />
+                    android:contentDescription="@string/pokemon_2"
+                    app:srcCompat="@drawable/p006" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="24dp"
-                app:contentPadding="5dp"
-                app:cardBackgroundColor="@color/white_shadow">
+                app:cardBackgroundColor="@color/white_shadow"
+                app:contentPadding="5dp">
 
                 <ImageView
                     android:id="@+id/pk3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/p009"
-                    android:contentDescription="@string/pokemon_3" />
+                    android:contentDescription="@string/pokemon_3"
+                    app:srcCompat="@drawable/p009" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
@@ -95,14 +95,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:clickable="true"
-        app:tint="@null"
         android:contentDescription="@string/fabPokemon"
         android:focusable="true"
-        app:backgroundTint="@color/bluep"
+        app:backgroundTint="@color/bluepy"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayoutP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayoutP"
         app:srcCompat="@drawable/pokeball"
+        app:tint="@null"
         tools:ignore="ImageContrastCheck" />
 
     <LinearLayout
@@ -118,7 +118,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_id"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

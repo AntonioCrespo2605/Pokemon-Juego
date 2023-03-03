@@ -37,7 +37,16 @@ public class PokemonBattler extends  Pokemon{
 
     public void setCurrentHp(int currentHp) {
         if(currentHp<0)currentHp=0;
+        if(currentHp>getHp())currentHp=getHp();
+
         this.currentHp = currentHp;
+    }
+
+    public void setCurrentHp(double currentHp){
+        if(currentHp<0)currentHp=0;
+        if(currentHp>getHp())currentHp=getHp();
+
+        this.currentHp =(int) Math.round(currentHp);
     }
 
     public int getStatus() {
@@ -55,6 +64,7 @@ public class PokemonBattler extends  Pokemon{
 
     public int hpPercent(){
         double pc=(this.currentHp*100)/getHp();
+        if(pc<0)return 0;
         return (int)Math.round(pc);
     }
 }

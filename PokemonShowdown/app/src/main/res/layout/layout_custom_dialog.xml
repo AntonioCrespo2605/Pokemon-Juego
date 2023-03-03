@@ -20,6 +20,7 @@
             android:id="@+id/pokemon_img"
             android:layout_width="125dp"
             android:layout_height="125dp"
+            android:contentDescription="@string/pokemon_de_frente"
             android:elevation="8dp"
             android:padding="5dp"
             android:src="@drawable/p003"
@@ -45,8 +46,9 @@
                     android:layout_weight="1"
                     android:gravity="bottom|center_horizontal"
                     android:paddingStart="5dp"
+                    android:paddingEnd="0dp"
                     android:paddingBottom="1dp"
-                    android:text="#001"
+                    android:text="@string/num_pokedex_ejemplo"
                     android:textAlignment="gravity"
                     android:textColor="@color/blackp"
                     android:textSize="20sp" />
@@ -59,7 +61,8 @@
                     android:layout_weight="3"
                     android:gravity="bottom|start"
                     android:paddingStart="5dp"
-                    android:text="Venusaur"
+                    android:paddingEnd="0dp"
+                    android:text="@string/pokemon_ejemplo"
                     android:textAlignment="gravity"
                     android:textColor="@color/greyp"
                     android:textSize="24sp"
@@ -81,6 +84,8 @@
                     android:layout_height="23dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:contentDescription="@string/type1"
+                    android:paddingStart="0dp"
                     android:paddingEnd="5dp"
                     app:srcCompat="@drawable/txt_bug" />
 
@@ -91,7 +96,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:paddingStart="5dp"
-                    app:srcCompat="@drawable/txt_bug" />
+                    android:paddingEnd="0dp"
+                    app:srcCompat="@drawable/txt_bug"
+                    android:contentDescription="@string/type2" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -112,7 +119,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:paddingBottom="15dp"
-            android:text="Estadísticas"
+            android:text="@string/stats_txt"
             android:textColor="@color/greyp"
             android:textSize="20sp" />
 
@@ -129,6 +136,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:contentDescription="@string/corazon_a_modo_de_hp"
                 android:padding="5dp"
                 app:srcCompat="@drawable/hp"
                 app:tint="@color/greyp" />
@@ -139,8 +147,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_hp"
-                android:textAlignment="center" />
+                android:text="@string/tv_hp"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
 
             <ImageView
                 android:id="@+id/img_dmg"
@@ -148,6 +157,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:contentDescription="@string/espada_a_modo_de_da_o"
                 android:padding="5dp"
                 app:srcCompat="@drawable/dmg"
                 app:tint="@color/greyp" />
@@ -158,8 +168,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_dmg"
-                android:textAlignment="center" />
+                android:text="@string/tv_dmg"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -175,6 +186,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:contentDescription="@string/escudo_a_modo_de_defensa"
                 android:padding="5dp"
                 app:srcCompat="@drawable/def"
                 app:tint="@color/greyp" />
@@ -185,8 +197,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_def"
-                android:textAlignment="center" />
+                android:text="@string/tv_def"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
 
             <ImageView
                 android:id="@+id/img_spd"
@@ -194,6 +207,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:contentDescription="@string/zapatillas_a_modo_de_velocidad"
                 android:padding="5dp"
                 app:srcCompat="@drawable/spd"
                 app:tint="@color/greyp" />
@@ -204,8 +218,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="tv_spd"
-                android:textAlignment="center" />
+                android:text="@string/tv_spd"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
 
     </LinearLayout>
