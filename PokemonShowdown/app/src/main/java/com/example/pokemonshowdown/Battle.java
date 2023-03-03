@@ -445,7 +445,7 @@ public class Battle extends AppCompatActivity {
 
 
 //        , 4fondo_circulo_azul, 5fondo_circulo_morado,  9fondo_futbol, 10fondo_futurista, 12fondo_luna, 13fondo_mansion,
-//        14fondo_montanha_nieve, 15fondo_monte, 16fondo_nieve, 17fondo_otonho,
+//                 15fondo_monte, 17fondo_otonho,
 //                18fondo_piscina,
 //                19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche,
 //                22fondo_pixel_disco,
