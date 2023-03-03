@@ -33,7 +33,7 @@ public class Battle extends AppCompatActivity {
 
     //VIEWS
     private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3;
-    private TextView  pk_name, pkb_name, pkb_hp, pkb_maxhp;
+    private TextView pk_name, pkb_name, pkb_hp, pkb_maxhp;
     private Typewriter screentext;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
     private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
@@ -69,7 +69,7 @@ public class Battle extends AppCompatActivity {
     //booleano para desactivar los botones y activar el fondo para la animacion
     private boolean activatedBackGround = false;
     private boolean modeCombat = false;
-    private boolean deadMode=false;
+    private boolean deadMode = false;
 
     //booleanos para saber si mostrar la pantalla de jugador despues de seleccionar un pokemon en caso de muerte previa
     boolean p1Died, p2Died;
@@ -91,16 +91,12 @@ public class Battle extends AppCompatActivity {
 
     private Handler h;
 
-    private static final int[]BACKGROUNDS= {fondo_pixel_desierto_manhana, fondo_pixel_desierto_mediodia, fondo_pixel_desierto_noche, fondo_pixel_disco, fondo_pixel_nieve_manhana,
-    fondo_pixel_nieve_mediodia, fondo_pixel_nieve_noche, fondo_pixel_paseo, fondo_pixel_paseo_madera, fondo_pixel_prado_atardecer, fondo_pixel_prado_manhana,
-    fondo_pixel_prado_mediodia, fondo_pixel_prado_noche};
-    /*
-    private static final int[]BACKGROUNDS= {fondo_agua, fondo_bosque, fondo_bosque_noche, fondo_circulo_azul, fondo_circulo_morado, fondo_ciudad_dia, fondo_ciudad_noche,
+    private static final int[] BACKGROUNDS = {fondo_agua, fondo_bosque, fondo_bosque_noche, fondo_circulo_azul, fondo_circulo_morado, fondo_ciudad_dia, fondo_ciudad_noche,
             fondo_cueva_submarina, fondo_futbol, fondo_futurista, fondo_helado, fondo_luna, fondo_mansion, fondo_montanha_nieve, fondo_monte, fondo_nieve, fondo_otonho,
             fondo_piscina, fondo_pixel_desierto_manhana, fondo_pixel_desierto_mediodia, fondo_pixel_desierto_noche, fondo_pixel_disco, fondo_pixel_nieve_manhana,
             fondo_pixel_nieve_mediodia, fondo_pixel_nieve_noche, fondo_pixel_paseo, fondo_pixel_paseo_madera, fondo_pixel_prado_atardecer, fondo_pixel_prado_manhana,
             fondo_pixel_prado_mediodia, fondo_pixel_prado_noche, fondo_playa_atardecer, fondo_playa_dia, fondo_pradera_dia, fondo_pradera_mediodia, fondo_pradera_noche,
-            fondo_pueblo_arena, fondo_rocoso, fondo_taller, fondo_templo, fondo_tunel, fondo_volcan};*/
+            fondo_pueblo_arena, fondo_rocoso, fondo_taller, fondo_templo, fondo_tunel, fondo_volcan};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +111,7 @@ public class Battle extends AppCompatActivity {
         pkb = (ImageView) findViewById(R.id.pkB);
         pkstatus = (ImageView) findViewById(R.id.pkstatus);
         pkbstatus = (ImageView) findViewById(R.id.pkbstatus);
-        screentext =  findViewById(R.id.screentext);
+        screentext = findViewById(R.id.screentext);
         pk_name = (TextView) findViewById(R.id.pk_name);
         pkb_name = (TextView) findViewById(R.id.pkb_name);
         pkb_hp = (TextView) findViewById(R.id.pkb_actual_hp);
@@ -160,7 +156,7 @@ public class Battle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 playerturnscreen.setVisibility(View.INVISIBLE);
-                if(deadMode){
+                if (deadMode) {
                     showDeads();
                 } else if (turnManager != 3) {
                     figth.setVisibility(View.VISIBLE);
@@ -217,22 +213,22 @@ public class Battle extends AppCompatActivity {
         pk1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deadMode){
-                    if(p1Died){
-                        if(pk1py1.isAlive()){
-                            pokemonBack=new PokemonBattler(pk1py1);
-                            p1Died=false;
+                if (deadMode) {
+                    if (p1Died) {
+                        if (pk1py1.isAlive()) {
+                            pokemonBack = new PokemonBattler(pk1py1);
+                            p1Died = false;
                             checkIfDied();
                         }
-                    }else{
-                        if(pk1py2.isAlive()){
-                            pokemonFront=new PokemonBattler(pk1py2);
-                            p2Died=false;
+                    } else {
+                        if (pk1py2.isAlive()) {
+                            pokemonFront = new PokemonBattler(pk1py2);
+                            p2Died = false;
                             checkIfDied();
                         }
                     }
 
-                }else if (turnManager == 1) {
+                } else if (turnManager == 1) {
                     if (pokemonBack.getNumDex() != pk1py1.getNumDex() && pk1py1.isAlive()) {
                         p1Atack = false;
                         newPokemonP1 = new PokemonBattler(pk1py1);
@@ -251,22 +247,22 @@ public class Battle extends AppCompatActivity {
         pk2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deadMode){
-                    if(p1Died){
-                        if(pk2py1.isAlive()){
-                            pokemonBack=new PokemonBattler(pk2py1);
-                            p1Died=false;
+                if (deadMode) {
+                    if (p1Died) {
+                        if (pk2py1.isAlive()) {
+                            pokemonBack = new PokemonBattler(pk2py1);
+                            p1Died = false;
                             checkIfDied();
                         }
-                    }else{
-                        if(pk2py2.isAlive()){
-                            pokemonFront=new PokemonBattler(pk2py2);
-                            p2Died=false;
+                    } else {
+                        if (pk2py2.isAlive()) {
+                            pokemonFront = new PokemonBattler(pk2py2);
+                            p2Died = false;
                             checkIfDied();
                         }
                     }
 
-                }else if (turnManager == 1) {
+                } else if (turnManager == 1) {
                     if (pokemonBack.getNumDex() != pk2py1.getNumDex() && pk2py1.isAlive()) {
                         p1Atack = false;
                         newPokemonP1 = new PokemonBattler(pk2py1);
@@ -285,22 +281,22 @@ public class Battle extends AppCompatActivity {
         pk3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deadMode){
-                    if(p1Died){
-                        if(pk3py1.isAlive()){
-                            pokemonBack=new PokemonBattler(pk3py1);
-                            p1Died=false;
+                if (deadMode) {
+                    if (p1Died) {
+                        if (pk3py1.isAlive()) {
+                            pokemonBack = new PokemonBattler(pk3py1);
+                            p1Died = false;
                             checkIfDied();
                         }
-                    }else{
-                        if(pk3py2.isAlive()){
-                            pokemonFront=new PokemonBattler(pk3py2);
-                            p2Died=false;
+                    } else {
+                        if (pk3py2.isAlive()) {
+                            pokemonFront = new PokemonBattler(pk3py2);
+                            p2Died = false;
                             checkIfDied();
                         }
                     }
 
-                }else if (turnManager == 1) {
+                } else if (turnManager == 1) {
                     if (pokemonBack.getNumDex() != pk3py1.getNumDex() && pk3py1.isAlive()) {
                         p1Atack = false;
                         newPokemonP1 = new PokemonBattler(pk3py1);
@@ -380,11 +376,29 @@ public class Battle extends AppCompatActivity {
     }
 
     private void randomBackground() {
-        Random r=new Random();
-        background.setImageResource(BACKGROUNDS[r.nextInt(BACKGROUNDS.length)]);
+        Random r = new Random();
+        int random = r.nextInt(BACKGROUNDS.length);
+        background.setImageResource(BACKGROUNDS[random]);
+        switch  (random){
+
+            case 1:
+
+            case 2:
+
+
+
+        }
+
+
+//        1fondo_agua, 2fondo_bosque, 3fondo_bosque_noche, 4fondo_circulo_azul, 5fondo_circulo_morado, 6fondo_ciudad_dia, 7fondo_ciudad_noche,
+//                8fondo_cueva_submarina, 9fondo_futbol, 10fondo_futurista, 11fondo_helado, 12fondo_luna, 13fondo_mansion, 14fondo_montanha_nieve, 15fondo_monte, 16fondo_nieve, 17fondo_otonho,
+//                18fondo_piscina, 19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche, 22fondo_pixel_disco, 23fondo_pixel_nieve_manhana,
+//                24fondo_pixel_nieve_mediodia, 25fondo_pixel_nieve_noche, 26fondo_pixel_paseo, 27fondo_pixel_paseo_madera, 28fondo_pixel_prado_atardecer, 29fondo_pixel_prado_manhana,
+//                30fondo_pixel_prado_mediodia, 31fondo_pixel_prado_noche, 32fondo_playa_atardecer, 33fondo_playa_dia, 34fondo_pradera_dia, 35fondo_pradera_mediodia, 36fondo_pradera_noche,
+//                37fondo_pueblo_arena, 38fondo_rocoso, 39fondo_taller, 40fondo_templo, 41fondo_tunel, 42fondo_volcan
     }
 
-    private void showDeads(){
+    private void showDeads() {
         cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
         cv2.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
         cv3.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
@@ -392,7 +406,7 @@ public class Battle extends AppCompatActivity {
         matrix.setSaturation(0);
         ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
         pokemon_team.setVisibility(View.VISIBLE);
-        if(p1Died){
+        if (p1Died) {
             pk1.setImageResource(pk1py1.getImg());
             pk2.setImageResource(pk2py1.getImg());
             pk3.setImageResource(pk3py1.getImg());
@@ -411,7 +425,7 @@ public class Battle extends AppCompatActivity {
             } else {
                 pk3.setColorFilter(filter);
             }
-        }else{
+        } else {
             pk1.setImageResource(pk1py2.getImg());
             pk2.setImageResource(pk2py2.getImg());
             pk3.setImageResource(pk3py2.getImg());
@@ -433,45 +447,45 @@ public class Battle extends AppCompatActivity {
         }
     }
 
-    private void checkFinal(){
-        if(!player1Continue()&&!player2Continue()){
+    private void checkFinal() {
+        if (!player1Continue() && !player2Continue()) {
             Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
-        }else if(!player1Continue()){
+        } else if (!player1Continue()) {
             Toast.makeText(this, "Gana el jugador 2", Toast.LENGTH_SHORT).show();
-        }else if(!player2Continue()){
+        } else if (!player2Continue()) {
             Toast.makeText(this, "Gana el jugador 1", Toast.LENGTH_SHORT).show();
-        }else{
-            activatedBackGround=false;
-            clicCounter=0;
+        } else {
+            activatedBackGround = false;
+            clicCounter = 0;
             checkIfDied();
         }
     }
 
-    private void checkIfDied(){
-        if(!p1Died && !p2Died){
+    private void checkIfDied() {
+        if (!p1Died && !p2Died) {
             pk.setVisibility(View.VISIBLE);
             pkb.setVisibility(View.VISIBLE);
-            deadMode=false;
-            modeCombat=false;
-            activatedBackGround=false;
+            deadMode = false;
+            modeCombat = false;
+            activatedBackGround = false;
             playerturnscreen.setImageResource(t1);
             reverseBattlers();
             constraintPk.setVisibility(View.VISIBLE);
             constraintPkb.setVisibility(View.VISIBLE);
             pkbHealth.setVisibility(View.VISIBLE);
             changeTurn();
-        }else{
+        } else {
             screentext.setText("Elije un nuevo pokemon");
 
-            if(p1Died)playerturnscreen.setImageResource(t1);
+            if (p1Died) playerturnscreen.setImageResource(t1);
             else playerturnscreen.setImageResource(t2);
 
-            deadMode=true;
+            deadMode = true;
             playerturnscreen.setVisibility(View.VISIBLE);
         }
     }
-    
-    private void backgroundClicker(){
+
+    private void backgroundClicker() {
         if (clicCounter < firstPart.size()) {
             if (firstPart.get(clicCounter).charAt(0) == '/')
                 executeCommand(firstPart.get(clicCounter));
@@ -483,11 +497,11 @@ public class Battle extends AppCompatActivity {
                 if (secondPart.get(clicCounter - firstPart.size()).charAt(0) == '/')
                     executeCommand(secondPart.get(clicCounter - firstPart.size()));
                 else screentext.setText(secondPart.get(clicCounter - firstPart.size()));
-            } else if(clicCounter<firstPart.size() + secondPart.size()+thirdPart.size()){
-                if(clicCounter==firstPart.size()+secondPart.size()){
+            } else if (clicCounter < firstPart.size() + secondPart.size() + thirdPart.size()) {
+                if (clicCounter == firstPart.size() + secondPart.size()) {
                     generateThirdDialog();
                 }
-            }else{
+            } else {
                 checkFinal();
             }
         }
@@ -757,11 +771,11 @@ public class Battle extends AppCompatActivity {
                         pk2py1 = new PokemonBattler(pokemonBack);
                     else if (pokemonBack.getNumDex() == pk3py1.getNumDex())
                         pk3py1 = new PokemonBattler(pokemonBack);
-                    
+
                 }
             }, 1000);
         }
-        
+
         h.postDelayed(new Runnable() {
             public void run() {
                 constraintPk.setVisibility(View.INVISIBLE);
@@ -769,7 +783,7 @@ public class Battle extends AppCompatActivity {
                 textConstraint.setVisibility(View.VISIBLE);
                 screentext.setText("...");
                 activatedBackGround = true;
-                
+
                 //pasar al siguiente dialogo sin pasar por el backGround
                 backgroundClicker();
             }
@@ -935,7 +949,7 @@ public class Battle extends AppCompatActivity {
         if (turnManager == 3) {
             showBattle();
             playerturn.setVisibility(View.INVISIBLE);
-        }else playerturn.setVisibility(View.VISIBLE);
+        } else playerturn.setVisibility(View.VISIBLE);
 
     }
 
@@ -951,7 +965,7 @@ public class Battle extends AppCompatActivity {
         modeCombat = true;
 
         clicCounter = 0;
-        player1first=pokemonBackFirst();
+        player1first = pokemonBackFirst();
         generateFirstDialog(player1first);
     }
 
@@ -1094,6 +1108,7 @@ public class Battle extends AppCompatActivity {
         atk3.setVisibility(View.INVISIBLE);
         atk4.setVisibility(View.INVISIBLE);
     }
+
     //cambio de pokemon
     public void selectPokemon() {
         pokemon_team.setVisibility(View.VISIBLE);
@@ -1295,7 +1310,7 @@ public class Battle extends AppCompatActivity {
         pokemonFront = new PokemonBattler(aux);
     }
 
-                                    //COMBATE
+    //COMBATE
     //decide que pokemon ataca primero, devuelve true si es el pokemon que esta de espaldas
     private boolean pokemonBackFirst() {
         double speed1 = pokemonBack.getSpd();
@@ -1314,6 +1329,7 @@ public class Battle extends AppCompatActivity {
         if (speed1 < speed2) return false;
         return r.nextBoolean();
     }
+
     // estado general del pokemon
     private boolean checkStatus(int player) {
         Random r = new Random();
@@ -1368,6 +1384,7 @@ public class Battle extends AppCompatActivity {
 
         return true;
     }
+
     //ataque realizado
     private void checkMove(int player) {
         Random r = new Random();
@@ -1457,7 +1474,7 @@ public class Battle extends AppCompatActivity {
         else b = 1;
         int a = focus.getDmg();
         //si esta quemado
-        if(focus.getStatus()==2)a=(int)Math.round(a/2);
+        if (focus.getStatus() == 2) a = (int) Math.round(a / 2);
         int n = 50;
         int v = 65 + r.nextInt(16);
         int p = move.getDmg();
@@ -1471,7 +1488,7 @@ public class Battle extends AppCompatActivity {
         return p1 * p2;
     }
 
-                                     //DIALOGOS
+    //DIALOGOS
     private ArrayList<String> generateDialogPlayer(int player) {
         toret = new ArrayList<String>();
         if (checkStatus(player)) {
@@ -1479,6 +1496,7 @@ public class Battle extends AppCompatActivity {
         }
         return toret;
     }
+
     //genera el primer dialogo de cada turno de combate
     private void generateFirstDialog(boolean p1first) {
         if (p1first) firstPart = generateDialogPlayer(1);
@@ -1490,14 +1508,14 @@ public class Battle extends AppCompatActivity {
         else secondPart = generateDialogPlayer(1);
     }
 
-    private void generateThirdDialog(){
-        thirdPart=new ArrayList<String>();
-        if(pokemonBack.isAlive()){
-            if(pokemonBack.getStatus()==2||pokemonBack.getStatus()==3){
+    private void generateThirdDialog() {
+        thirdPart = new ArrayList<String>();
+        if (pokemonBack.isAlive()) {
+            if (pokemonBack.getStatus() == 2 || pokemonBack.getStatus() == 3) {
 
             }
         }
-        if(pokemonFront.isAlive()){
+        if (pokemonFront.isAlive()) {
 
         }
     }
