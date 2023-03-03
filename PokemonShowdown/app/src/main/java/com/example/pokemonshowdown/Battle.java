@@ -12,6 +12,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -88,6 +89,11 @@ public class Battle extends AppCompatActivity {
 
     //booleano para controlar quien va primero
     private boolean player1first;
+
+    //Mediaplayer
+    MediaPlayer bosque = MediaPlayer.create(this, R.raw.eterna_forest);
+    MediaPlayer city = MediaPlayer.create(this, R.raw.anistar_city);
+    MediaPlayer beach = MediaPlayer.create(this, R.raw.on_the_beach);
 
     private Handler h;
 
@@ -385,12 +391,30 @@ public class Battle extends AppCompatActivity {
 
             case 2:
 
+            case 14:
+                bosque.start();
+                break;
+            case 5:
+
+            case 6:
+
+                city.start();
+                break;
+            case 0:
+
+            case 7:
+
+            case 31:
+
+            case 32:
+                beach.start();
+
 
 
         }
 
 
-//        1fondo_agua, 2fondo_bosque, 3fondo_bosque_noche, 4fondo_circulo_azul, 5fondo_circulo_morado, 6fondo_ciudad_dia, 7fondo_ciudad_noche,
+//        1fondo_agua, 4fondo_circulo_azul, 5fondo_circulo_morado, 6fondo_ciudad_dia, 7fondo_ciudad_noche,
 //                8fondo_cueva_submarina, 9fondo_futbol, 10fondo_futurista, 11fondo_helado, 12fondo_luna, 13fondo_mansion, 14fondo_montanha_nieve, 15fondo_monte, 16fondo_nieve, 17fondo_otonho,
 //                18fondo_piscina, 19fondo_pixel_desierto_manhana, 20fondo_pixel_desierto_mediodia, 21fondo_pixel_desierto_noche, 22fondo_pixel_disco, 23fondo_pixel_nieve_manhana,
 //                24fondo_pixel_nieve_mediodia, 25fondo_pixel_nieve_noche, 26fondo_pixel_paseo, 27fondo_pixel_paseo_madera, 28fondo_pixel_prado_atardecer, 29fondo_pixel_prado_manhana,
