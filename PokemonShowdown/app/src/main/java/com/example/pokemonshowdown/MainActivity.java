@@ -268,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewMove(new Move(110, "Vuelo", 90, 95, -1, 0, 8, 0, true, false));
 
         handler.addNewMove(new Move(111, "Transformación", 0, 100, -1, 0, 13, 0, false, false));
+        handler.addNewMove(new Move(112, "Salpicadura", 0,100,-1,0,13, 0, true, false));
     }
 
     private void initPokemons() {
@@ -548,7 +549,7 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(129, "Magikarp", 18, 0, 60, 15, 55, 80, R.drawable.p129, R.drawable.p129b);
-        p.addMovesById(new int[]{70, 3}, handler.getMoves());
+        p.addMovesById(new int[]{70, 3, 112}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(130, "Gyarados", 18, 8, 95, 125, 100, 81, R.drawable.p130, R.drawable.p130b);
@@ -557,6 +558,10 @@ public class MainActivity extends AppCompatActivity {
 
         p = new Pokemon(131, "Lapras", 18, 12, 130, 85, 95, 60, R.drawable.p131, R.drawable.p131b);
         p.addMovesById(new int[]{5, 45, 59, 25, 3, 104, 68, 51, 54, 6, 26, 63, 57, 84, 12, 15, 90, 44, 88, 7, 56}, handler.getMoves());
+        handler.addNewPokemon(p);
+
+        p = new Pokemon(132, "Ditto", 18, 0, 48, 48, 48, 48, R.drawable.p132, R.drawable.p132b);
+        p.addMovesById(new int[]{111}, handler.getMoves());
         handler.addNewPokemon(p);
 
         p = new Pokemon(133, "Eevee", 13, 0, 55, 55, 65, 55, R.drawable.p133, R.drawable.p133b);
@@ -576,7 +581,6 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(137, "Porygon", 13, 0, 65, 85, 75, 30, R.drawable.p137, R.drawable.p137b);
-
         p.addMovesById(new int[]{70, 73, 89, 76, 104, 51, 54, 25, 26, 63, 57, 15, 90, 44, 16, 88}, handler.getMoves());
 
         handler.addNewPokemon(p);
@@ -614,7 +618,6 @@ public class MainActivity extends AppCompatActivity {
         handler.addNewPokemon(p);
 
         p = new Pokemon(150, "Mewtwo", 15, 0, 106, 154, 90, 130, R.drawable.p150, R.drawable.p150b);
-
         p.addMovesById(new int[]{86, 73, 90, 65, 64, 104, 59, 51, 54, 6, 5, 25, 26, 63, 52, 32, 57, 84, 15, 39, 22, 44, 16, 88, 76, 56}, handler.getMoves());
 
         handler.addNewPokemon(p);

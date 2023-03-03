@@ -1574,8 +1574,8 @@ public class Battle extends AppCompatActivity {
         else movefocus = new Move(moveP2);
 
         r = new Random();
-        //si falla
-        if (1 + r.nextInt(101) > movefocus.getAccuracy()) {
+        //si falla(ademas si se usa transf. en ditto)
+        if (1 + r.nextInt(101) > movefocus.getAccuracy()||(focus.getNumDex()==132&&movefocus.getId()==111)) {
             toret.add("Pero ha fallado");
             return;
         }
