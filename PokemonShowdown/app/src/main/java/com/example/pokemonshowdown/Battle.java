@@ -501,18 +501,21 @@ public class Battle extends AppCompatActivity {
         if (player == 1) {
             pkb.setVisibility(View.VISIBLE);
             pokemonBack = new PokemonBattler(newPokemonP1);
+            pkb_name.setText(pokemonBack.getName());
+            pkb_hpBar.setProgress(pokemonBack.hpPercent());
+            pkb.setImageResource(pokemonBack.getImgB());
+            getPokemonStatus(pokemonBack, pkbstatus);
         } else {
             pk.setVisibility(View.VISIBLE);
             pokemonFront = new PokemonBattler(newPokemonP2);
-        }
+            pk_name.setText(pokemonFront.getName());
+            pk_hpBar.setProgress(pokemonFront.hpPercent());
+            pk.setImageResource(pokemonFront.getImg());
+            getPokemonStatus(pokemonFront, pkstatus);
 
+        }
+        
         screentext.setText("");
-        pk_name.setText(pokemonFront.getName());
-        pkb_name.setText(pokemonBack.getName());
-        pk_hpBar.setProgress(pokemonFront.hpPercent());
-        pkb_hpBar.setProgress(pokemonBack.hpPercent());
-        pk.setImageResource(pokemonFront.getImg());
-        pkb.setImageResource(pokemonBack.getImgB());
 
         h.postDelayed(new Runnable() {
             public void run() {
@@ -1610,8 +1613,12 @@ public class Battle extends AppCompatActivity {
         //si es supereficaz o no poco eficaz muestra el mensaje
         if (m == 2 || m == 4) toret.add("Es supereficaz!");
         else if (m == 0.5 || m == 0.25) toret.add("No es muy efectivo...");
+        if (movefocus.getDmg() == 0) {
+            damage = 0;
+        }else{
+            damage = (int) Math.round(getDamage(movefocus, focus, victim));
+        }
 
-        damage = (int) Math.round(getDamage(movefocus, focus, victim));
 
         if (victim.getCurrentHp() - damage <= 0) {
             toret.add("/kill" + player);
