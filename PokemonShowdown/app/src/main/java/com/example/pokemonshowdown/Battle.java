@@ -1562,7 +1562,11 @@ public class Battle extends AppCompatActivity {
 
         //si es un movimiento de estado
         if (!movefocus.isAtkSt()) {
-            //if(movefocus.getId()==x)
+            //if(movefocus.getId()==x){
+
+
+            
+            // }
             if (victim.getStatus() != 0) {
                 toret.add(focus.getName() + " ha fallado el ataque");
             } else {
