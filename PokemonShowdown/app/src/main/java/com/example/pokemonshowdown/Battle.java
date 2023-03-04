@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.pokemonshowdown.objects.DBHandler;
 import com.example.pokemonshowdown.objects.Move;
 import com.example.pokemonshowdown.objects.PokemonBattler;
+import com.example.pokemonshowdown.objects.ProgressBarAnimation;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -82,7 +83,6 @@ public class Battle extends AppCompatActivity {
 
     //auxiliar
     private ArrayList<String> toret;
-    int curHp;
 
     //variable para almacenar el daño de las comprobaciones para reutilizar en cálculos(al tener factor random puede generar distintos resultados si no se almacena)
     private int damage;
@@ -731,7 +731,7 @@ public class Battle extends AppCompatActivity {
                         pk3py1 = new PokemonBattler(pokemonBack);
 
                 }
-            }, 500);
+            }, 1000);
         }
 
         h.postDelayed(new Runnable() {
@@ -745,7 +745,7 @@ public class Battle extends AppCompatActivity {
                 //pasar al siguiente dialogo sin pasar por el backGround
                 backgroundClicker();
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void commandKill(int player) {
@@ -774,7 +774,7 @@ public class Battle extends AppCompatActivity {
                 if (player == 1) {
                     hpAux = pokemonBack.getCurrentHp();
                     pokemonBack.setCurrentHp(pokemonBack.getCurrentHp() + ((moveP1.getRestoreHPPorc() * pokemonBack.getCurrentHp()) / 100));
-                    pkb_hpBar.setProgress(pokemonBack.hpPercent());
+                    updateBars(pokemonBack,pkb_hpBar, true);
                     if (pokemonBack.getNumDex() == pk1py1.getNumDex())
                         pk1py1 = new PokemonBattler(pokemonBack);
                     else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
@@ -784,7 +784,7 @@ public class Battle extends AppCompatActivity {
                 } else {
                     hpAux = pokemonFront.getCurrentHp();
                     pokemonFront.setCurrentHp(pokemonFront.getCurrentHp() + ((moveP2.getRestoreHPPorc() * pokemonFront.getCurrentHp()) / 100));
-                    pk_hpBar.setProgress(pokemonFront.hpPercent());
+                    updateBars(pokemonFront,pk_hpBar, true);
                     if (pokemonFront.getNumDex() == pk1py2.getNumDex())
                         pk1py2 = new PokemonBattler(pokemonFront);
                     else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
@@ -793,7 +793,7 @@ public class Battle extends AppCompatActivity {
                         pk3py2 = new PokemonBattler(pokemonFront);
                 }
             }
-        }, 500);
+        }, 1000);
 
         h.postDelayed(new Runnable() {
             public void run() {
@@ -807,7 +807,7 @@ public class Battle extends AppCompatActivity {
                 }
                 activatedBackGround = true;
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void commandRecoil(int player) {
@@ -821,7 +821,7 @@ public class Battle extends AppCompatActivity {
                 if (player == 1) {
                     hpAux = pokemonBack.getCurrentHp();
                     pokemonBack.setCurrentHp(pokemonBack.getCurrentHp() + ((moveP1.getRestoreHPPorc() * pokemonBack.getCurrentHp()) / 100));
-                    pkb_hpBar.setProgress(pokemonBack.hpPercent());
+                    updateBars(pokemonBack,pkb_hpBar, true);
                     if (pokemonBack.getNumDex() == pk1py1.getNumDex())
                         pk1py1 = new PokemonBattler(pokemonBack);
                     else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
@@ -831,7 +831,7 @@ public class Battle extends AppCompatActivity {
                 } else {
                     hpAux = pokemonFront.getCurrentHp();
                     pokemonFront.setCurrentHp(pokemonFront.getCurrentHp() + ((moveP2.getRestoreHPPorc() * pokemonFront.getCurrentHp()) / 100));
-                    pk_hpBar.setProgress(pokemonFront.hpPercent());
+                    updateBars(pokemonFront, pk_hpBar, true);
                     if (pokemonFront.getNumDex() == pk1py2.getNumDex())
                         pk1py2 = new PokemonBattler(pokemonFront);
                     else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
@@ -840,7 +840,7 @@ public class Battle extends AppCompatActivity {
                         pk3py2 = new PokemonBattler(pokemonFront);
                 }
             }
-        }, 500);
+        }, 1000);
 
         h.postDelayed(new Runnable() {
             public void run() {
@@ -854,7 +854,7 @@ public class Battle extends AppCompatActivity {
                 }
                 activatedBackGround = true;
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void commandBurn(int player) {
@@ -865,15 +865,15 @@ public class Battle extends AppCompatActivity {
 
         h.postDelayed(new Runnable() {
             public void run() {
-                if (player == 1)
+                if (player == 1) {
                     pokemonBack.setCurrentHp((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 16)));
-                else
+                    updateBars(pokemonBack, pkb_hpBar, true);
+                }else {
                     pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 16)));
+                    updateBars(pokemonFront, pk_hpBar, true);
+                }
 
-                //updateBars();
-
-                if (player == 1)
-                    screentext.setText(pokemonBack.getName() + " se resiente de sus quemaduras");
+                if (player == 1) screentext.setText(pokemonBack.getName() + " se resiente de sus quemaduras");
                 else screentext.setText(pokemonFront.getName() + " se resiente de sus quemaduras");
 
                 if (pokemonBack.getNumDex() == pk1py1.getNumDex())
@@ -890,7 +890,7 @@ public class Battle extends AppCompatActivity {
                 else if (pokemonFront.getNumDex() == pk3py2.getNumDex())
                     pk3py2 = new PokemonBattler(pokemonFront);
             }
-        }, 500);
+        }, 1000);
 
         h.postDelayed(new Runnable() {
             public void run() {
@@ -899,7 +899,7 @@ public class Battle extends AppCompatActivity {
                 textConstraint.setVisibility(View.VISIBLE);
                 activatedBackGround = true;
             }
-        }, 1000);
+        }, 2000);
 
     }
 
@@ -911,15 +911,15 @@ public class Battle extends AppCompatActivity {
 
         h.postDelayed(new Runnable() {
             public void run() {
-                if (player == 1)
-                    pokemonBack.setCurrentHp((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 8)));
-                else
-                    pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 8)));
+                if (player == 1) {
+                    pokemonBack.setCurrentHp((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 12)));
+                    updateBars(pokemonBack, pkb_hpBar, true);
+                }else {
+                    pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 12)));
+                    updateBars(pokemonFront, pk_hpBar, true);
+                }
 
-                //updateBars();
-
-                if (player == 1)
-                    screentext.setText("El veneno resta ps a " + pokemonBack.getName());
+                if (player == 1) screentext.setText("El veneno resta ps a " + pokemonBack.getName());
                 else screentext.setText("El veneno resta ps a " + pokemonFront.getName());
 
                 if (pokemonBack.getNumDex() == pk1py1.getNumDex())
@@ -936,7 +936,7 @@ public class Battle extends AppCompatActivity {
                 else if (pokemonFront.getNumDex() == pk3py2.getNumDex())
                     pk3py2 = new PokemonBattler(pokemonFront);
             }
-        }, 500);
+        }, 1000);
 
         h.postDelayed(new Runnable() {
             public void run() {
@@ -945,7 +945,7 @@ public class Battle extends AppCompatActivity {
                 textConstraint.setVisibility(View.VISIBLE);
                 activatedBackGround = true;
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void commandTransformation(int player) {
@@ -1428,41 +1428,33 @@ public class Battle extends AppCompatActivity {
         }
     }
 
+    private int hpBarAux;
     private void updateBars(PokemonBattler pokemon, ProgressBar hpBar, Boolean animation) {
         //calculo de barras de vida
-        curHp = (pokemon.getCurrentHp() * 100) / pokemon.getHp();
+        int curHp = hpBar.getProgress();
+        int finalHp=pokemon.hpPercent();
 
         if (animation) {
-            for (int i = curHp; i > pokemon.hpPercent(); i--) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(40);
-                        } catch (InterruptedException e) {
-                        }
-                        --curHp;
-                        hpBar.setProgress(curHp);
-                        drawableBars(pokemon, hpBar);
-                    }
-                }, 40);
-            }
+            ProgressBarAnimation anim=new ProgressBarAnimation(hpBar, curHp, finalHp);
+            anim.setDuration(500);
+            hpBar.startAnimation(anim);
         } else {
             hpBar.setProgress(pokemon.hpPercent());
-            drawableBars(pokemon, hpBar);
+            drawableBars(hpBar);
         }
 
     }
 
-    private void drawableBars(PokemonBattler pokemon, ProgressBar hpBar) {
+    private void drawableBars(ProgressBar hpBar) {
         Drawable progressDrawable = hpBar.getProgressDrawable().mutate();
-        if (pokemon.hpPercent() < 11) {
+        int perc=hpBar.getProgress();
+        if (perc < 11) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
             hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemon.hpPercent() < 26) {
+        } else if (perc < 26) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
             hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemon.hpPercent() < 51) {
+        } else if (perc < 51) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
             hpBar.setProgressDrawable(progressDrawable);
         } else {
