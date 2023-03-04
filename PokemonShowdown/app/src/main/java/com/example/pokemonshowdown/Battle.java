@@ -22,12 +22,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pokemonshowdown.objects.DBHandler;
 import com.example.pokemonshowdown.objects.Move;
 import com.example.pokemonshowdown.objects.PokemonBattler;
-import com.example.pokemonshowdown.objects.ProgressBarAnimation;
+import com.example.pokemonshowdown.uicontrollers.ProgressBarAnimation;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -1427,15 +1426,15 @@ public class Battle extends AppCompatActivity {
             }
         }
     }
-    
+
     private void updateBars(PokemonBattler pokemon, ProgressBar hpBar, Boolean animation) {
         //calculo de barras de vida
         int curHp = hpBar.getProgress();
         int finalHp=pokemon.hpPercent();
 
         if (animation) {
-            ProgressBarAnimation anim=new ProgressBarAnimation(hpBar, curHp, finalHp);
-            anim.setDuration(500);
+            ProgressBarAnimation anim=new ProgressBarAnimation(hpBar, curHp, finalHp, this);
+            anim.setDuration(800);
             hpBar.startAnimation(anim);
         } else {
             hpBar.setProgress(pokemon.hpPercent());
