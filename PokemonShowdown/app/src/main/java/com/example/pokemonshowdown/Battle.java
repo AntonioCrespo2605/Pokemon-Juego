@@ -9,10 +9,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Intent;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -33,12 +35,12 @@ import java.util.Random;
 public class Battle extends AppCompatActivity {
 
     //VIEWS
-    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3, finalscreen;
-    private TextView pk_name, pkb_name, pkb_hp, pkb_maxhp;
+    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3;
+    private TextView pk_name, pkb_name, pkb_hp, pkb_maxhp, aitana, antonio, xandre;
     private Typewriter screentext;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
-    private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux;
-    private ConstraintLayout constraintPk, textConstraint;
+    private ExtendedFloatingActionButton figth, pokemonChange, atk1, atk2, atk3, atk4, aux, choose, rebattle, exit;
+    private ConstraintLayout constraintPk, textConstraint, finalscreen;
     LinearLayout constraintPkb;
     private ProgressBar pk_hpBar;
     private ProgressBar pkb_hpBar;
@@ -80,6 +82,7 @@ public class Battle extends AppCompatActivity {
 
     //auxiliar
     private ArrayList<String> toret;
+    int curHp;
 
     //variable para almacenar el daño de las comprobaciones para reutilizar en cálculos(al tener factor random puede generar distintos resultados si no se almacena)
     private int damage;
@@ -112,7 +115,6 @@ public class Battle extends AppCompatActivity {
         background = (ImageView) findViewById(R.id.background);
         playerturn = (ImageView) findViewById(R.id.playerturn);
         playerturnscreen = (ImageView) findViewById(R.id.playerturnscreen);
-        finalscreen = (ImageView) findViewById(R.id.finalscreem);
         pk = (ImageView) findViewById(R.id.pk);
         pkb = (ImageView) findViewById(R.id.pkB);
         pkstatus = (ImageView) findViewById(R.id.pkstatus);
@@ -122,15 +124,22 @@ public class Battle extends AppCompatActivity {
         pkb_name = (TextView) findViewById(R.id.pkb_name);
         pkb_hp = (TextView) findViewById(R.id.pkb_actual_hp);
         pkb_maxhp = (TextView) findViewById(R.id.pkb_maxhp);
+        aitana = (TextView) findViewById(R.id.aitana);
+        antonio = (TextView) findViewById(R.id.antonio);
+        xandre = (TextView) findViewById(R.id.xandre);
         figth = (ExtendedFloatingActionButton) findViewById(R.id.fight);
         pokemonChange = (ExtendedFloatingActionButton) findViewById(R.id.changepk);
         atk1 = (ExtendedFloatingActionButton) findViewById(R.id.atk1);
         atk2 = (ExtendedFloatingActionButton) findViewById(R.id.atk2);
         atk3 = (ExtendedFloatingActionButton) findViewById(R.id.atk3);
         atk4 = (ExtendedFloatingActionButton) findViewById(R.id.atk4);
+        rebattle = (ExtendedFloatingActionButton) findViewById(R.id.rebattle);
+        choose = (ExtendedFloatingActionButton) findViewById(R.id.choose);
+        exit = (ExtendedFloatingActionButton) findViewById(R.id.exit);
         constraintPk = (ConstraintLayout) findViewById(R.id.constraintPkData);
         constraintPkb = (LinearLayout) findViewById(R.id.constraintPkBData);
         textConstraint = (ConstraintLayout) findViewById(R.id.constraintTexto);
+        finalscreen = (ConstraintLayout) findViewById(R.id.finalscreen);
         pkbHealth = (LinearLayout) findViewById(R.id.pkbhealth);
         pokemon_team = (LinearLayout) findViewById(R.id.pokemon_team);
         pk1 = (ImageView) findViewById(R.id.pk1);
@@ -366,11 +375,60 @@ public class Battle extends AppCompatActivity {
             }
         });
 
-        finalscreen.setOnClickListener(new View.OnClickListener() {
+        //botones final screen
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                music.stop();
+                Intent intent = new Intent(Battle.this,Portada.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                music.stop();
+                finish();
+                finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            }
+        });
+
+        rebattle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 music.stop();
                 initBattle();
+            }
+        });
+
+        aitana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/aitana-vidal"));
+                startActivity(browserIntent);
+            }
+        });
+
+        antonio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AntonioCrespo2605"));
+                startActivity(browserIntent);
+            }
+        });
+
+        xandre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xandre18"));
+                startActivity(browserIntent);
             }
         });
 
@@ -1367,40 +1425,45 @@ public class Battle extends AppCompatActivity {
         }
     }
 
-    private void updateBars() {
+    private void updateBars(PokemonBattler pokemon, ProgressBar hpBar, Boolean animation) {
         //calculo de barras de vida
-        pk_hpBar.setProgress(pokemonFront.hpPercent());
-        pkb_hpBar.setProgress(pokemonBack.hpPercent());
+        curHp = (pokemon.getCurrentHp()*100)/pokemon.getHp();
 
-        //meter este codigo en funciones
-        Drawable progressDrawable = pk_hpBar.getProgressDrawable().mutate();
-        if (pokemonFront.hpPercent() < 11) {
-            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pk_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonFront.hpPercent() < 26) {
-            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pk_hpBar.setProgressDrawable(progressDrawable);
-        } else if (pokemonFront.hpPercent() < 51) {
-            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pk_hpBar.setProgressDrawable(progressDrawable);
-        } else {
-            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.greenhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pk_hpBar.setProgressDrawable(progressDrawable);
+        if(animation){
+            for( int i=0 ; i<pokemon.hpPercent() ; i++){
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run(){
+                        try {
+                            Thread.sleep(40);
+                        } catch (InterruptedException e) { }
+                        --curHp;
+                        hpBar.setProgress(curHp);
+                        drawableBars(pokemon, hpBar);
+                    }
+                },40);
+            }
+        }else{
+            hpBar.setProgress(pokemon.hpPercent());
+            drawableBars(pokemon, hpBar);
         }
 
-        Drawable progressDrawable2 = pkb_hpBar.getProgressDrawable().mutate();
-        if (pokemonBack.hpPercent() < 11) {
-            progressDrawable2.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pkb_hpBar.setProgressDrawable(progressDrawable2);
-        } else if (pokemonBack.hpPercent() < 26) {
-            progressDrawable2.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pkb_hpBar.setProgressDrawable(progressDrawable2);
-        } else if (pokemonBack.hpPercent() < 51) {
-            progressDrawable2.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pkb_hpBar.setProgressDrawable(progressDrawable2);
+    }
+
+    private void drawableBars(PokemonBattler pokemon, ProgressBar hpBar){
+        Drawable progressDrawable = hpBar.getProgressDrawable().mutate();
+        if (pokemon.hpPercent() < 11) {
+            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
+            hpBar.setProgressDrawable(progressDrawable);
+        } else if (pokemon.hpPercent() < 26) {
+            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.orangehp), android.graphics.PorterDuff.Mode.SRC_IN);
+            hpBar.setProgressDrawable(progressDrawable);
+        } else if (pokemon.hpPercent() < 51) {
+            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.yellowhp), android.graphics.PorterDuff.Mode.SRC_IN);
+            hpBar.setProgressDrawable(progressDrawable);
         } else {
-            progressDrawable2.setColorFilter(ContextCompat.getColor(this, R.color.greenhp), android.graphics.PorterDuff.Mode.SRC_IN);
-            pkb_hpBar.setProgressDrawable(progressDrawable2);
+            progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.greenhp), android.graphics.PorterDuff.Mode.SRC_IN);
+            hpBar.setProgressDrawable(progressDrawable);
         }
     }
 
@@ -1722,13 +1785,13 @@ public class Battle extends AppCompatActivity {
 
     private void checkFinal() {
         if (!player1Continue() && !player2Continue()) {
-            Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
+            finalscreen.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tie, null));
             finalscreen.setVisibility(View.VISIBLE);
         } else if (!player1Continue()) {
-            Toast.makeText(this, "Gana el jugador 2", Toast.LENGTH_SHORT).show();
+            finalscreen.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), w2, null));
             finalscreen.setVisibility(View.VISIBLE);
         } else if (!player2Continue()) {
-            Toast.makeText(this, "Gana el jugador 1", Toast.LENGTH_SHORT).show();
+            finalscreen.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), w1, null));
             finalscreen.setVisibility(View.VISIBLE);
         } else {
             activatedBackGround = false;

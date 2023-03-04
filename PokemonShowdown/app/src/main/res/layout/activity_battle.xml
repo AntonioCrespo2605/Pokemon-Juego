@@ -75,7 +75,7 @@
         android:text="@string/atk4"
         android:textColor="@color/greyp"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/purple_200"
         app:cornerRadius="25dp"
         app:icon="@android:drawable/btn_star_big_on"
@@ -90,7 +90,7 @@
         android:layout_height="57dp"
         android:layout_marginBottom="15dp"
         android:text="@string/fight_button"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/whitep"
         app:icon="@drawable/figth_icon"
         app:iconGravity="end"
@@ -108,7 +108,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
         android:text="@string/change_pokemon_button"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/whitep"
         app:icon="@drawable/pkmn_icon"
         app:iconGravity="end"
@@ -125,6 +125,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="-1dp"
         android:contentDescription="@string/pokemon_de_espaldas"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/constraintPkBData"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/p094b"
@@ -135,11 +136,11 @@
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="-20dp"
+        android:contentDescription="@string/pokemon_de_frente"
         app:layout_constraintStart_toStartOf="@+id/constraintPkData"
         app:layout_constraintTop_toBottomOf="@+id/constraintPkData"
         app:srcCompat="@drawable/p094"
-        tools:ignore="ImageContrastCheck"
-        android:contentDescription="@string/pokemon_de_frente" />
+        tools:ignore="ImageContrastCheck" />
 
     <LinearLayout
         android:id="@+id/pokemon_team"
@@ -212,6 +213,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/ic_corner"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -371,7 +373,7 @@
                         android:textSize="20sp" />
 
                     <Space
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
@@ -380,7 +382,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="0dp"
+                        android:layout_marginStart="0dp"
                         android:layout_marginEnd="10dp"
                         android:paddingBottom="2dp"
                         android:text="@string/level"
@@ -398,10 +400,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
                         android:layout_weight="1"
                         android:contentDescription="@string/status"
+                        android:paddingStart="0dp"
                         android:paddingTop="5dp"
-                        android:paddingRight="2dp"
+                        android:paddingEnd="2dp"
                         app:srcCompat="@drawable/congelado"
                         tools:ignore="ImageContrastCheck" />
 
@@ -498,19 +502,138 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageView
-        android:id="@+id/finalscreem"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/pantallafinal"
-        android:scaleType="fitXY"
-        android:visibility="gone"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/finalscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/w1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/creators"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Realizado por:"
+            android:textColor="@color/whitep"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/aitana"
+            app:layout_constraintStart_toStartOf="@+id/aitana"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/aitana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:drawablePadding="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="Aitana Rodríguez Vidal"
+            android:textColor="@color/whitep"
+            android:textSize="15sp"
+            app:drawableEndCompat="@drawable/github_icon"
+            app:drawableTint="@color/whitep"
+            app:layout_constraintBottom_toTopOf="@+id/antonio"
+            app:layout_constraintStart_toStartOf="@+id/antonio"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/antonio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:drawablePadding="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="Antonio Crespo Gómez"
+            android:textColor="@color/whitep"
+            android:textSize="15sp"
+            app:drawableEndCompat="@drawable/github_icon"
+            app:drawableTint="@color/whitep"
+            app:layout_constraintBottom_toTopOf="@+id/xandre"
+            app:layout_constraintStart_toStartOf="@+id/xandre"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/xandre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:drawablePadding="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="Xandre Martínez Correia"
+            android:textColor="@color/whitep"
+            android:textSize="15sp"
+            app:drawableEndCompat="@drawable/github_icon"
+            app:drawableTint="@color/whitep"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/choose"
+            android:layout_width="140dp"
+            android:layout_height="57dp"
+            android:layout_marginBottom="15dp"
+            android:focusableInTouchMode="true"
+            android:text="Elegir"
+            android:textAlignment="center"
+            app:backgroundTint="@color/whitep"
+            app:icon="@drawable/pkmn_icon"
+            app:iconGravity="end"
+            app:iconPadding="0dp"
+            app:iconSize="45dp"
+            app:iconTint="@color/greenhp"
+            app:layout_constraintBottom_toTopOf="@+id/rebattle"
+            app:layout_constraintEnd_toEndOf="@+id/rebattle" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/rebattle"
+            android:layout_width="140dp"
+            android:layout_height="57dp"
+            android:layout_marginBottom="15dp"
+            android:focusableInTouchMode="true"
+            android:text="@string/fight_button"
+            app:backgroundTint="@color/whitep"
+            app:icon="@drawable/figth_icon"
+            app:iconGravity="end"
+            app:iconPadding="0dp"
+            app:iconSize="45dp"
+            app:iconTint="@color/redp"
+            app:layout_constraintBottom_toTopOf="@+id/exit"
+            app:layout_constraintEnd_toEndOf="@+id/exit"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/exit"
+            android:layout_width="140dp"
+            android:layout_height="57dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="40dp"
+            android:focusableInTouchMode="true"
+            android:text="Salir"
+            android:textAlignment="center"
+            app:backgroundTint="@color/whitep"
+            app:icon="@drawable/exit"
+            app:iconGravity="end"
+            app:iconPadding="0dp"
+            app:iconSize="40dp"
+            app:iconTint="@color/bluepy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
