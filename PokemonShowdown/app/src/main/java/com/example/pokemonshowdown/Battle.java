@@ -1427,8 +1427,7 @@ public class Battle extends AppCompatActivity {
             }
         }
     }
-
-    private int hpBarAux;
+    
     private void updateBars(PokemonBattler pokemon, ProgressBar hpBar, Boolean animation) {
         //calculo de barras de vida
         int curHp = hpBar.getProgress();
