@@ -142,8 +142,6 @@ public class Battle extends AppCompatActivity {
         pkb_hpBar = (ProgressBar) findViewById(R.id.pkb_hpBar);
         pk_hpBar = (ProgressBar) findViewById(R.id.pk_hpBar);
 
-        randomBackground();
-
         initBattle();
 
 
@@ -389,7 +387,6 @@ public class Battle extends AppCompatActivity {
     }
 
 
-
     private void executeCommand(String command) {
         switch (command) {
             case "/backToBall1":
@@ -458,17 +455,23 @@ public class Battle extends AppCompatActivity {
             case "/killself2":
                 commandKill(1);
                 break;
-            case "/burn1":commandBurn(1);
+            case "/burn1":
+                commandBurn(1);
                 break;
-            case "/burn2":commandBurn(2);
+            case "/burn2":
+                commandBurn(2);
                 break;
-            case "/poison1":commandPoison(1);
+            case "/poison1":
+                commandPoison(1);
                 break;
-            case "/poison2":commandPoison(2);
+            case "/poison2":
+                commandPoison(2);
                 break;
-            case "/transformation1":commandTransformation(1);
+            case "/transformation1":
+                commandTransformation(1);
                 break;
-            case "/transformation2":commandTransformation(2);
+            case "/transformation2":
+                commandTransformation(2);
                 break;
         }
     }
@@ -690,16 +693,17 @@ public class Battle extends AppCompatActivity {
         if (player == 1) {
             pk.setVisibility(View.INVISIBLE);
             screentext.setText(pokemonFront.getName() + " ha sido debilitado");
-            p2Died=true;
+            p2Died = true;
         } else {
             pkb.setVisibility(View.INVISIBLE);
             screentext.setText(pokemonBack.getName() + " ha sido debilitado");
-            p1Died=true;
+            p1Died = true;
         }
     }
 
     //variable necesaria para este metodo
     private int hpAux;
+
     private void commandHealing(int player) {
         activatedBackGround = false;
         constraintPk.setVisibility(View.VISIBLE);
@@ -794,29 +798,38 @@ public class Battle extends AppCompatActivity {
         }, 1000);
     }
 
-    private void commandBurn(int player){
-        activatedBackGround=false;
+    private void commandBurn(int player) {
+        activatedBackGround = false;
         constraintPkb.setVisibility(View.VISIBLE);
         constraintPk.setVisibility(View.VISIBLE);
         textConstraint.setVisibility(View.INVISIBLE);
 
         h.postDelayed(new Runnable() {
             public void run() {
-                if(player==1)pokemonBack.setCurrentHp((int)Math.round(pokemonBack.getCurrentHp()-(pokemonBack.getHp()/16)));
-                else pokemonFront.setCurrentHp((int)Math.round(pokemonFront.getCurrentHp()-(pokemonFront.getHp()/16)));
+                if (player == 1)
+                    pokemonBack.setCurrentHp((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 16)));
+                else
+                    pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 16)));
 
                 updateBars();
 
-                if (player == 1)screentext.setText(pokemonBack.getName() + " se resiente de sus quemaduras");
+                if (player == 1)
+                    screentext.setText(pokemonBack.getName() + " se resiente de sus quemaduras");
                 else screentext.setText(pokemonFront.getName() + " se resiente de sus quemaduras");
 
-                if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
-                else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
-                else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
+                if (pokemonBack.getNumDex() == pk1py1.getNumDex())
+                    pk1py1 = new PokemonBattler(pokemonBack);
+                else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
+                    pk2py1 = new PokemonBattler(pokemonBack);
+                else if (pokemonBack.getNumDex() == pk3py1.getNumDex())
+                    pk3py1 = new PokemonBattler(pokemonBack);
 
-                if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
-                else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
-                else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
+                if (pokemonFront.getNumDex() == pk1py2.getNumDex())
+                    pk1py2 = new PokemonBattler(pokemonFront);
+                else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
+                    pk2py2 = new PokemonBattler(pokemonFront);
+                else if (pokemonFront.getNumDex() == pk3py2.getNumDex())
+                    pk3py2 = new PokemonBattler(pokemonFront);
             }
         }, 500);
 
@@ -831,29 +844,38 @@ public class Battle extends AppCompatActivity {
 
     }
 
-    private void commandPoison(int player){
-        activatedBackGround=false;
+    private void commandPoison(int player) {
+        activatedBackGround = false;
         constraintPkb.setVisibility(View.VISIBLE);
         constraintPk.setVisibility(View.VISIBLE);
         textConstraint.setVisibility(View.INVISIBLE);
 
         h.postDelayed(new Runnable() {
             public void run() {
-                if(player==1)pokemonBack.setCurrentHp((int)Math.round(pokemonBack.getCurrentHp()-(pokemonBack.getHp()/8)));
-                else pokemonFront.setCurrentHp((int)Math.round(pokemonFront.getCurrentHp()-(pokemonFront.getHp()/8)));
+                if (player == 1)
+                    pokemonBack.setCurrentHp((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 8)));
+                else
+                    pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 8)));
 
                 updateBars();
 
-                if (player == 1)screentext.setText("el veneno resta ps a "+pokemonBack.getName());
-                else screentext.setText("el veneno resta ps a "+pokemonFront.getName());
+                if (player == 1)
+                    screentext.setText("El veneno resta ps a " + pokemonBack.getName());
+                else screentext.setText("El veneno resta ps a " + pokemonFront.getName());
 
-                if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
-                else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
-                else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
+                if (pokemonBack.getNumDex() == pk1py1.getNumDex())
+                    pk1py1 = new PokemonBattler(pokemonBack);
+                else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
+                    pk2py1 = new PokemonBattler(pokemonBack);
+                else if (pokemonBack.getNumDex() == pk3py1.getNumDex())
+                    pk3py1 = new PokemonBattler(pokemonBack);
 
-                if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
-                else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
-                else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
+                if (pokemonFront.getNumDex() == pk1py2.getNumDex())
+                    pk1py2 = new PokemonBattler(pokemonFront);
+                else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
+                    pk2py2 = new PokemonBattler(pokemonFront);
+                else if (pokemonFront.getNumDex() == pk3py2.getNumDex())
+                    pk3py2 = new PokemonBattler(pokemonFront);
             }
         }, 500);
 
@@ -867,35 +889,42 @@ public class Battle extends AppCompatActivity {
         }, 1000);
     }
 
-    private void commandTransformation(int player){
-        if(player==1){
+    private void commandTransformation(int player) {
+        if (player == 1) {
             pokemonBack.setImg(pokemonFront.getImg());
             pokemonBack.setImgB(pokemonFront.getImgB());
             pokemonBack.setMoves(pokemonFront.getMoves());
             pokemonBack.setType1(pokemonFront.getType1());
             pokemonBack.setType2(pokemonFront.getType2());
 
-            screentext.setText(pokemonBack.getName()+" se ha transformado");
+            screentext.setText(pokemonBack.getName() + " se ha transformado");
             pkb.setImageResource(pokemonBack.getImgB());
 
-            if(pokemonBack.getNumDex()==pk1py1.getNumDex())pk1py1=new PokemonBattler(pokemonBack);
-            else if(pokemonBack.getNumDex()==pk2py1.getNumDex())pk2py1=new PokemonBattler(pokemonBack);
-            else if(pokemonBack.getNumDex()==pk3py1.getNumDex())pk3py1=new PokemonBattler(pokemonBack);
+            if (pokemonBack.getNumDex() == pk1py1.getNumDex())
+                pk1py1 = new PokemonBattler(pokemonBack);
+            else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
+                pk2py1 = new PokemonBattler(pokemonBack);
+            else if (pokemonBack.getNumDex() == pk3py1.getNumDex())
+                pk3py1 = new PokemonBattler(pokemonBack);
 
-        }else{
+        } else {
             pokemonFront.setImg(pokemonBack.getImg());
             pokemonFront.setImgB(pokemonBack.getImgB());
             pokemonFront.setMoves(pokemonBack.getMoves());
             pokemonFront.setType1(pokemonBack.getType1());
             pokemonFront.setType2(pokemonBack.getType2());
 
-            screentext.setText(pokemonFront.getName()+" se ha transformado");
+            screentext.setText(pokemonFront.getName() + " se ha transformado");
 
-            if(pokemonFront.getNumDex()==pk1py2.getNumDex())pk1py2=new PokemonBattler(pokemonFront);
-            else if(pokemonFront.getNumDex()==pk2py2.getNumDex())pk2py2=new PokemonBattler(pokemonFront);
-            else if(pokemonFront.getNumDex()==pk3py2.getNumDex())pk3py2=new PokemonBattler(pokemonFront);
+            if (pokemonFront.getNumDex() == pk1py2.getNumDex())
+                pk1py2 = new PokemonBattler(pokemonFront);
+            else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
+                pk2py2 = new PokemonBattler(pokemonFront);
+            else if (pokemonFront.getNumDex() == pk3py2.getNumDex())
+                pk3py2 = new PokemonBattler(pokemonFront);
         }
     }
+
     /******************************* UI ******************************************/
 
     public void changeTurn() {
@@ -951,7 +980,8 @@ public class Battle extends AppCompatActivity {
         } else playerturn.setVisibility(View.VISIBLE);
 
     }
-     //fondo random y musica dependiente de este
+
+    //fondo random y musica dependiente de este
     private void randomBackground() {
         Random r = new Random();
         int random = r.nextInt(BACKGROUNDS.length);
@@ -1040,6 +1070,7 @@ public class Battle extends AppCompatActivity {
                 break;
             default:
                 music = MediaPlayer.create(Battle.this, R.raw.trainer_battle);
+
         }
         music.setLooping(true);
         music.start();
@@ -1052,7 +1083,7 @@ public class Battle extends AppCompatActivity {
         pkbHealth.setVisibility(View.INVISIBLE);
 
         //AITANA CAMBIA AQUI LA PANTALLA DE COMBATE
-        playerturnscreen.setImageResource(portada_vacia);
+        playerturnscreen.setImageResource(battle);
 
         modeCombat = true;
 
@@ -1285,6 +1316,7 @@ public class Battle extends AppCompatActivity {
             }
         }
     }
+
     //muestra los pokemon debilitados oscuros al elegir pokemon
     private void showDeads() {
         cv1.setBackgroundColor(ContextCompat.getColor(this, R.color.greyp));
@@ -1402,7 +1434,7 @@ public class Battle extends AppCompatActivity {
 
     /*******************************Controller***************************************/
 
-    private void initBattle(){
+    private void initBattle() {
         randomBackground();
         h = new Handler();
         //leer la informacion del Bundle para inicializar los pokemon
@@ -1486,13 +1518,13 @@ public class Battle extends AppCompatActivity {
                 if (secondPart.get(clicCounter - firstPart.size()).charAt(0) == '/')
                     executeCommand(secondPart.get(clicCounter - firstPart.size()));
                 else screentext.setText(secondPart.get(clicCounter - firstPart.size()));
-            }else if (clicCounter == firstPart.size() + secondPart.size()) {
+            } else if (clicCounter == firstPart.size() + secondPart.size()) {
                 generateThirdDialog();
-                if(thirdPart.size()!=0){
-                    executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
+                if (thirdPart.size() != 0) {
+                    executeCommand(thirdPart.get(clicCounter - (firstPart.size() + secondPart.size())));
                 }
             } else if (clicCounter < firstPart.size() + secondPart.size() + thirdPart.size()) {
-                executeCommand(thirdPart.get(clicCounter-(firstPart.size()+secondPart.size())));
+                executeCommand(thirdPart.get(clicCounter - (firstPart.size() + secondPart.size())));
             } else {
                 checkFinal();
             }
@@ -1598,7 +1630,7 @@ public class Battle extends AppCompatActivity {
 
         r = new Random();
         //si falla(ademas si se usa transf. en ditto)
-        if (1 + r.nextInt(101) > movefocus.getAccuracy()||(victim.getNumDex()==132&&movefocus.getId()==111)) {
+        if (1 + r.nextInt(101) > movefocus.getAccuracy() || (victim.getNumDex() == 132 && movefocus.getId() == 111)) {
             toret.add("Pero ha fallado");
             return;
         }
@@ -1613,9 +1645,9 @@ public class Battle extends AppCompatActivity {
 
         //si es un movimiento de estado
         if (!movefocus.isAtkSt()) {
-            if(movefocus.getId()==111){
-                toret.add("/transformation"+player);
-            }else{
+            if (movefocus.getId() == 111) {
+                toret.add("/transformation" + player);
+            } else {
                 if (victim.getStatus() != 0) {
                     toret.add(focus.getName() + " ha fallado el ataque");
                 } else {
@@ -1632,7 +1664,7 @@ public class Battle extends AppCompatActivity {
         else if (m == 0.5 || m == 0.25) toret.add("No es muy efectivo...");
         if (movefocus.getDmg() == 0) {
             damage = 0;
-        }else{
+        } else {
             damage = (int) Math.round(getDamage(movefocus, focus, victim));
         }
 
@@ -1642,7 +1674,8 @@ public class Battle extends AppCompatActivity {
             if (player == 2) p1Died = true;
             else p2Died = true;
         } else if (r.nextInt(101) < movefocus.getStatusProb()) {
-            if(victim.getType1()!=movefocus.getType()&&victim.getType2()!=movefocus.getType()||movefocus.getStatus()==4)toret.add("/newStatusSecond" + player);
+            if (victim.getType1() != movefocus.getType() && victim.getType2() != movefocus.getType() || movefocus.getStatus() == 4)
+                toret.add("/newStatusSecond" + player);
             if (player == 2) p1Died = false;
             else p2Died = false;
         }
@@ -1750,28 +1783,28 @@ public class Battle extends AppCompatActivity {
     private void generateThirdDialog() {
         thirdPart = new ArrayList<String>();
         if (pokemonBack.isAlive()) {
-            if (pokemonBack.getStatus() == 2){
-                thirdPart.add("/burn"+1);
-                if((int)Math.round(pokemonBack.getCurrentHp()-(pokemonBack.getHp()/16))<=0){
-                    thirdPart.add("/kill"+1);
+            if (pokemonBack.getStatus() == 2) {
+                thirdPart.add("/burn" + 1);
+                if ((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 16)) <= 0) {
+                    thirdPart.add("/kill" + 1);
                 }
-            }else if(pokemonBack.getStatus()==3){
-                thirdPart.add("/poison"+1);
-                if((int)Math.round(pokemonBack.getCurrentHp()-(pokemonBack.getHp()/8))<=0){
-                    thirdPart.add("/kill"+2);
+            } else if (pokemonBack.getStatus() == 3) {
+                thirdPart.add("/poison" + 1);
+                if ((int) Math.round(pokemonBack.getCurrentHp() - (pokemonBack.getHp() / 8)) <= 0) {
+                    thirdPart.add("/kill" + 2);
                 }
             }
         }
         if (pokemonFront.isAlive()) {
-            if (pokemonFront.getStatus() == 2){
-                thirdPart.add("/burn"+2);
-                if((int)Math.round(pokemonFront.getCurrentHp()-(pokemonFront.getHp()/16))<=0){
-                    thirdPart.add("/kill"+1);
+            if (pokemonFront.getStatus() == 2) {
+                thirdPart.add("/burn" + 2);
+                if ((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 16)) <= 0) {
+                    thirdPart.add("/kill" + 1);
                 }
-            }else if(pokemonFront.getStatus()==3){
-                thirdPart.add("/poison"+2);
-                if((int)Math.round(pokemonFront.getCurrentHp()-(pokemonFront.getHp()/8))<=0){
-                    thirdPart.add("/kill"+1);
+            } else if (pokemonFront.getStatus() == 3) {
+                thirdPart.add("/poison" + 2);
+                if ((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 8)) <= 0) {
+                    thirdPart.add("/kill" + 1);
                 }
             }
         }
