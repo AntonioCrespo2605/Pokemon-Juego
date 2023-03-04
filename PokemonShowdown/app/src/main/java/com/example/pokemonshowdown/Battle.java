@@ -33,7 +33,7 @@ import java.util.Random;
 public class Battle extends AppCompatActivity {
 
     //VIEWS
-    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3;
+    private ImageView background, playerturn, playerturnscreen, pk, pkb, pkbstatus, pkstatus, pk1, pk2, pk3, finalscreen;
     private TextView pk_name, pkb_name, pkb_hp, pkb_maxhp;
     private Typewriter screentext;
     //Pkb es el pokemon del jugador que tiene el turno actualmente
@@ -112,6 +112,7 @@ public class Battle extends AppCompatActivity {
         background = (ImageView) findViewById(R.id.background);
         playerturn = (ImageView) findViewById(R.id.playerturn);
         playerturnscreen = (ImageView) findViewById(R.id.playerturnscreen);
+        finalscreen = (ImageView) findViewById(R.id.finalscreem);
         pk = (ImageView) findViewById(R.id.pk);
         pkb = (ImageView) findViewById(R.id.pkB);
         pkstatus = (ImageView) findViewById(R.id.pkstatus);
@@ -143,18 +144,7 @@ public class Battle extends AppCompatActivity {
 
         randomBackground();
 
-        h = new Handler();
-
-        //leer la informacion del Bundle para inicializar los pokemon
-        initPokemons();
-
-        //INICIO
-        turnManager = 0;
-        pokemonBack = new PokemonBattler(pk1py2);
-        pokemonFront = new PokemonBattler(pk1py1);
-        p1Died = false;
-        p2Died = false;
-        changeTurn();
+        initBattle();
 
 
         playerturnscreen.setOnClickListener(new View.OnClickListener() {
@@ -378,6 +368,14 @@ public class Battle extends AppCompatActivity {
             }
         });
 
+        finalscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                music.stop();
+                initBattle();
+            }
+        });
+
     }
 
     protected void onPause() {
@@ -514,13 +512,13 @@ public class Battle extends AppCompatActivity {
             getPokemonStatus(pokemonFront, pkstatus);
 
         }
-        
+
         screentext.setText("");
 
         h.postDelayed(new Runnable() {
             public void run() {
                 if (player == 1)
-                    screentext.setText("Jugador 1 ha sacado a" + pokemonBack.getName());
+                    screentext.setText("Jugador 1 ha sacado a " + pokemonBack.getName());
                 else screentext.setText("Jugador 2 ha sacado a " + pokemonFront.getName());
                 activatedBackGround = true;
             }
@@ -1404,6 +1402,25 @@ public class Battle extends AppCompatActivity {
 
     /*******************************Controller***************************************/
 
+    private void initBattle(){
+        randomBackground();
+        h = new Handler();
+        //leer la informacion del Bundle para inicializar los pokemon
+        initPokemons();
+        //INICIO
+        turnManager = 0;
+        pokemonBack = new PokemonBattler(pk1py2);
+        pokemonFront = new PokemonBattler(pk1py1);
+        p1Died = false;
+        p2Died = false;
+        changeTurn();
+        finalscreen.setVisibility(View.INVISIBLE);
+        pkb.setVisibility(View.VISIBLE);
+        pk.setVisibility(View.VISIBLE);
+        constraintPk.setVisibility(View.VISIBLE);
+        constraintPkb.setVisibility(View.VISIBLE);
+    }
+
     private void initPokemons() {
         Bundle b = getIntent().getExtras();
         handler = new DBHandler(this);
@@ -1673,10 +1690,13 @@ public class Battle extends AppCompatActivity {
     private void checkFinal() {
         if (!player1Continue() && !player2Continue()) {
             Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
+            finalscreen.setVisibility(View.VISIBLE);
         } else if (!player1Continue()) {
             Toast.makeText(this, "Gana el jugador 2", Toast.LENGTH_SHORT).show();
+            finalscreen.setVisibility(View.VISIBLE);
         } else if (!player2Continue()) {
             Toast.makeText(this, "Gana el jugador 1", Toast.LENGTH_SHORT).show();
+            finalscreen.setVisibility(View.VISIBLE);
         } else {
             activatedBackGround = false;
             clicCounter = 0;
