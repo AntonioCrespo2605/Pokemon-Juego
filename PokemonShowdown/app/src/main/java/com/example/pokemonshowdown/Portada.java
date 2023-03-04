@@ -134,7 +134,7 @@ public class Portada extends AppCompatActivity {
         handler.addNewMove(new Move(42, "Bomba sónica", 20, 90, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(43, "Bombardeo", 69, 85, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(44, "Cabezazo", 130, 100, -1, 0, 13, 0, true, false));
-        handler.addNewMove(new Move(45, "Canto", 0, 55, 4, 100, 13, 0, true, false));
+        handler.addNewMove(new Move(45, "Canto", 0, 55, 4, 100, 13, 0, false, false));
         handler.addNewMove(new Move(46, "Clavo cañon", 69, 100, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(47, "Constricción", 45, 100, -1, 0, 13, 0, true, false));
         handler.addNewMove(new Move(48, "Cornada", 65, 100, -1, 0, 13, 0, true, false));
