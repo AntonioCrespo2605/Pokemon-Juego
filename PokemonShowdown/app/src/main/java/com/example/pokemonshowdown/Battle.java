@@ -380,7 +380,7 @@ public class Battle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 music.stop();
-                Intent intent = new Intent(Battle.this,Portada.class);
+                Intent intent = new Intent(Battle.this, Portada.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -708,7 +708,8 @@ public class Battle extends AppCompatActivity {
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    updateBars();
+                    //aquiantonio
+                    updateBars(pokemonFront, pk_hpBar, true);
                     if (pokemonFront.getNumDex() == pk1py2.getNumDex())
                         pk1py2 = new PokemonBattler(pokemonFront);
                     else if (pokemonFront.getNumDex() == pk2py2.getNumDex())
@@ -721,7 +722,7 @@ public class Battle extends AppCompatActivity {
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    updateBars();
+                    updateBars(pokemonBack, pkb_hpBar, true);
                     if (pokemonBack.getNumDex() == pk1py1.getNumDex())
                         pk1py1 = new PokemonBattler(pokemonBack);
                     else if (pokemonBack.getNumDex() == pk2py1.getNumDex())
@@ -869,7 +870,7 @@ public class Battle extends AppCompatActivity {
                 else
                     pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 16)));
 
-                updateBars();
+                //updateBars();
 
                 if (player == 1)
                     screentext.setText(pokemonBack.getName() + " se resiente de sus quemaduras");
@@ -915,7 +916,7 @@ public class Battle extends AppCompatActivity {
                 else
                     pokemonFront.setCurrentHp((int) Math.round(pokemonFront.getCurrentHp() - (pokemonFront.getHp() / 8)));
 
-                updateBars();
+                //updateBars();
 
                 if (player == 1)
                     screentext.setText("El veneno resta ps a " + pokemonBack.getName());
@@ -1011,7 +1012,9 @@ public class Battle extends AppCompatActivity {
 
         hideMoves();
 
-        updateBars();
+        //aqui antonio
+        updateBars(pokemonBack, pkb_hpBar, false);
+        updateBars(pokemonFront, pk_hpBar, false);
 
         //cambios de sprites
         pkb.setImageResource(pokemonBack.getImgB());
@@ -1427,30 +1430,31 @@ public class Battle extends AppCompatActivity {
 
     private void updateBars(PokemonBattler pokemon, ProgressBar hpBar, Boolean animation) {
         //calculo de barras de vida
-        curHp = (pokemon.getCurrentHp()*100)/pokemon.getHp();
+        curHp = (pokemon.getCurrentHp() * 100) / pokemon.getHp();
 
-        if(animation){
-            for( int i=0 ; i<pokemon.hpPercent() ; i++){
-                new Handler().postDelayed(new Runnable(){
+        if (animation) {
+            for (int i = curHp; i > pokemon.hpPercent(); i--) {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void run(){
+                    public void run() {
                         try {
                             Thread.sleep(40);
-                        } catch (InterruptedException e) { }
+                        } catch (InterruptedException e) {
+                        }
                         --curHp;
                         hpBar.setProgress(curHp);
                         drawableBars(pokemon, hpBar);
                     }
-                },40);
+                }, 40);
             }
-        }else{
+        } else {
             hpBar.setProgress(pokemon.hpPercent());
             drawableBars(pokemon, hpBar);
         }
 
     }
 
-    private void drawableBars(PokemonBattler pokemon, ProgressBar hpBar){
+    private void drawableBars(PokemonBattler pokemon, ProgressBar hpBar) {
         Drawable progressDrawable = hpBar.getProgressDrawable().mutate();
         if (pokemon.hpPercent() < 11) {
             progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.redhp), android.graphics.PorterDuff.Mode.SRC_IN);
