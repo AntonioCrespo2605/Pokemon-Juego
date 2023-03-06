@@ -390,7 +390,6 @@ public class Battle extends AppCompatActivity {
             public void onClick(View view) {
                 music.stop();
                 finish();
-                finish();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -973,6 +972,7 @@ public class Battle extends AppCompatActivity {
             pokemonFront.setType2(pokemonBack.getType2());
 
             screentext.setText(pokemonFront.getName() + " se ha transformado");
+            pk.setImageResource(pokemonFront.getImg());
 
             if (pokemonFront.getNumDex() == pk1py2.getNumDex())
                 pk1py2 = new PokemonBattler(pokemonFront);
