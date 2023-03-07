@@ -1695,7 +1695,7 @@ public class Battle extends AppCompatActivity {
         //efectividad
         double m = getMultiplayerEffectivity(movefocus.getType(), victim.getType1(), victim.getType2());
         //si no hace efecto por tipos o si es un movimiento de estado que ataca a un pokemon del mismo tipo
-        if (m == 0 || (!movefocus.isAtkSt() && movefocus.getType() == victim.getType1()) || (!movefocus.isAtkSt() && movefocus.getType() == victim.getType2())) {
+        if (m == 0 || ((!movefocus.isAtkSt() && movefocus.getType() == victim.getType1()) || (!movefocus.isAtkSt() && movefocus.getType() == victim.getType2()))&&movefocus.getType()!=13) {
             toret.add("No tiene ningún efecto");
             return;
         }
